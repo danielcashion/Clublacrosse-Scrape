@@ -1,0 +1,5 @@
+host = "localhost"
+username = "root"
+passwd = "Xbyte@12"
+database = "Tournament"
+table = "Tournament_Data"
