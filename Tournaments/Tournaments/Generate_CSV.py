@@ -1,4 +1,4 @@
-import MySQLdb
+import pymysql as MySQLdb
 import os
 import pandas as pd
 from Tournaments.spiders import database_con as dbs

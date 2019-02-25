@@ -1,5 +1,5 @@
 host = "localhost"
 username = "root"
-passwd = "Xbyte@12"
+passwd = "xbyte"
 database = "Tournament"
 table = "Tournament_Data"

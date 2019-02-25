@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import MySQLdb
+import pymysql as MySQLdb
 import json
 
 import scrapy

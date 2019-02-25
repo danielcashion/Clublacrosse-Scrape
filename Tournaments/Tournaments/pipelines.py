@@ -4,7 +4,7 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-import MySQLdb
+import pymysql as MySQLdb
 
 from Tournaments.items import TournamentsItem
 from Tournaments.spiders import database_con as dbc
@@ -33,9 +33,10 @@ class TournamentsPipeline(object):
                                                                                 Date longtext DEFAULT NULL,
                                                                                 Location longtext DEFAULT NULL,
                                                                                 Icon longtext DEFAULT NULL,
-                                                                                Link longtext DEFAULT NULL,
+                                                                                Link varchar(255) DEFAULT NULL,
                                                                                 status longtext DEFAULT NULL,
-                                                                                PRIMARY KEY (`Id`))"""
+                                                                                PRIMARY KEY (`Id`),
+                                                                                UNIQUE (Link))"""
             self.cursor.execute(strquery2)
         except Exception as e:
             print(str(e))
@@ -50,7 +51,7 @@ class TournamentsPipeline(object):
                     """INSERT INTO """ + dbc.table + """(Keyword,Title,Date,Location,Icon,Link,status) VALUES(%s, %s, %s, %s, %s, %s, %s)""",
                     (item['Keyword'],item['Title'],item['Date'], item['Location'], item['Icon'], item['Link'],item['status']))
                 self.connection.commit()
-                print('\rData inserted..' + str(self.i))
+                print('\rData inserted..' + str(self.i), end = "")
                 self.i += 1
 
             except Exception as e:
