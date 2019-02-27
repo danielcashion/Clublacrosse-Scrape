@@ -1,7 +1,9 @@
+import pyodbc
+
 import pymysql as MySQLdb
 import os
 import pandas as pd
-from TourneyMachine.spiders import database_con as dbs
+from TourneyMachine.spiders import database_con as dbc
 from TourneyMachine.spiders import paths
 
 def Export_CSV():
@@ -12,13 +14,15 @@ def Export_CSV():
     if not os.path.exists(csv_folder):
         os.makedirs(csv_folder)
 
-    host = dbs.host
-    username = dbs.username
-    passwd = dbs.passwd
-    db = dbs.database
+    server = dbc.server
+    database = dbc.database
+    username = dbc.username
+    password = dbc.password
+    driver = dbc.driver
+    table = dbc.table
 
-    con = MySQLdb.connect(host, username, passwd,db, charset='utf8')
-    cursor = con.cursor()
+    cnxn = pyodbc.connect(
+        'DRIVER=' + driver + ';SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
 
     csv_Path = paths.csv_path+'tourneymachine_data.csv'
 
@@ -26,9 +30,9 @@ def Export_CSV():
         # File_1 = csv_folder + "temp.csv"
         File_2 = csv_Path
 
-        sql = "Select tournament_endpoint, tournament_division_id, tournament_id, tournament_name, time_period, Location, tournament_division_name, last_update, game_date, game_id, game_time, location_name, away_team_id, away_team, away_score, home_score, home_team From "+dbs.table
+        sql = "Select [tournament_endpoint], [tournament_division_id], [tournament_id], [tournament_name], [time_period], [Location], [tournament_division_name], [last_update], [game_date], [game_id], [game_time], [location_name], [away_team_id], [away_team], [away_score], [home_score], [home_team] From "+dbc.table
 
-        df = pd.read_sql(sql,con)
+        df = pd.read_sql(sql,cnxn)
         # df.drop_duplicates(subset=None, inplace=True)
         # df.rename(columns={"page_url": "Page URL",'video_title':'Video Title','video_embed_link':'Video Embed link','thumbnail_images':'Thumbnail Images URL','category_tree':'Category Tree'}, inplace=True)
         df.drop_duplicates(subset=None, inplace=True)

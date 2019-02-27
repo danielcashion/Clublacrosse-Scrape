@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import pymysql as MySQLdb
-import json
+import pyodbc
 
 import scrapy
 import re
-from TourneyMachine.spiders import database_con as dbs
+from TourneyMachine.spiders import database_con as dbc
 from scrapy.cmdline import execute
 from TourneyMachine.Generate_CSV import Export_CSV
 from TourneyMachine.items import TourneymachineItem
@@ -15,6 +15,13 @@ class TmachineextractorSpider(scrapy.Spider):
     name = 'TMachineExtractor'
     allowed_domains = ['tourneymachine.com']
     start_urls = ['https://tourneymachine.com/Home.aspx/']
+    server = dbc.server
+    database = dbc.database
+    username = dbc.username
+    password = dbc.password
+    driver = dbc.driver
+    table = dbc.table
+    i = 1
 
     def parse(self, response):
         # raise CloseSpider()
@@ -25,12 +32,15 @@ class TmachineextractorSpider(scrapy.Spider):
         f.close()
 
         try:
-            connection = MySQLdb.connect(dbs.host, dbs.username, dbs.passwd, dbs.database, charset='utf8')
-            cursor = connection.cursor()
-            cursor.execute(
-                "SELECT Link FROM Tournament_main_Data WHERE status='pending'")
-            Links = cursor.fetchall()
-            connection.close()
+            self.cnxn = pyodbc.connect(
+                'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
+            self.cursor = self.cnxn.cursor()
+            # connection = MySQLdb.connect(dbs.host, dbs.username, dbs.passwd, dbs.database, charset='utf8')
+            # cursor = connection.cursor()
+            self.cursor.execute(
+                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date > GETDATE() AND is_active = 1 ORDER BY end_date")
+            Links = self.cursor.fetchall()
+            self.cnxn.close()
             for link in Links:
                 id = link[0]
                 id = id.split('IDTournament=')[1]
@@ -224,12 +234,6 @@ class TmachineextractorSpider(scrapy.Spider):
                 item['home_score'] = ''
                 item['home_team'] = ''
                 yield item
-
-            connection = MySQLdb.connect(dbs.host, dbs.username, dbs.passwd, dbs.database, charset='utf8')
-            cursor = connection.cursor()
-            cursor.execute("UPDATE Tournament_main_Data SET status='Done' WHERE Link like '%"+tournament_id+"'")
-            connection.commit()
-            connection.close()
 
         except Exception as e:
             print(str(e))
