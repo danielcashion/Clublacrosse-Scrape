@@ -38,7 +38,7 @@ class TmachineextractorSpider(scrapy.Spider):
             # connection = MySQLdb.connect(dbs.host, dbs.username, dbs.passwd, dbs.database, charset='utf8')
             # cursor = connection.cursor()
             self.cursor.execute(
-                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date > GETDATE() AND is_active = 1 ORDER BY end_date")
+                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date < GETDATE() AND is_active = 1 AND icon = 'lacrosse' ORDER BY end_date")
             Links = self.cursor.fetchall()
             self.cnxn.close()
             for link in Links:

@@ -3,4 +3,4 @@ driver = '{SQL Server}'
 username = "sql_admin"
 password = 'DCdc4646'
 database = "clubstats"
-table = "[clubstats].[stg].[tourneymachine_mainpage_data_1]"
+table = "[clubstats].[stg].[tourneymachine_mainpage_data]"
