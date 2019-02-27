@@ -64,7 +64,7 @@ class TournamentextractorSpider(scrapy.Spider):
                 item['Location'] = Location
                 item['Icon'] = Icon
                 item['Link'] = Link
-                item['status'] = 'pending'
+                # item['status'] = 'pending'
                 yield item
 
         except Exception as e:
