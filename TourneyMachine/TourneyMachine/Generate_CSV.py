@@ -30,7 +30,7 @@ def Export_CSV():
         # File_1 = csv_folder + "temp.csv"
         File_2 = csv_Path
 
-        sql = "Select [tournament_endpoint], [tournament_division_id], [tournament_id], [tournament_name], [time_period], [Location], [tournament_division_name], [last_update], [game_date], [game_id], [game_time], [location_name], [away_team_id], [away_team], [away_score], [home_score], [home_team] From "+dbc.table
+        sql = "Select [tournament_endpoint], [tournament_division_id], [tournament_id], [tournament_name], [time_period], [Location], [tournament_division_name], [last_update], [game_date], [game_id], [game_time], [location_name], [home_team_id], [away_team_id], [away_team], [away_score], [home_score], [home_team] From "+dbc.table
 
         df = pd.read_sql(sql,cnxn)
         # df.drop_duplicates(subset=None, inplace=True)

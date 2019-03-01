@@ -24,6 +24,7 @@ class TourneymachineItem(scrapy.Item):
     game_id = scrapy.Field()
     game_time = scrapy.Field()
     location_name = scrapy.Field()
+    home_team_id = scrapy.Field()
     away_team_id = scrapy.Field()
     away_team = scrapy.Field()
     away_score = scrapy.Field()
