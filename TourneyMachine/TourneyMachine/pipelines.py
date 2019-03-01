@@ -30,24 +30,25 @@ class TourneymachinePipeline(object):
             self.cnxn = pyodbc.connect(
                 'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
             self.cursor = self.cnxn.cursor()
-            strquery2 = "CREATE TABLE " + dbc.table + """ (Id INT NOT NULL IDENTITY(1,1),
-                                                                            [tournament_endpoint] VARCHAR(255) DEFAULT NULL,
-                                                                            [tournament_division_id] VARCHAR(255) DEFAULT NULL,
-                                                                            [tournament_id] VARCHAR(255) DEFAULT NULL,
-                                                                            [tournament_name] VARCHAR(500) DEFAULT NULL,
-                                                                            [time_period] VARCHAR(255) DEFAULT NULL,
-                                                                            [Location] VARCHAR(255) DEFAULT NULL,
-                                                                            [tournament_division_name] VARCHAR(255) DEFAULT NULL,
-                                                                            [last_update] VARCHAR(255) DEFAULT NULL,
-                                                                            [game_date] VARCHAR(255) DEFAULT NULL,
-                                                                            [game_id] VARCHAR(255) DEFAULT NULL,
-                                                                            [game_time] VARCHAR(255) DEFAULT NULL,
-                                                                            [location_name] VARCHAR(255) DEFAULT NULL,
-                                                                            [away_team_id] VARCHAR(255) DEFAULT NULL,
-                                                                            [away_team] VARCHAR(255) DEFAULT NULL,
-                                                                            [away_score] VARCHAR(255) DEFAULT NULL,
-                                                                            [home_score] VARCHAR(255) DEFAULT NULL,
-                                                                            [home_team] VARCHAR(255) DEFAULT NULL,
+            strquery2 = "CREATE TABLE " + dbc.table + """ (Id INT NOT NULL IDENTITY,
+                                                                            [tournament_endpoint] [text] DEFAULT NULL,
+                                                                            [tournament_division_id] [text] DEFAULT NULL,
+                                                                            [tournament_id] [text] DEFAULT NULL,
+                                                                            [tournament_name] [text] DEFAULT NULL,
+                                                                            [time_period] [text] DEFAULT NULL,
+                                                                            [Location] [text] DEFAULT NULL,
+                                                                            [tournament_division_name] [text] DEFAULT NULL,
+                                                                            [last_update] [text] DEFAULT NULL,
+                                                                            [game_date] [text] DEFAULT NULL,
+                                                                            [game_id] [text] DEFAULT NULL,
+                                                                            [game_time] [text] DEFAULT NULL,
+                                                                            [location_name] [text] DEFAULT NULL,
+                                                                            [home_team_id] [text] DEFAULT NULL,
+                                                                            [away_team_id] [text] DEFAULT NULL,
+                                                                            [away_team] [text] DEFAULT NULL,
+                                                                            [away_score] [text] DEFAULT NULL,
+                                                                            [home_score] [text] DEFAULT NULL,
+                                                                            [home_team] [text] DEFAULT NULL,
                                                                             PRIMARY KEY ([Id]))"""
             self.cursor.execute(strquery2)
             self.cnxn.commit()
@@ -61,7 +62,7 @@ class TourneymachinePipeline(object):
                     'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
                 self.cursor = self.cnxn.cursor()
                 self.cursor.execute(
-                        """INSERT INTO """ + dbc.table + "([tournament_endpoint], [tournament_division_id], [tournament_id], [tournament_name], [time_period], [Location], [tournament_division_name], [last_update], [game_date], [game_id], [game_time], [location_name], [away_team_id], [away_team], [away_score], [home_score], [home_team]) VALUES('"+item['tournament_endpoint']+"', '"+item['tournament_division_id']+"', '"+item['tournament_id']+"', '"+item['tournament_name']+"', '"+item['time_period']+"', '"+item['Location']+"', '"+item['tournament_division_name']+"', '"+item['last_update']+"', '"+item['game_date']+"', '"+item['game_id']+"', '"+item['game_time']+"', '"+item['location_name']+"', '"+item['away_team_id']+"', '"+item['away_team']+"', '"+item['away_score']+"', '"+item['home_score']+"', '"+item['home_team']+"')",
+                        """INSERT INTO """ + dbc.table + "([tournament_endpoint], [tournament_division_id], [tournament_id], [tournament_name], [time_period], [Location], [tournament_division_name], [last_update], [game_date], [game_id], [game_time], [location_name], [home_team_id], [away_team_id], [away_team], [away_score], [home_score], [home_team]) VALUES('"+item['tournament_endpoint']+"', '"+item['tournament_division_id']+"', '"+item['tournament_id']+"', '"+item['tournament_name']+"', '"+item['time_period']+"', '"+item['Location']+"', '"+item['tournament_division_name']+"', '"+item['last_update']+"', '"+item['game_date']+"', '"+item['game_id']+"', '"+item['game_time']+"', '"+item['location_name']+"', '"+item['home_team_id']+"', '"+item['away_team_id']+"', '"+item['away_team']+"', '"+item['away_score']+"', '"+item['home_score']+"', '"+item['home_team']+"')",
                         )
                 self.cnxn.commit()
                 # self.connection = MySQLdb.connect(self.DB_IP, self.DB_user, self.DB_password, self.DB_name,

@@ -38,7 +38,7 @@ class TmachineextractorSpider(scrapy.Spider):
             # connection = MySQLdb.connect(dbs.host, dbs.username, dbs.passwd, dbs.database, charset='utf8')
             # cursor = connection.cursor()
             self.cursor.execute(
-                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date < GETDATE() AND is_active = 1 AND icon = 'lacrosse' ORDER BY end_date")
+                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date > GETDATE() AND is_active = 1 ORDER BY end_date")
             Links = self.cursor.fetchall()
             self.cnxn.close()
             for link in Links:
@@ -168,10 +168,19 @@ class TmachineextractorSpider(scrapy.Spider):
                                         location_name = ''
 
                                     try:
-                                        away_team_id = j.xpath('./@class').extract_first().strip()
-                                        away_team_id = re.findall(r'\steam_(.*?)\s',away_team_id)[0]
+                                        tmpt = j.xpath('./@class').extract_first().strip()
+                                        tmp_away_team_id = re.findall(r'\steam_(\w+)',tmpt)
+                                        try:
+                                            home_team_id = tmp_away_team_id[0]
+                                        except IndexError:
+                                            home_team_id = ''
+                                        try:
+                                            away_team_id = tmp_away_team_id[1]
+                                        except IndexError:
+                                            away_team_id = ''
                                     except Exception as e:
                                         away_team_id = ''
+                                        home_team_id = ''
 
                                     try:
                                         away_team = j.xpath('./td[4]/text()').extract_first().strip()
@@ -206,6 +215,7 @@ class TmachineextractorSpider(scrapy.Spider):
                                         item['game_id'] = game_id
                                         item['game_time'] = game_time
                                         item['location_name'] = location_name
+                                        item['home_team_id'] = home_team_id
                                         item['away_team_id'] = away_team_id
                                         item['away_team'] = away_team
                                         item['away_score'] = away_score
@@ -229,6 +239,7 @@ class TmachineextractorSpider(scrapy.Spider):
                 item['game_time'] = ''
                 item['location_name'] = ''
                 item['away_team_id'] = ''
+                item['home_team_id'] = ''
                 item['away_team'] = ''
                 item['away_score'] = ''
                 item['home_score'] = ''
