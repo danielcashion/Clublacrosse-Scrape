@@ -107,9 +107,6 @@ class TmachineextractorSpider(scrapy.Spider):
 
     def getTournamentDetails(self,response):
         game_ids = set()
-        f= open('1.html','w')
-        f.write(response.text)
-        f.close()
         tournament_endpoint = response.meta['tournament_endpoint']
         tournament_division_id = response.meta['tournament_division_id']
         tournament_id = response.meta['tournament_id']
