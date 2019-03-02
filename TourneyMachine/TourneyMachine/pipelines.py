@@ -18,7 +18,7 @@ class TourneymachinePipeline(object):
     table = dbc.table
     i = 1
 
-    def __init__(self):
+    #def __init__(self):
         # try:
         #     self.connection = MySQLdb.connect(self.DB_IP, self.DB_user, self.DB_password, charset='utf8')
         #     self.cursor = self.connection.cursor()
@@ -26,35 +26,35 @@ class TourneymachinePipeline(object):
         # except Exception as e:
         #     print(str(e))
 
-        try:
-            self.cnxn = pyodbc.connect(
-                'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
-            self.cursor = self.cnxn.cursor()
-            strquery2 = "CREATE TABLE " + dbc.table + """ (Id INT NOT NULL IDENTITY,
-                                                                            [tournament_endpoint] [text] DEFAULT NULL,
-                                                                            [tournament_division_id] [text] DEFAULT NULL,
-                                                                            [tournament_id] [text] DEFAULT NULL,
-                                                                            [tournament_name] [text] DEFAULT NULL,
-                                                                            [time_period] [text] DEFAULT NULL,
-                                                                            [Location] [text] DEFAULT NULL,
-                                                                            [tournament_division_name] [text] DEFAULT NULL,
-                                                                            [last_update] [text] DEFAULT NULL,
-                                                                            [game_date] [text] DEFAULT NULL,
-                                                                            [game_id] [text] DEFAULT NULL,
-                                                                            [game_time] [text] DEFAULT NULL,
-                                                                            [location_name] [text] DEFAULT NULL,
-                                                                            [home_team_id] [text] DEFAULT NULL,
-                                                                            [away_team_id] [text] DEFAULT NULL,
-                                                                            [away_team] [text] DEFAULT NULL,
-                                                                            [away_score] [text] DEFAULT NULL,
-                                                                            [home_score] [text] DEFAULT NULL,
-                                                                            [home_team] [text] DEFAULT NULL,
-                                                                            PRIMARY KEY ([Id]))"""
-            self.cursor.execute(strquery2)
-            self.cnxn.commit()
-            print('Table Created.')
-        except Exception as e:
-            print(str(e))
+        #try:
+        #    self.cnxn = pyodbc.connect(
+        #        'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
+        #    self.cursor = self.cnxn.cursor()
+        #    strquery2 = "CREATE TABLE " + dbc.table + """ (Id INT NOT NULL IDENTITY,
+        #                                                                    [tournament_endpoint] [text] DEFAULT NULL,
+        #                                                                    [tournament_division_id] [text] DEFAULT NULL,
+        #                                                                    [tournament_id] [text] DEFAULT NULL,
+        #                                                                    [tournament_name] [text] DEFAULT NULL,
+        #                                                                    [time_period] [text] DEFAULT NULL,
+        #                                                                    [Location] [text] DEFAULT NULL,
+        #                                                                    [tournament_division_name] [text] DEFAULT NULL,
+        #                                                                    [last_update] [text] DEFAULT NULL,
+        #                                                                    [game_date] [text] DEFAULT NULL,
+        #                                                                    [game_id] [text] DEFAULT NULL,
+        #                                                                    [game_time] [text] DEFAULT NULL,
+        #                                                                    [location_name] [text] DEFAULT NULL,
+        #                                                                    [home_team_id] [text] DEFAULT NULL,
+        #                                                                    [away_team_id] [text] DEFAULT NULL,
+        #                                                                    [away_team] [text] DEFAULT NULL,
+        #                                                                    [away_score] [text] DEFAULT NULL,
+        #                                                                    [home_score] [text] DEFAULT NULL,
+        #                                                                    [home_team] [text] DEFAULT NULL,
+        #                                                                    PRIMARY KEY ([Id]))"""
+        #    self.cursor.execute(strquery2)
+        #    self.cnxn.commit()
+        #    print('Table Created.')
+        #except Exception as e:
+        #    print(str(e))
     def process_item(self, item, spider):
         if isinstance(item, TourneymachineItem):
             try:
