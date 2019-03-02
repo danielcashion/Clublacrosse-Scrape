@@ -27,7 +27,10 @@ class TmachineextractorSpider(scrapy.Spider):
         # raise CloseSpider()
         print(response.xpath('//title/text()').extract_first())
         file_path = paths.html_path+'main_page.html'
-        
+        f = open(file_path,'wb')
+        f.write(response.body)
+        f.close()
+
         try:
             self.cnxn = pyodbc.connect(
                 'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
@@ -35,7 +38,7 @@ class TmachineextractorSpider(scrapy.Spider):
             # connection = MySQLdb.connect(dbs.host, dbs.username, dbs.passwd, dbs.database, charset='utf8')
             # cursor = connection.cursor()
             self.cursor.execute(
-                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date < GETDATE() AND is_active = 1 ORDER BY end_date")
+                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date > GETDATE() AND is_active = 1 ORDER BY end_date")
             Links = self.cursor.fetchall()
             self.cnxn.close()
             for link in Links:
@@ -106,7 +109,6 @@ class TmachineextractorSpider(scrapy.Spider):
 
 
     def getTournamentDetails(self,response):
-        game_ids = set()
         tournament_endpoint = response.meta['tournament_endpoint']
         tournament_division_id = response.meta['tournament_division_id']
         tournament_id = response.meta['tournament_id']
@@ -138,6 +140,7 @@ class TmachineextractorSpider(scrapy.Spider):
                     if index == 0:
                         continue
                     else:
+                        item = TourneymachineItem()
                         try:
                             game_date = i.xpath('./tr/th/text()').extract_first().strip()
                         except Exception as e:
@@ -147,14 +150,8 @@ class TmachineextractorSpider(scrapy.Spider):
                             game = i.xpath('./following-sibling::tr')
                             if game:
                                 for j in game:
-                                    item = TourneymachineItem()
-                                    game_id = ''
                                     try:
                                         game_id = j.xpath('./td[1]/text()').extract_first().strip()
-                                        if game_id in game_ids:
-                                            game_id = ''
-                                        else:
-                                            game_ids.add(game_id)
                                     except Exception as e:
                                         game_id = ''
 
