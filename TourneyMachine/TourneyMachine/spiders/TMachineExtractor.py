@@ -27,10 +27,7 @@ class TmachineextractorSpider(scrapy.Spider):
         # raise CloseSpider()
         print(response.xpath('//title/text()').extract_first())
         file_path = paths.html_path+'main_page.html'
-        f = open(file_path,'wb')
-        f.write(response.body)
-        f.close()
-
+        
         try:
             self.cnxn = pyodbc.connect(
                 'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
