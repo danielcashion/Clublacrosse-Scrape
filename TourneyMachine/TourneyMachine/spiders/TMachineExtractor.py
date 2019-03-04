@@ -27,7 +27,10 @@ class TmachineextractorSpider(scrapy.Spider):
         # raise CloseSpider()
         print(response.xpath('//title/text()').extract_first())
         file_path = paths.html_path+'main_page.html'
-        
+        f = open(file_path,'wb')
+        f.write(response.body)
+        f.close()
+
         try:
             self.cnxn = pyodbc.connect(
                 'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
@@ -107,6 +110,9 @@ class TmachineextractorSpider(scrapy.Spider):
 
     def getTournamentDetails(self,response):
         game_ids = set()
+        f= open('1.html','w')
+        f.write(response.text)
+        f.close()
         tournament_endpoint = response.meta['tournament_endpoint']
         tournament_division_id = response.meta['tournament_division_id']
         tournament_id = response.meta['tournament_id']
@@ -132,122 +138,131 @@ class TmachineextractorSpider(scrapy.Spider):
             Location = ''
 
         try:
-            game_details = response.xpath('//table[@class="table table-bordered table-striped tournamentResultsTable"]/tbody/thead')
-            if game_details:
-                for index,i in enumerate(game_details):
-                    if index == 0:
-                        continue
-                    else:
-                        try:
-                            game_date = i.xpath('./tr/th/text()').extract_first().strip()
-                        except Exception as e:
-                            game_date = ''
+            # t=len(response.xpath('//table[@class="table table-bordered table-striped tournamentResultsTable"]/tbody/thead'))
+            # for a in range(2,len(t)):
+            #     abc = '//table[@class="table table-bordered table-striped tournamentResultsTable"]/tbody/thead['+str(a)+']'
+            #     game_details = response.xpath(abc)
+            #
+            #     if game_details:
+            #         for index,i in enumerate(game_details):
+            #             # if index == 0:
+            #             #     continue
+            #             # else:
+            #             try:
+            #                 # t = './tr/th/text()'
+            #                 game_date = i.xpath('./tr[1]/th/text()').extract_first().strip()
+            #             except Exception as e:
+            #                 game_date = ''
 
-                        try:
-                            game = i.xpath('./following-sibling::tr')
-                            if game:
-                                for j in game:
-                                    item = TourneymachineItem()
-                                    game_id = ''
-                                    try:
-                                        game_id = j.xpath('./td[1]/text()').extract_first().strip()
-                                        if game_id in game_ids:
-                                            game_id = ''
-                                        else:
-                                            game_ids.add(game_id)
-                                    except Exception as e:
-                                        game_id = ''
+                    try:
+                        game = response.xpath('//tr[following-sibling::tr and preceding-sibling::thead and count(child::*)>2]')
+                        if game:
+                            for j in game:
+                                item = TourneymachineItem()
 
-                                    try:
-                                        game_time = j.xpath('./td[2]//text()').extract()[2].strip()
-                                        if ':' not in game_time:
-                                            game_time = j.xpath('./td[2]/b/text()').extract_first().strip()
-                                    except Exception as e:
-                                        game_time = ''
+                                try:
+                                    game_date = j.xpath('normalize-space(./preceding-sibling::thead[1]/tr[1]/th/text())').extract_first()
+                                except Exception as e:
+                                    game_date = ''
 
-                                    try:
-                                        location_name = j.xpath('normalize-space(./td[3]/text())').extract_first().strip().replace('\r','')
-                                    except Exception as e:
-                                        location_name = ''
+                                game_id = ''
+                                try:
+                                    game_id = j.xpath('./td[1]/text()').extract_first().strip()
+                                    if game_id == '':
+                                        continue
+                                except Exception as e:
+                                    continue
 
+                                try:
+                                    game_time = j.xpath('./td[2]//text()').extract()[2].strip()
+                                    if ':' not in game_time:
+                                        game_time = j.xpath('./td[2]/b/text()').extract_first().strip()
+                                except Exception as e:
+                                    game_time = ''
+
+                                try:
+                                    location_name = j.xpath('normalize-space(./td[3]/text())').extract_first().strip().replace('\r','')
+                                except Exception as e:
+                                    location_name = ''
+
+                                try:
+                                    tmpt = j.xpath('./@class').extract_first().strip()
+                                    tmp_away_team_id = re.findall(r'\steam_(\w+)',tmpt)
                                     try:
-                                        tmpt = j.xpath('./@class').extract_first().strip()
-                                        tmp_away_team_id = re.findall(r'\steam_(\w+)',tmpt)
-                                        try:
-                                            home_team_id = tmp_away_team_id[0]
-                                        except IndexError:
-                                            home_team_id = ''
-                                        try:
-                                            away_team_id = tmp_away_team_id[1]
-                                        except IndexError:
-                                            away_team_id = ''
-                                    except Exception as e:
-                                        away_team_id = ''
+                                        home_team_id = tmp_away_team_id[0]
+                                    except IndexError:
                                         home_team_id = ''
-
                                     try:
-                                        away_team = j.xpath('./td[4]/text()').extract_first().strip()
-                                    except Exception as e:
-                                        away_team = ''
+                                        away_team_id = tmp_away_team_id[1]
+                                    except IndexError:
+                                        away_team_id = ''
+                                except Exception as e:
+                                    away_team_id = ''
+                                    home_team_id = ''
 
-                                    try:
-                                        away_score = j.xpath('./td[5]/text()').extract_first().strip()
-                                    except Exception as e:
-                                        away_score = ''
+                                try:
+                                    away_team = j.xpath('./td[4]/text()').extract_first().strip()
+                                except Exception as e:
+                                    away_team = ''
 
-                                    try:
-                                        home_score = j.xpath('./td[6]/text()').extract_first().strip()
-                                    except Exception as e:
-                                        home_score = ''
+                                try:
+                                    away_score = j.xpath('./td[5]/text()').extract_first().strip()
+                                except Exception as e:
+                                    away_score = ''
 
-                                    try:
-                                        home_team = j.xpath('./td[7]/text()').extract_first().strip()
-                                    except Exception as e:
-                                        home_team = ''
+                                try:
+                                    home_score = j.xpath('./td[6]/text()').extract_first().strip()
+                                except Exception as e:
+                                    home_score = ''
 
-                                    if game_id != '':
-                                        item['tournament_endpoint'] = tournament_endpoint
-                                        item['tournament_division_id'] = tournament_division_id
-                                        item['tournament_id'] = tournament_id
-                                        item['tournament_name'] = tournament_name
-                                        item['time_period'] = time_period
-                                        item['Location'] = Location
-                                        item['tournament_division_name'] = tournament_division_name
-                                        item['last_update'] = last_update
-                                        item['game_date'] = game_date
-                                        item['game_id'] = game_id
-                                        item['game_time'] = game_time
-                                        item['location_name'] = location_name
-                                        item['home_team_id'] = home_team_id
-                                        item['away_team_id'] = away_team_id
-                                        item['away_team'] = away_team
-                                        item['away_score'] = away_score
-                                        item['home_score'] = home_score
-                                        item['home_team'] = home_team
-                                        yield item
-                        except TypeError:
-                            game = ''
-            else:
-                item = TourneymachineItem()
-                item['tournament_endpoint'] = tournament_endpoint
-                item['tournament_division_id'] = tournament_division_id
-                item['tournament_id'] = tournament_id
-                item['tournament_name'] = tournament_name
-                item['time_period'] = time_period
-                item['Location'] = Location
-                item['tournament_division_name'] = tournament_division_name
-                item['last_update'] = last_update
-                item['game_date'] = ''
-                item['game_id'] = ''
-                item['game_time'] = ''
-                item['location_name'] = ''
-                item['away_team_id'] = ''
-                item['home_team_id'] = ''
-                item['away_team'] = ''
-                item['away_score'] = ''
-                item['home_score'] = ''
-                item['home_team'] = ''
-                yield item
+                                try:
+                                    home_team = j.xpath('./td[7]/text()').extract_first().strip()
+                                except Exception as e:
+                                    home_team = ''
+
+                                if game_id != '':
+                                    item['tournament_endpoint'] = tournament_endpoint
+                                    item['tournament_division_id'] = tournament_division_id
+                                    item['tournament_id'] = tournament_id
+                                    item['tournament_name'] = tournament_name
+                                    item['time_period'] = time_period
+                                    item['Location'] = Location
+                                    item['tournament_division_name'] = tournament_division_name
+                                    item['last_update'] = last_update
+                                    item['game_date'] = game_date
+                                    item['game_id'] = game_id
+                                    item['game_time'] = game_time
+                                    item['location_name'] = location_name
+                                    item['home_team_id'] = home_team_id
+                                    item['away_team_id'] = away_team_id
+                                    item['away_team'] = away_team
+                                    item['away_score'] = away_score
+                                    item['home_score'] = home_score
+                                    item['home_team'] = home_team
+                                    yield item
+                    except TypeError:
+                        game = ''
+                # else:
+                #     item = TourneymachineItem()
+                #     item['tournament_endpoint'] = tournament_endpoint
+                #     item['tournament_division_id'] = tournament_division_id
+                #     item['tournament_id'] = tournament_id
+                #     item['tournament_name'] = tournament_name
+                #     item['time_period'] = time_period
+                #     item['Location'] = Location
+                #     item['tournament_division_name'] = tournament_division_name
+                #     item['last_update'] = last_update
+                #     item['game_date'] = ''
+                #     item['game_id'] = ''
+                #     item['game_time'] = ''
+                #     item['location_name'] = ''
+                #     item['away_team_id'] = ''
+                #     item['home_team_id'] = ''
+                #     item['away_team'] = ''
+                #     item['away_score'] = ''
+                #     item['home_score'] = ''
+                #     item['home_team'] = ''
+                #     yield item
 
         except Exception as e:
             print(str(e))
