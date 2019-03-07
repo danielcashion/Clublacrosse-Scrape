@@ -1,0 +1,13 @@
+{
+	"name": "Club_Organization",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ClubLacrosse",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "[data].[club_organizations]"
+		}
+	}
+}
