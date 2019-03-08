@@ -1,0 +1,252 @@
+2019-03-05 17:39:48 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1007, "Can't create database 'connectlax'; database exists")
+  result = self._query(query)
+
+2019-03-05 17:39:48 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_link' already exists")
+  result = self._query(query)
+
+2019-03-05 17:39:48 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_data' already exists")
+  result = self._query(query)
+
+2019-03-06 17:11:24 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1007, "Can't create database 'connectlax'; database exists")
+  result = self._query(query)
+
+2019-03-06 17:11:24 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_link' already exists")
+  result = self._query(query)
+
+2019-03-06 17:11:24 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_data' already exists")
+  result = self._query(query)
+
+2019-03-06 18:55:12 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1007, "Can't create database 'connectlax'; database exists")
+  result = self._query(query)
+
+2019-03-06 18:55:13 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_link' already exists")
+  result = self._query(query)
+
+2019-03-06 18:55:13 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_data' already exists")
+  result = self._query(query)
+
+2019-03-07 15:06:41 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1007, "Can't create database 'connectlax'; database exists")
+  result = self._query(query)
+
+2019-03-07 15:06:41 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_link' already exists")
+  result = self._query(query)
+
+2019-03-07 15:06:41 [py.warnings] WARNING: C:\Python37\lib\site-packages\pymysql\cursors.py:170: Warning: (1050, "Table 'connectlax_data' already exists")
+  result = self._query(query)
+
+2019-03-07 15:32:13 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.connectlax.com/camp_search?utf8=%E2%9C%93&search_distance=3000.00&startdate=2019-02-27&enddate=2021-02-27&search_gender_any=1&search_agerange_8=5%3B8&search_eventtype_team=1> (referer: None)
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\middlewares.py", line 35, in process_spider_output
+    for i in result:
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\spiders\connectlax_crawler.py", line 75, in parse
+    yield scrapy.Request(url=str(event_url), callback=self.parse_data)
+AttributeError: 'NoneType' object has no attribute 'parse_data'
+2019-03-07 18:43:28 [twisted] CRITICAL: Unhandled error in Deferred:
+2019-03-07 18:43:28 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\scrapy\utils\misc.py", line 47, in load_object
+    obj = getattr(mod, name)
+AttributeError: module 'connectlax.pipelines' has no attribute 'ConnectlaxPipeline'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "C:\Python37\lib\site-packages\scrapy\crawler.py", line 80, in crawl
+    self.engine = self._create_engine()
+  File "C:\Python37\lib\site-packages\scrapy\crawler.py", line 105, in _create_engine
+    return ExecutionEngine(self, lambda _: self.stop())
+  File "C:\Python37\lib\site-packages\scrapy\core\engine.py", line 70, in __init__
+    self.scraper = Scraper(crawler)
+  File "C:\Python37\lib\site-packages\scrapy\core\scraper.py", line 71, in __init__
+    self.itemproc = itemproc_cls.from_crawler(crawler)
+  File "C:\Python37\lib\site-packages\scrapy\middleware.py", line 58, in from_crawler
+    return cls.from_settings(crawler.settings, crawler)
+  File "C:\Python37\lib\site-packages\scrapy\middleware.py", line 34, in from_settings
+    mwcls = load_object(clspath)
+  File "C:\Python37\lib\site-packages\scrapy\utils\misc.py", line 49, in load_object
+    raise NameError("Module '%s' doesn't define any object named '%s'" % (module, name))
+NameError: Module 'connectlax.pipelines' doesn't define any object named 'ConnectlaxPipeline'
+2019-03-08 12:16:00 [scrapy.core.engine] ERROR: Error while obtaining start requests
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\scrapy\core\engine.py", line 127, in _next_request
+    request = next(slot.start_requests)
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\middlewares.py", line 52, in process_start_requests
+    for r in start_requests:
+  File "C:\Python37\lib\site-packages\scrapy\spiders\__init__.py", line 83, in start_requests
+    yield Request(url, dont_filter=True)
+  File "C:\Python37\lib\site-packages\scrapy\http\request\__init__.py", line 25, in __init__
+    self._set_url(url)
+  File "C:\Python37\lib\site-packages\scrapy\http\request\__init__.py", line 62, in _set_url
+    raise ValueError('Missing scheme in request url: %s' % self._url)
+ValueError: Missing scheme in request url: h
+2019-03-08 12:17:20 [twisted] CRITICAL: Unhandled error in Deferred:
+2019-03-08 12:17:20 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "C:\Python37\lib\site-packages\scrapy\crawler.py", line 81, in crawl
+    start_requests = iter(self.spider.start_requests())
+TypeError: 'NoneType' object is not iterable
+2019-03-08 12:18:49 [twisted] CRITICAL: Unhandled error in Deferred:
+2019-03-08 12:18:49 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "C:\Python37\lib\site-packages\scrapy\crawler.py", line 81, in crawl
+    start_requests = iter(self.spider.start_requests())
+TypeError: 'NoneType' object is not iterable
+2019-03-08 12:23:12 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 12:44:40 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 13:26:17 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 13:27:13 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 13:29:57 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 13:30:28 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:00:08 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:01:09 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:02:17 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:04:01 [root] ERROR: ('07002', '[07002] [Microsoft][ODBC SQL Server Driver]COUNT field incorrect or syntax error (0) (SQLExecDirectW)')
+2019-03-08 14:04:13 [root] ERROR: ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near 's'. (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Unclosed quotation mark after the character string ')'. (105)")
+2019-03-08 14:04:49 [root] ERROR: ('07002', '[07002] [Microsoft][ODBC SQL Server Driver]COUNT field incorrect or syntax error (0) (SQLExecDirectW)')
+2019-03-08 14:31:25 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:31:26 [root] ERROR: module 'connectlax.spiders.database_con' has no attribute 'table'
+2019-03-08 14:31:26 [scrapy.core.engine] ERROR: Error while obtaining start requests
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\scrapy\core\engine.py", line 127, in _next_request
+    request = next(slot.start_requests)
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\middlewares.py", line 52, in process_start_requests
+    for r in start_requests:
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\spiders\connectlax_link.py", line 37, in start_requests
+    for row in results:
+UnboundLocalError: local variable 'results' referenced before assignment
+2019-03-08 14:31:28 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method ConnectlaxCrawlerSpider.close of <ConnectlaxCrawlerSpider 'connectlax_link' at 0xfca70b8>>
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\twisted\internet\defer.py", line 151, in maybeDeferred
+    result = f(*args, **kw)
+  File "C:\Python37\lib\site-packages\pydispatch\robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\spiders\connectlax_link.py", line 194, in close
+    Export_CSV()
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\Generate_CSV.py", line 21, in Export_CSV
+    table = dbc.table
+AttributeError: module 'connectlax.spiders.database_con' has no attribute 'table'
+2019-03-08 14:32:16 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_link' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:32:16 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:32:19 [root] ERROR: module 'connectlax.spiders.database_con' has no attribute 'table'
+2019-03-08 14:32:19 [scrapy.core.engine] ERROR: Error while obtaining start requests
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\scrapy\core\engine.py", line 127, in _next_request
+    request = next(slot.start_requests)
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\middlewares.py", line 52, in process_start_requests
+    for r in start_requests:
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\spiders\connectlax_link.py", line 37, in start_requests
+    for row in results:
+UnboundLocalError: local variable 'results' referenced before assignment
+2019-03-08 14:32:20 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method ConnectlaxCrawlerSpider.close of <ConnectlaxCrawlerSpider 'connectlax_link' at 0xfc85438>>
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\twisted\internet\defer.py", line 151, in maybeDeferred
+    result = f(*args, **kw)
+  File "C:\Python37\lib\site-packages\pydispatch\robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\spiders\connectlax_link.py", line 194, in close
+    Export_CSV()
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\Generate_CSV.py", line 21, in Export_CSV
+    table = dbc.table
+AttributeError: module 'connectlax.spiders.database_con' has no attribute 'table'
+2019-03-08 14:33:18 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_link' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:33:19 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:33:20 [root] ERROR: module 'connectlax.spiders.database_con' has no attribute 'table'
+2019-03-08 14:33:20 [scrapy.core.engine] ERROR: Error while obtaining start requests
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\scrapy\core\engine.py", line 127, in _next_request
+    request = next(slot.start_requests)
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\middlewares.py", line 52, in process_start_requests
+    for r in start_requests:
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\spiders\connectlax_link.py", line 37, in start_requests
+    for row in results:
+UnboundLocalError: local variable 'results' referenced before assignment
+2019-03-08 14:33:35 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_link' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:33:36 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:34:16 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_link' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:34:17 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:35:19 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_link' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:35:20 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:35:34 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_1.html'
+2019-03-08 14:36:35 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_link' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:36:36 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:36:42 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_1.html'
+2019-03-08 14:37:31 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_2.html'
+2019-03-08 14:37:51 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_3.html'
+2019-03-08 14:38:11 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_4.html'
+2019-03-08 14:41:42 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_link' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:41:43 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 14:41:47 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_1.html'
+2019-03-08 14:42:25 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_2.html'
+2019-03-08 14:42:45 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_3.html'
+2019-03-08 14:43:05 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_4.html'
+2019-03-08 14:43:25 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_5.html'
+2019-03-08 14:43:29 [root] ERROR: ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near 'The'. (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Unclosed quotation mark after the character string ')'. (105)")
+2019-03-08 14:43:38 [root] ERROR: ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near 's'. (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Unclosed quotation mark after the character string ')'. (105)")
+2019-03-08 14:43:45 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_6.html'
+2019-03-08 14:44:05 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_7.html'
+2019-03-08 14:44:19 [root] ERROR: ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near 'at'. (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Unclosed quotation mark after the character string ')'. (105)")
+2019-03-08 14:44:25 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_8.html'
+2019-03-08 14:44:44 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_9.html'
+2019-03-08 14:45:05 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_10.html'
+2019-03-08 15:00:43 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 15:00:53 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_1.html'
+2019-03-08 15:01:26 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_2.html'
+2019-03-08 15:01:51 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_3.html'
+2019-03-08 15:02:12 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_4.html'
+2019-03-08 15:02:25 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_5.html'
+2019-03-08 15:02:42 [root] ERROR: ('07002', '[07002] [Microsoft][ODBC SQL Server Driver]COUNT field incorrect or syntax error (0) (SQLExecDirectW)')
+2019-03-08 15:02:43 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_6.html'
+2019-03-08 15:02:49 [root] ERROR: ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near 's'. (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Unclosed quotation mark after the character string ')'. (105)")
+2019-03-08 15:03:08 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_7.html'
+2019-03-08 15:03:30 [root] ERROR: ('07002', '[07002] [Microsoft][ODBC SQL Server Driver]COUNT field incorrect or syntax error (0) (SQLExecDirectW)')
+2019-03-08 15:03:31 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_8.html'
+2019-03-08 15:03:46 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_9.html'
+2019-03-08 15:04:01 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_10.html'
+2019-03-08 15:33:04 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 15:33:10 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.connectlax.com/camp_search?startdate=2019-03-08&enddate=2019-09-04&search_gender_any=1&search_eventtype_team=1> (referer: None)
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\middlewares.py", line 35, in process_spider_output
+    for i in result:
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "C:\Python37\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\Project\Python Script\ScrapyProject\connectlax\connectlax\spiders\connectlax_crawler.py", line 52, in parse
+    sys.exit()
+SystemExit
+2019-03-08 15:36:12 [root] ERROR: ('42S01', "[42S01] [Microsoft][ODBC SQL Server Driver][SQL Server]There is already an object named 'connectlax_scrape_data' in the database. (2714) (SQLExecDirectW)")
+2019-03-08 15:36:15 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_1.html'
+2019-03-08 15:36:27 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_2.html'
+2019-03-08 15:36:41 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_3.html'
+2019-03-08 15:37:00 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_4.html'
+2019-03-08 15:37:34 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_5.html'
+2019-03-08 15:37:39 [root] ERROR: ('07002', '[07002] [Microsoft][ODBC SQL Server Driver]COUNT field incorrect or syntax error (0) (SQLExecDirectW)')
+2019-03-08 15:37:40 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_6.html'
+2019-03-08 15:37:48 [root] ERROR: ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near 's'. (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Unclosed quotation mark after the character string ')'. (105)")
+2019-03-08 15:38:06 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_7.html'
+2019-03-08 15:38:29 [root] ERROR: ('07002', '[07002] [Microsoft][ODBC SQL Server Driver]COUNT field incorrect or syntax error (0) (SQLExecDirectW)')
+2019-03-08 15:38:30 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_8.html'
+2019-03-08 15:38:37 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_9.html'
+2019-03-08 15:39:05 [root] ERROR: [Errno 2] No such file or directory: 'D:\\Project\\Python Script\\ScrapyProject\\connectlax\\connectlax\\spiders\\Html\\HTML_Link\\1_10.html'
