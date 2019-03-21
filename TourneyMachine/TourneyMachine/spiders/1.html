@@ -1,0 +1,2312 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+<title>Tourney Machine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link href='//fonts.googleapis.com/css?family=Lato:400,300,700,300italic' rel='stylesheet'
+      type='text/css'>
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen,print">
+<link href="../../css/glyphicons.css" rel="stylesheet" media="screen,print">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/sports.css" rel="stylesheet" media="screen,print">
+<link href="../../css/gear-font.css" rel="stylesheet" media="screen,print">
+<link href="../../css/public.css" rel="stylesheet" media="screen,print">
+
+<script type='text/javascript' src='../jquery/jquery-1.5.2.min.js'></script>
+
+
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+    // Declare any slots initially present on the page that would not be dynamic
+    googletag.cmd.push(function() {
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().disableInitialLoad();
+        googletag.pubads().setTargeting("Tournament_ID", "h201902201435234829cfbfa7271ab45");googletag.pubads().setTargeting("Sport", "Lacrosse");
+        googletag.enableServices();
+    });
+
+    googletag.cmd.push(function() {
+        var map1 = googletag.sizeMapping()
+            .addSize([980, 0], [970, 90])
+            .addSize([738, 0], [728, 90])
+            .addSize([478, 0], [468, 60])
+            .addSize([320, 0], [[320, 100], [320, 50], [300, 250], [336, 228]])
+            .addSize([0, 0], [])
+            .build();
+
+        var slot1 = googletag.defineSlot('/170737076/tourneymachine', [[728, 90], [970, 90], [468, 60]], 'headerAd')
+            .defineSizeMapping(map1)
+            .addService(googletag.pubads());
+        var slot2 = googletag.defineSlot('/170737076/tourneymachine', [[320, 50], [300, 50], [300, 250], [336, 228]], 'footerAd')
+            .defineSizeMapping(map1)
+            .addService(googletag.pubads());
+        googletag.display('headerAd');
+        googletag.display('footerAd');
+        googletag.pubads().refresh([slot1]);
+        googletag.pubads().refresh([slot2]);
+    });
+    (function() {
+        var prebidConf = document.createElement("script");
+        prebidConf.type = "text/javascript";
+        prebidConf.async = true;
+        var isHttps = 'https:' === document.location.protocol;
+        prebidConf.src = "//storage.googleapis.com/didna_hb/sports_engine/tourneymachine/prebid_config.js";
+        var prebidConfTargetEl = document.getElementsByTagName("head")[0];
+        prebidConfTargetEl.insertBefore(prebidConf, prebidConfTargetEl.firstChild);
+    })();
+
+    //function SetupGoogleTagSlot(slotName, sizes) {
+    //    googletag.cmd.push(function() {
+    //        var slot = googletag.defineSlot('/170737076/tourneymachine', sizes, slotName).addService(googletag.pubads());
+    //        googletag.display(slotName);
+    //        googletag.pubads().refresh([slot]);
+    //    });
+    //}
+
+
+    //function injectDesktopAd(slotName) {
+    //    SetupGoogleTagSlot(slotName, [[728, 90], [970, 90], [468, 60]]);
+    //}
+
+    //function injectMobileAd(slotName) {
+    //    SetupGoogleTagSlot(slotName, [[320, 50], [300, 50], [300, 250], [336, 228]]);
+    //}
+
+    //function isMobile() {
+    //    // device detection
+    //    if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i
+    //            .test(navigator.userAgent) ||
+    //            /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i
+    //            .test(navigator.userAgent.substr(0, 4))) {
+    //        return true;
+    //    }
+    //    return false;
+    //}
+
+
+    //$(document).ready(function() {
+    //    if ($('#headerAd').length) {
+    //        if (isMobile()) {
+    //            injectMobileAd("headerAd");
+    //        } else {
+    //            injectDesktopAd("headerAd");
+    //        }
+    //    }
+    //    if ($('#footerAd').length) {
+    //        if (isMobile()) {
+    //            injectMobileAd("footerAd");
+    //        } else {
+    //            injectDesktopAd("footerAd");
+    //        }
+    //    }
+    //});
+</script>
+
+
+
+<script type="text/javascript">
+
+    function showClub(idClub) {
+
+        if (idClub != '') {
+            $("[id$='ui_Date_DropDownList']").val('');
+            showDate('');
+            $("[id$='ui_Team_DropDownList']").val('');
+            showTeam('');
+        }
+        if (idClub == '') {
+            $('.schedule_row').show();
+            $('.schedule_header_row').show();
+            $('.schedule_row_date').hide();
+        } else {
+            $('.schedule_row').hide();
+            $('.club_' + idClub).show();
+            $('.schedule_header_row').hide();
+            $('.schedule_row_date').show();
+        }
+    }
+
+    function showTeam(idTeam) {
+        if (idTeam != '') {
+            $("[id$='ui_Date_DropDownList']").val('');
+            showDate('');
+            $("[id$='ui_Club_DropDownList']").val('');
+            showClub('');
+        }
+
+        $('.printScheduleLink').attr('href', printScheduleLinkTemplate.replace("&IDTeam=", "&IDTeam=" + idTeam));
+        $('.printPoolAndScheduleLink')
+            .attr('href', printPoolAndScheduleLinkTemplate.replace("&IDTeam=", "&IDTeam=" + idTeam));
+
+        if (idTeam == '') {
+            $('.schedule_row').show();
+            $('.schedule_header_row').show();
+            $('.schedule_row_date').hide();
+        } else {
+            $('.schedule_row').hide();
+            $('.team_' + idTeam).show();
+            $('.schedule_header_row').hide();
+            $('.schedule_row_date').show();
+        }
+    }
+
+    function showDate(dateClass) {
+        if (dateClass != '') {
+            $("[id$='ui_Team_DropDownList']").val('');
+            showTeam('');
+            $("[id$='ui_Club_DropDownList']").val('');
+            showClub('');
+        }
+
+        $('.printScheduleLink').attr('href', printScheduleLinkTemplate.replace("&Date=", "&Date=" + dateClass));
+        $('.printPoolAndScheduleLink')
+            .attr('href', printPoolAndScheduleLinkTemplate.replace("&Date=", "&Date=" + dateClass));
+
+        if (dateClass == '') {
+            $('.schedule_row').show();
+            $('.schedule_header_row').show();
+        } else {
+            $('.schedule_row').hide();
+            $('.schedule_header_row').hide();
+            $('.' + dateClass).show();
+        }
+    }
+</script>
+    <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-29582147-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+            '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+<!-- Google Tag Manager -->
+<script>
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TZLR4S3');
+</script>
+<!--End Google Tag Manager-->
+</head>
+<body class="tournamentPage">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZLR4S3"
+            height="0" width="0" style="display: none; visibility: hidden">
+    </iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) --><form name="form1" method="post" action="./Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h201903081420588694cc9661224f34c" id="form1" class="form">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="U23n6PPfHoXIDnZWJh3G2iIORgcpQ6ZdJYAEq13fX9DYFznTvUNPMG5zcIlTvOxUsPOv9l5PyuzV/C6CwUnBaBJCZ3c=" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="FFD7AACF" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="u/fgFKtcyDWYmTFTCVuuSEQQOXGNNm8xjusF2PYYUINbdpCYt510ITr+xXQ3qmBVT5XpCpFhzf941h3J70Fs6qENZAnTRDeHqKa6uFZ9l9fmq3WGbjRJ9YXmd6wbDOfB9u/hYzJka8C2NQ9dWcqx3/APGxLFCpUWKb/vns7VQYOcUdeUKgKp6vnuai+wPGbFUT3wMt/VSw+Pw6eDvwEwBwfrXeMFCHTzuW11amvkoylpQsY5gD6bpKFF9WICDux11J4gZKUFfwVY2AfP5xuoDYG2e2NOliWaw2QA0Uc2b/r4GIAU3QD3AY6Dxsrnuj8UDXJYD8LZxUmOmhFrp7hMBKtVbWztgJ3Fx0yfB4t5mc4/XNrrXj0IKEI4Csb7Wig4G5ePH56cl6CqVfY5ZZ1303HF5b5O22EKLp/Vmj25dJMfdkpQk+cUpD4Jl/MCTcybmSbdkOz4t31e4YnwHIdrZUu6JEco36dOEgwIRvyLLrnlSlqffHi7jnW6d20wYv3xaHCn6HccPNYu77HGsqtcY3z+3tdsCYJ4oRTuv3L6xqie3LvnlxQ59GfLLBd7b6lrjqZNMIW3sH7yE+Jv3eQrh7o/OLDCgY4WLsmmd5+E+3XT3jfZadF1HYJramtck8CNX92qQXofx7jpQWKHZfvzJbHjiT9ZCoAIkipwWindo08fe9st1ZeVT8R92Rpwbfqs5WuoGEJbh4qb8g7UL7aOd2VffqofRs3DKVQqDlqnszBZ6A2y6bnqYSRjm3UhMcHgOSnZz0PUR8WkNfNdYcKi4K0BI9r/awpIP/wa1npuZWUpWi7IrOYkXHpxA1DUFoFKVCARYYwU+jaP4TpdMZirkGpdh6n5Ig7cmetM6gaDT4i+1F6EcsjIl2R+h+16005kML2QkEs6UzTB4JfjFrNTSeoYlN14i5b/d6NoWGFnI0UzMrUox2dP2wrA8yeePzn/fvi5OdYOY33P8KhyL73MjjUI7CLj3DOFETD2RdI7vR66ar/ck9R9UZdsKUQ+hP7e++VGMQ6rgME6y/anm2imrd+l+DzyTx0yS38T1xcuQuz6SxUTKf1ixClggV71vK5oBbxwTQ==" />
+<div class="tournamentPageContainer">
+
+<div id="tournamentHeader">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="../../Home.aspx">
+                    <img src="img/tourney-machine.gif" width="180" height="50" alt="tourney-machine">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="ad-spot hidden-print">
+        <div class="container">
+            <div class="row">
+                <div id="headerAd"></div>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <div id="tournamentSport" class="row">
+        <div class="col-xs-12">
+            <span class='sports white lacrosse'></span>&nbsp;&nbsp;Lacrosse
+        </div>
+    </div>
+</div>
+
+<div class="container tournamentContainer">
+    <div class="row tournamentOverview">
+        <div class="col-xs-2 hidden-xs">
+            <a id="tournamentHeader1_ui_Logo_HyperLink" href="Tournament.aspx?IDTournament=h201902201435234829cfbfa7271ab45"><img src="//assets.tourneymachine.com/Tournament/h201902201435234829cfbfa7271ab45/SS_140x140.png" id="tournamentHeader1_logoUrl" width="140" height="140" alt="tournament-logo" class="tournamentLogo img-thumbnail img-responsive" /></a>
+        </div>
+        <div class="col-xs-7">
+            <h1 class="visible-print">
+                2028 (3rd Grade)
+            </h1>
+            <h1>
+                <a id="tournamentHeader1_ui_Tournament_HyperLink" href="Tournament.aspx?IDTournament=h201902201435234829cfbfa7271ab45">2019 Shamrock Shootout</a>
+            </h1>
+            <div class="tournamentDates">
+                Mar 16, 2019
+            </div>
+            <div class="tournamentLocation">
+                Holtsville, NY
+            </div>
+            <div>
+                
+                    <button class="btn btn-sm btn-green tournamentSecondaryButton" data-target="#tournamentAppModal"
+                            data-toggle="modal">
+                        <span class="glyphicons iphone"></span>Download App
+                    </button>
+                
+                
+                    <button id="tournamentNotificationsButton" class="btn btn-sm btn-green tournamentSecondaryButton"
+                            data-target="#tournamentNotificationsModal" data-toggle="modal">
+                        <span class="glyphicons comments"></span>Notifications
+                    </button>
+                
+                <button class="btn btn-sm btn-greyLight tournamentSecondaryButton" data-target="#tournamentShareModal"
+                        data-toggle="modal">
+                    <span class="glyphicons bullhorn"></span>Share
+                </button>
+            </div>
+        </div>
+        <div class="col-xs-3 pull-right">
+            
+            
+            <button id="tournamentButtonComplexes" data-target="#tournamentComplexesModal" data-toggle="modal"
+                    class="btn btn-greyLight btn-block tournamentButtonPrimary tournamentButtonPrimarySpecial pull-right">
+                <i class="tourney places"></i>
+                Places
+            </button>
+            
+                <button id="tournamentButtonDocuments" class="btn btn-greyLight btn-block tournamentButtonPrimary pull-right"
+                        data-target="#tournamentDocumentsModal" data-toggle="modal">
+                    <span class="glyphicons notes"></span>Documents
+                </button>
+            
+            <div id="tournamentResultsPrintBranding" class="visible-print">
+                <div>
+                    <img src="../../img/global/header/tourney-machine-logo-large.gif" alt="Tourney Machine"
+                         width="201" height="76" class="img-responsive "/>
+                </div>
+                <p>
+                    <span class="glyphicons iphone"></span>Install the mobile app for this event at:
+                    tourneymachine.com
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tournament Modal Windows -->
+<div id="fb-root">
+</div>
+<div id="tournamentShareModal" class="modal fade">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #ffffff;">
+                    &times;
+                </button>
+                <div class="modal-title">
+                    <span class="glyphicons bullhorn"></span>Share This Tournament
+                </div>
+            </div>
+            <div id="" class="modal-body">
+                <div class="row">
+                    <div class="form-group col-xs-9">
+                        <label for="link">
+                            Link
+                        </label>
+                        <input type="text" class="form-control" id="tournamentUrl" value="https://admin.tourneymachine.com/R57977" onfocus="this.select()"/>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="">
+                            &nbsp;
+                        </label>
+                        <button class="btn btn-green form-control" onclick="$('#tournamentUrl').select();return false;">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <br/>
+                </div>
+                <p class="clearfix">
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="https://twitter.com/share?text=2019 Shamrock Shootout https://admin.tourneymachine.com/R57977"
+                                   class="twitter-share-button" data-size="large" data-related="tourneymachine"
+                                   data-count="none">
+                                    Tweet
+                                </a>
+
+                                <script>
+                                    !function(d, s, id) {
+                                        var js,
+                                            fjs = d.getElementsByTagName(s)[0],
+                                            p = /^http:/.test(d.location) ? 'http' : 'https';
+                                        if (!d.getElementById(id)) {
+                                            js = d.createElement(s);
+                                            js.id = id;
+                                            js.src = p + '://platform.twitter.com/widgets.js';
+                                            fjs.parentNode.insertBefore(js, fjs);
+                                        }
+                                    }(document, 'script', 'twitter-wjs');
+                                </script>
+
+                            </td>
+                            <td style="padding-left: 10px;">
+                                <iframe src="https://www.facebook.com/plugins/like.php?href=https://admin.tourneymachine.com/R57977&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=20"
+                                        scrolling="no" frameborder="0" style="border: none; overflow: hidden; height: 20px;"
+                                        allowtransparency="true">
+                                </iframe>
+                            </td>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tournamentNotificationsModal" class="modal fade">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="modal-title">
+                    <span class="glyphicons comments"></span>Follow Your Tournament
+                </div>
+            </div>
+            <div id="Div1" class="modal-body">
+                <h3>Team and Notification Type</h3>
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        <label for="team">
+                            Select Your Team
+                        </label>
+                        <select name="tournamentHeader1$ui_TextTeam_DropDownList" id="tournamentHeader1_ui_TextTeam_DropDownList" name="team" class="form-control">
+	<option value=""></option>
+	<option value="h20190308141926053a584bde2f11d42">2027 Team 91 Machine (Division: 2026 (5th Grade))</option>
+	<option value="h2019030814192595037dfab9c779b47">Akwesanse Thunder (Division: 2027 (4th Grade))</option>
+	<option value="h20190308141926007c322a8a4641541">Cheetahs (Division: 2027 (4th Grade))</option>
+	<option value="h20190308141925970c0fea401527640">E3 Lacrosse (Division: 2027 (4th Grade))</option>
+	<option value="h20190308141926157375ce68d424441">East Coast Elite (Division: 2024 (7th Grade))</option>
+	<option value="h20190308141926136a1dca0a5bca34c">Express North 2024 Schreiber (Division: 2024 (7th Grade))</option>
+	<option value="h201903081420589017c85970df9f847">Fieldhouse Elite 2028 (Division: 2028 (3rd Grade))</option>
+	<option value="h20190308142058923eef6c685132d45">Hammerheads (Division: 2028 (3rd Grade))</option>
+	<option value="h201903081419262404bd926c2575848">Legacy Lacrosse (Division: 2023 (8th Grade))</option>
+	<option value="h2019030814192607564c7638a247e48">LI Empire 2025 Green (Division: 2025 (6th Grade))</option>
+	<option value="h20190308141926216169131e13cc049">LI Express 2023 Karwoski (Division: 2023 (8th Grade))</option>
+	<option value="h20190308141926182ebdb912ffc8a46">LI Express 2024 Oreilly (Division: 2024 (7th Grade))</option>
+	<option value="h20190308141926063d8375ae149e346">LI Express 2025 Oreilly (Division: 2025 (6th Grade))</option>
+	<option value="h201903081419260319a09ef7bc1b24e">LILC 2026 (Division: 2026 (5th Grade))</option>
+	<option value="h20190308142058912bda8361aca504a">LILC 2028 (Division: 2028 (3rd Grade))</option>
+	<option value="h20190312171524156aec2e6f67b3448">Massapequa Mohawks (Division: 2025 (6th Grade))</option>
+	<option value="h20190308141926264d0afeba80a9f4e">Pride 2023 (Division: 2023 (8th Grade))</option>
+	<option value="h20190308141926191c6dc400cbdda44">Pride 2024 (Division: 2024 (7th Grade))</option>
+	<option value="h2019030814192612486b57fefdc8548">Pride 2025 (Division: 2025 (6th Grade))</option>
+	<option value="h20190308141926041713dd4a1442145">Pride 2026 (Division: 2026 (5th Grade))</option>
+	<option value="h20190308141926203d45dca59dc3f49">Relax (Division: 2023 (8th Grade))</option>
+	<option value="h20190308141926111d946b299102a4d">Sachem 2025 (Division: 2025 (6th Grade))</option>
+	<option value="h201903081420588798aba2982ff034f">Sachem 2028 (Division: 2028 (3rd Grade))</option>
+	<option value="h2019030814192625299baaddb2cb741">Sachem East (Division: 2023 (8th Grade))</option>
+	<option value="h201903121715535579e9db3c1822f4f">Sharks 2024 (Division: 2024 (7th Grade))</option>
+	<option value="h201903121714596731fbaa925de8045">Team 91 2026 Freeze (Division: 2026 (5th Grade))</option>
+	<option value="h201903081419262281849bd1cfca24c">Team 91 LI Wolfpack (Division: 2023 (8th Grade))</option>
+	<option value="h2019030814192601995e736bac5f04a">Towermen (Division: 2026 (5th Grade))</option>
+	<option value="h20190308141925982a3207b4ac72d45">Twenty4 2027 East (Division: 2027 (4th Grade))</option>
+	<option value="h2019030814192614824e06ccb39ff42">Twenty4 East 2024 (Division: 2024 (7th Grade))</option>
+	<option value="h20190308141926099f659efd3949d4e">Twenty4 East 2025 (Division: 2025 (6th Grade))</option>
+	<option value="h20190308141926169dd547601808041">Twenty4 Thunder (Division: 2024 (7th Grade))</option>
+	<option value="h201903081420588904f0f591836604a">Warriors (Division: 2028 (3rd Grade))</option>
+	<option value="h20190308141925994225246d4e4cd4e">Warriors 4th (Division: 2027 (4th Grade))</option>
+	<option value="h20190308141926087856af5f884784c">Warriors 6 (Division: 2025 (6th Grade))</option>
+
+</select>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label for="notificationsFor">
+                            Notifications For
+                        </label>
+                        <select name="tournamentHeader1$ui_TextAllDivisionGamesFlag_DropDownList" id="tournamentHeader1_ui_TextAllDivisionGamesFlag_DropDownList" name="notificationsFor" class="form-control">
+	<option value=""></option>
+	<option value="0">This team only</option>
+	<option value="1">All teams in your teams division</option>
+
+</select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-12 ">
+                        <div class="checkbox">
+                            <label id="teamRepresentativeContainer" for="teamRepresentative">
+                                <input type="checkbox" id="teamRepresentative" name="teamRepresentative" value="1"/>
+                                Team Representative (Coach/Team Manager) <span class="modalSmallText">
+                                    (Check if you
+                                    are a coach or other representative for this team. Maximum of 3 per team.)
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="modalTitleWithDisclaimer">Text Message</h3>
+                <p class="modalSmallText">
+                    Leave blank if you do not want to receive text notifications.
+                </p>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <label for="mobileNumber">
+                            Mobile Number
+                        </label>
+                        <input type="tel" id="mobileNumber" name="mobileNumber" class="form-control" placeholder="(   ) XXX-XXXX"
+                               value=""/>
+                    </div>
+                </div>
+                <h3 class="modalTitleWithDisclaimer">Email</h3>
+                <p class="modalSmallText">
+                    Leave blank if you do not want to receive email notifications.
+                </p>
+                <div class="row">
+                    <div class="form-group  col-xs-12">
+                        <!-- <label for="email"></label> -->
+                        <input type="email" id="email" name="email" class="form-control" placeholder="your email address"
+                               value=""/>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-12">
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <button id="btn-notifications-signup" type="submit" class="btn btn-green" onclick="notificationSignUp();return false;">
+                                        Sign Me Up!
+                                    </button>
+                                </td>
+                                <td style="line-height: 12pt; padding-left: 10px;">
+                                    <span class="error" id='notificationSignUpMessage'></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tournamentAppModal" class="modal fade">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="modal-title">
+                    <span class="glyphicons iphone"></span>Follow On Your Phone
+                </div>
+            </div>
+            <div id="Div2" class="modal-body">
+                <!--<h3>Download the app</h3>
+                <div class="row">
+                    <div class="col-sm-6" style="margin-bottom: 10px;">
+                        <a href="https://itunes.apple.com/us/app/tourney-machine/id1121895111?mt=8" target="_blank"><img src="./img/app-store-badge.png" class="img-responsive mobile-badge" /></a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="https://play.google.com/store/apps/details?id=com.siplay.tourneymachine_android&hl=en" target="_blank"><img src="./img/google-play-badge.png" class="img-responsive mobile-badge" /></a>
+                    </div>
+                </div>
+                <hr>-->
+                <h3>View in Mobile Browser</h3>
+                <p>
+                    Enter your mobile phone number or email address. We'll send a link directly to your
+                    phone for this tournament.
+                </p>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <label for="mobileNumber">
+                            Mobile Number
+                        </label>
+                        <input type="tel" id="mobileNumberApp" name="mobileNumber" class="form-control" placeholder="(   ) XXX-XXXX"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-xs-12">
+                        or
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        <label for="mobileNumber">
+                            Email
+                        </label>
+                        <input type="tel" id="emailApp" name="email" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-xs-12">
+                        <br/>
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <button type="submit" class="btn btn-green" onclick="webAppSignUp();return false;">
+                                        Send Link
+                                    </button>
+                                </td>
+                                <td style="line-height: 12pt; padding-left: 10px;">
+                                    <span class="error" id='webAppSignUpMessage'></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tournamentGameCastModal" class="modal fade">
+    <div class="modal-dialog modal-wide" style="width: 900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="modal-title">
+                    <span class="glyphicons play_button"></span>Game Cast
+                </div>
+            </div>
+            <div id="Div4" class="modal-body">
+                <iframe id="gamecast" style="width: 840px; height: 600px;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tournamentDocumentsModal" class="modal fade">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="modal-title">
+                    <span class="glyphicons notes"></span>Documents
+                </div>
+            </div>
+            <div id="Div5" class="modal-body">
+                
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a id="tournamentHeader1_ui_Document_Repeater_ctl00_ui_Document_HyperLink" href="//assets.tourneymachine.com/Tournament/h201902201435234829cfbfa7271ab45/Sachem-Sport-Complex-Field-Map.pdf" target="_blank" style="line-height: 30px">Field Map</a>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a id="tournamentHeader1_ui_Document_Repeater_ctl01_ui_Document_HyperLink" href="//assets.tourneymachine.com/Tournament/h201902201435234829cfbfa7271ab45/2019 Shamrock Rules PDF.pdf" target="_blank" style="line-height: 30px">Rules</a>
+                            </div>
+                        </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tournamentScorePostModal" class="modal fade">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="modal-title">
+                    <span class="glyphicons edit"></span>Post Score
+                </div>
+            </div>
+            <div id="Div6" class="modal-body">
+                <table>
+                    <tr>
+                        <td>
+                            <span id="scorePostTeam1"></span>
+                        </td>
+                        <td style="width: 50px;"></td>
+                        <td style="text-align: center;">
+                            <input type="text" name="team1Score" id="scorePostTeam1Score" style="width: 50px;"/>
+                        </td>
+                        <td style="width: 100px;"></td>
+                        <td style="text-align: left;">
+                            <button type="submit" class="btn btn-green" onclick="postScore();return false;">
+                                Post Score
+                            </button>
+                            <input type="hidden" name="scorePostIDGame" id="scorePostIDGame"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span id="scorePostTeam2"></span>
+                        </td>
+                        <td style="width: 50px;"></td>
+                        <td style="text-align: center;">
+                            <input type="text" name="team2Score" id="scorePostTeam2Score" style="width: 50px;"/>
+                        </td>
+                        <td style="width: 100px;"></td>
+                        <td style="text-align: center;">
+                            <span id="scorePostError" style="color: Red;"></span>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function notificationSignUp() {
+        $("#btn-notifications-signup").prop('disabled', true);
+
+        idTournament = getParameterByName('IDTournament');
+        idTeam = $("[id$='ui_TextTeam_DropDownList']").val();
+        divisionFlag = $("[id$='ui_TextAllDivisionGamesFlag_DropDownList']").val();
+        teamRepText = $("#teamRepresentative").prop('checked');
+        mobilePhone = $("#mobileNumber").val();
+        emailText = $("#email").val();
+        mobileAppFlag = "false";
+        jsonData = '{ idTournament: "' +
+            idTournament +
+            '", idTeam: "' +
+            idTeam +
+            '", divisionFlag: "' +
+            divisionFlag +
+            '", teamRepText: "' +
+            teamRepText +
+            '", mobilePhone: "' +
+            mobilePhone +
+            '", emailText: "' +
+            emailText +
+            '", mobileAppFlag: "' +
+            mobileAppFlag +
+            '" }';
+
+        $.ajax({
+            type: 'POST',
+            url: 'Tournament.aspx/NotificationSignUp',
+            data: jsonData,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(msg) {
+                response = msg.d;
+                // message = response;
+                // color = '#92002d';
+                // if (response == 'Success') {
+                //     message = 'Thank you for signing up for notifications';
+                //     color = '#22a258';
+                // }
+                // $("#notificationSignUpMessage").css('color', color)
+                // $("#notificationSignUpMessage").html(message);
+                $("#btn-notifications-signup").html("THANK YOU!");
+                setTimeout(function() {
+                        $("#tournamentNotificationsModal").modal("hide");
+                        $("[id$='ui_TextTeam_DropDownList']").val("");
+                        $("[id$='ui_TextAllDivisionGamesFlag_DropDownList']").val("");
+                        $("#teamRepresentative").prop("checked", false);
+                        $("mobileNumber").val("");
+                        $("#email").val("");
+                        $("#notificationSignUpMessage").html("");
+                        $("#btn-notifications-signup").html("SIGN ME UP!").prop("disabled", false);
+                    },
+                    1000);
+            },
+            error: function(a, b, c) {
+                alert(JSON.stringify(a))
+                alert(JSON.stringify(b));
+                alert(JSON.stringify(c));
+            }
+        });
+
+        return false;
+    }
+
+    function webAppSignUp() {
+        idTournament = getParameterByName('IDTournament');
+        mobilePhone = $("#mobileNumberApp").val();
+        emailText = $("#emailApp").val();
+        jsonData = '{ idTournament: "' +
+            idTournament +
+            '", mobilePhone: "' +
+            mobilePhone +
+            '", emailText: "' +
+            emailText +
+            '" }';
+
+        $.ajax({
+            type: 'POST',
+            url: 'Tournament.aspx/WebAppSignUp',
+            data: jsonData,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(msg) {
+                response = msg.d;
+                message = response;
+                color = '#92002d';
+                if (response == 'Success') {
+                    message =
+                        'A link to the web app has been sent.<br /><br />You may also get the app by going to www.tourneymachine.com on your phone and selecting Follow a Tournament.';
+                    color = '#22a258';
+                }
+                $("#webAppSignUpMessage").css('color', color)
+                $("#webAppSignUpMessage").html(message);
+            },
+            error: function(a, b, c) {
+                alert(JSON.stringify(a))
+                alert(JSON.stringify(b));
+                alert(JSON.stringify(c));
+            }
+        });
+
+        return false;
+    }
+
+    function scorePostFormSetup(team1, team2, team1Score, team2Score, idGame) {
+        $('#scorePostTeam1').text(team1);
+        $('#scorePostTeam2').text(team2);
+        $('#scorePostTeam1Score').val(team1Score);
+        $('#scorePostTeam2Score').val(team2Score);
+        $('#scorePostIDGame').val(idGame)
+    }
+
+    function postScore() {
+
+        idTournament = getParameterByName('IDTournament');
+        idGame = $('#scorePostIDGame').val();
+        score1 = $('#scorePostTeam1Score').val();
+        score2 = $('#scorePostTeam2Score').val();
+        jsonData = '{ idTournament: "' +
+            idTournament +
+            '", idGame: "' +
+            idGame +
+            '", score1: "' +
+            score1 +
+            '", score2: "' +
+            score2 +
+            '" }';
+
+        $.ajax({
+            type: 'POST',
+            url: 'Tournament.aspx/PostScore',
+            data: jsonData,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(msg) {
+                response = msg.d;
+                if (response == 'Success') {
+                    $('#' + $('#scorePostIDGame').val() + "_1").text($('#scorePostTeam1Score').val());
+                    $('#' + $('#scorePostIDGame').val() + "_2").text($('#scorePostTeam2Score').val());
+                    $("#tournamentScorePostModal").modal('hide');
+                } else {
+                    $('#scorePostError').text('Error posting score.');
+                }
+
+            },
+            error: function(a, b, c) {
+                $('#scorePostError').text('Error posting score.');
+            }
+        });
+
+        return false;
+    }
+
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regex = new RegExp("[\\?&]" + name.toLowerCase() + "=([^&#]*)"),
+            results = regex.exec(location.search.toLowerCase());
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+</script>
+<div id="tournamentComplexesModal" class="modal fade">
+<div class="modal-dialog modal-wide">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <div class="modal-title">
+        <i class="tourney places"></i>
+        Places
+    </div>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div id="map-canvas-complexes" style="width: 100%; height: 200px; margin-bottom: 10px;"></div>
+
+
+<div class="panel panel-default panel-places complexList" data-type="complex">
+    
+    <div class="list-group">
+        
+            <div class="list-group-item js-list-group-item-place" data-id="h2019022014380007898b5d0b6104849">
+                <h4>Sachem Sports Complex</h4>
+                <button class="btn btn-success btn-toggle pull-right">
+                    <i class="fa fa-map-marker"></i>
+                </button>
+            </div>
+            <div class="list-group-item-dropdown hidden">
+                
+                <a href="http://maps.google.com/maps?q=1111%20Waverly%20Ave%20Holtsville,%20NY%2011742" target="_blank">
+                    <address>
+                        1111 Waverly Ave<br/>
+                        Holtsville, NY 11742
+                    </address>
+                </a>
+                
+                <h5>Facilities</h5>
+                <ul>
+                    
+                            <li><b>Field 1</b> </p></li>
+                    
+                            <li><b>Field 2</b> </p></li>
+                    
+                            <li><b>Field 3</b> </p></li>
+                    
+                            <li><b>Field 4</b> </p></li>
+                    
+                            <li><b>Field 5</b> </p></li>
+                    
+                            <li><b>Field 6</b> </p></li>
+                    
+                            <li><b>Field 7</b> </p></li>
+                    
+                            <li><b>Field 8</b> </p></li>
+                    
+                </ul>
+                
+            </div>
+        
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="pricingModal" class="modal fade">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div id="pricingModalContent" class="modal-body">
+                <div class="pricingTitle">
+                    Contact Us
+                </div>
+                <p>
+                    We serve tournaments, from large to small!<br/>
+                    Contact us now for pricing for your tournament.
+                </p>
+                <div class="pricingPhone">
+                    (630) 446-0685
+                </div>
+                <p class="pricingText">
+                    OR
+                </p>
+                <div class="pricingPhone">
+                    <a href="mailto:info@tourneymachine.com">info@tourneymachine.com</a>
+                </div>
+                <!-- <form>
+                    <input type="email" name="email" placeholder="Enter your email address" class="form-control input-lg"/>
+                    <butt on type="submit" name="submitButton" class="btn btn-lg btn-green">CONTACT ME</button>
+                </form>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container tournamentContainer tournamentContainerBottom">
+
+<div class="row tournamentResults">
+    <div class="col-xs-3 ">
+        <div class="btn-group">
+            <button type="button" class="btn btn-grey dropdown-toggle" data-toggle="dropdown">
+                2028 (3rd Grade)
+                &#9660;<!-- <span class="caret white"></span> -->
+            </button>
+            <ul class="dropdown-menu">
+                
+                        <li>
+                            <a id="ui_Division_Repeater_ctl00_ui_Division_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h201903081420588694cc9661224f34c">2028 (3rd Grade)</a>
+                        </a>
+                        </li>
+                    
+                        <li>
+                            <a id="ui_Division_Repeater_ctl01_ui_Division_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h20190308141925946ad6c428186b54c">2027 (4th Grade)</a>
+                        </a>
+                        </li>
+                    
+                        <li>
+                            <a id="ui_Division_Repeater_ctl02_ui_Division_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h20190308141926014c0e323fbe4a84b">2026 (5th Grade)</a>
+                        </a>
+                        </li>
+                    
+                        <li>
+                            <a id="ui_Division_Repeater_ctl03_ui_Division_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h20190308141926058c5898585573c4f">2025 (6th Grade)</a>
+                        </a>
+                        </li>
+                    
+                        <li>
+                            <a id="ui_Division_Repeater_ctl04_ui_Division_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h20190308141926131e8e50e9f15b845">2024 (7th Grade)</a>
+                        </a>
+                        </li>
+                    
+                        <li>
+                            <a id="ui_Division_Repeater_ctl05_ui_Division_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h201903081419261992a4fff602ca04f">2023 (8th Grade)</a>
+                        </a>
+                        </li>
+                    
+            </ul>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="ui_FullScreen_HyperLink" href="http://tv.tourneymachine.com/tournament/h201902201435234829cfbfa7271ab45/division/h201903081420588694cc9661224f34c/fullscreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    </div>
+    <div class="col-xs-offset-3 col-xs-3">
+        
+    </div>
+    <div class="col-xs-3">
+        <div id="tournamentPrintButtonContainer" class="btn-group col-xs-12 ">
+
+            <script>
+                var printScheduleLinkTemplate =
+                    'Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&IDDivision=h201903081420588694cc9661224f34c&Print=S&IDTeam=&Date=';
+                var printPoolAndScheduleLinkTemplate =
+                    'Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&IDDivision=h201903081420588694cc9661224f34c&Print=PS&IDTeam=&Date=';
+            </script>
+            <button type="button" id="tournamentPrint" class="btn btn-grey col-xs-12 tournamentExtraButton dropdown-toggle"
+                    data-toggle="dropdown">
+                <span class="glyphicons print"></span>Print &#9660;<!-- <span class="caret white"></span> -->
+            </button>
+            <ul class="dropdown-menu pull-right">
+                <li>
+                    <a id="ui_PrintPool_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h201903081420588694cc9661224f34c&amp;Print=P" target="_blank">Pool Standings</a>
+                </li>
+                <li>
+                    <a id="ui_PrintSchedule_HyperLink" class="printScheduleLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h201903081420588694cc9661224f34c&amp;Print=S&amp;IDTeam=&amp;Date=" target="_blank">Schedule</a>
+                </li>
+                <li>
+                    <a id="ui_PrintBracket_HyperLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h201903081420588694cc9661224f34c&amp;Print=B" target="_blank">Bracket</a>
+                </li>
+                <li>
+                    <a id="ui_PrintPoolAndSchedule_HyperLink" class="printPoolAndScheduleLink" href="Division.aspx?IDTournament=h201902201435234829cfbfa7271ab45&amp;IDDivision=h201903081420588694cc9661224f34c&amp;Print=PS&amp;IDTeam=&amp;Date=" target="_blank">Pool Standings and Schedule</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="row tournamentChampion">
+        <div class="col-xs-12">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    
+                </a>
+                <div class="media-body">
+                    <div class="media-heading">
+                        Hammerheads
+                    </div>
+                    <p>
+                        <strong>
+                            2028 (3rd Grade)
+                            Champion
+                        </strong>
+                    </p>
+                    <p>
+                        Sat Mar 16, 2019
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-xs-12 tournamentResultsDivider">
+                <p>
+                    Pool Standings
+                </p>
+            </div>
+        </div>
+        
+<div class="row">
+    
+            <div class="col-xs-12 col-sm-6">
+                <table class="table table-bordered table-striped tournamentResultsTable ">
+                    <thead>
+                        <tr>
+                            <th colspan="8" class="tournamentResultsTitle">
+                                2028 (3rd Grade)
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Team
+                            </th>
+                            <th class="statColumn">
+                                W
+                            </th>
+                            <th class="statColumn">
+                                L
+                            </th>
+                            
+                                <th class="statColumn">
+                                    T
+                                </th>
+                            
+                            
+                                <th class="statColumn">
+                                    P
+                                </th>
+                            
+                            
+                            
+                            
+                                <th class="statColumn">
+                                    <div rel="tooltip" data-toggle="tooltip" title='Goals Allowed'>
+                                        GA</div>
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                                <tr>
+                                    <td>
+                                        <a href='Team.aspx?IDTournament=h201902201435234829cfbfa7271ab45&IDDivision=h201903081420588694cc9661224f34c&IDTeam=h20190308142058923eef6c685132d45'>Hammerheads*</a>
+                                    </td>
+                                    <td class="statColumn">
+                                        3
+                                    </td>
+                                    <td class="statColumn">
+                                        0
+                                    </td>
+                                    
+                                        <td class="statColumn">
+                                            0
+                                        </td>
+                                    
+                                    
+                                        <td class="statColumn">
+                                            6
+                                        </td>
+                                    
+                                    
+                                    
+                                    
+                                        <td class="statColumn">
+                                            10
+                                        </td>
+                                    
+                                </tr>
+                            
+                                <tr>
+                                    <td>
+                                        <a href='Team.aspx?IDTournament=h201902201435234829cfbfa7271ab45&IDDivision=h201903081420588694cc9661224f34c&IDTeam=h201903081420589017c85970df9f847'>Fieldhouse Elite 2028</a>
+                                    </td>
+                                    <td class="statColumn">
+                                        2
+                                    </td>
+                                    <td class="statColumn">
+                                        1
+                                    </td>
+                                    
+                                        <td class="statColumn">
+                                            0
+                                        </td>
+                                    
+                                    
+                                        <td class="statColumn">
+                                            4
+                                        </td>
+                                    
+                                    
+                                    
+                                    
+                                        <td class="statColumn">
+                                            10
+                                        </td>
+                                    
+                                </tr>
+                            
+                                <tr>
+                                    <td>
+                                        <a href='Team.aspx?IDTournament=h201902201435234829cfbfa7271ab45&IDDivision=h201903081420588694cc9661224f34c&IDTeam=h201903081420588798aba2982ff034f'>Sachem 2028</a>
+                                    </td>
+                                    <td class="statColumn">
+                                        1
+                                    </td>
+                                    <td class="statColumn">
+                                        2
+                                    </td>
+                                    
+                                        <td class="statColumn">
+                                            0
+                                        </td>
+                                    
+                                    
+                                        <td class="statColumn">
+                                            2
+                                        </td>
+                                    
+                                    
+                                    
+                                    
+                                        <td class="statColumn">
+                                            11
+                                        </td>
+                                    
+                                </tr>
+                            
+                                <tr>
+                                    <td>
+                                        <a href='Team.aspx?IDTournament=h201902201435234829cfbfa7271ab45&IDDivision=h201903081420588694cc9661224f34c&IDTeam=h201903081420588904f0f591836604a'>Warriors</a>
+                                    </td>
+                                    <td class="statColumn">
+                                        1
+                                    </td>
+                                    <td class="statColumn">
+                                        2
+                                    </td>
+                                    
+                                        <td class="statColumn">
+                                            0
+                                        </td>
+                                    
+                                    
+                                        <td class="statColumn">
+                                            2
+                                        </td>
+                                    
+                                    
+                                    
+                                    
+                                        <td class="statColumn">
+                                            22
+                                        </td>
+                                    
+                                </tr>
+                            
+                                <tr>
+                                    <td>
+                                        <a href='Team.aspx?IDTournament=h201902201435234829cfbfa7271ab45&IDDivision=h201903081420588694cc9661224f34c&IDTeam=h20190308142058912bda8361aca504a'>LILC 2028</a>
+                                    </td>
+                                    <td class="statColumn">
+                                        0
+                                    </td>
+                                    <td class="statColumn">
+                                        3
+                                    </td>
+                                    
+                                        <td class="statColumn">
+                                            0
+                                        </td>
+                                    
+                                    
+                                        <td class="statColumn">
+                                            0
+                                        </td>
+                                    
+                                    
+                                    
+                                    
+                                        <td class="statColumn">
+                                            22
+                                        </td>
+                                    
+                                </tr>
+                            
+                    </tbody>
+                </table>
+            </div>
+        
+</div>
+
+    <div class="row">
+        <div class="col-xs-12 tournamentResultsDivider">
+            <p>
+                <span>Schedule</span>
+            </p>
+        </div>
+    </div>
+    
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <div class="well clearfix tournamentResultsFilter">
+                    <div class="col-md-2">
+                        <p>
+                            <strong>Filter by:</strong>
+                        </p>
+                    </div>
+                    <div class="col-xs-10">
+                        
+                        <div class="col-md-5 clearfix">
+                            <div class="col-xs-2">
+                                <label for="date">
+                                    Date
+                                </label>
+                            </div>
+                            <div class="col-xs-10">
+                                <select name="ui_Date_DropDownList" id="ui_Date_DropDownList" class="form-control input-sm" onchange="showDate(this.options[this.selectedIndex].value)">
+	<option value=""></option>
+	<option value="date_20190316">Sat 03/16/2019</option>
+
+</select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="col-xs-2">
+                                <label for="team">
+                                    Team
+                                </label>
+                            </div>
+                            <div class="col-xs-10">
+                                <select name="ui_Team_DropDownList" id="ui_Team_DropDownList" class="selectedIDTeam" class="form-control input-sm" onchange="showTeam(this.options[this.selectedIndex].value)">
+	<option value=""></option>
+	<option value="h201903081420589017c85970df9f847">Fieldhouse Elite 2028</option>
+	<option value="h20190308142058923eef6c685132d45">Hammerheads</option>
+	<option value="h20190308142058912bda8361aca504a">LILC 2028</option>
+	<option value="h201903081420588798aba2982ff034f">Sachem 2028</option>
+	<option value="h201903081420588904f0f591836604a">Warriors</option>
+
+</select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped tournamentResultsTable">
+    <tbody>
+    <!-- This thead is included to prevent internet explorer from repeating the first date header when printing. -->
+    <thead></thead>
+    
+            
+                <thead>
+                <tr class='schedule_header_row date_20190316'>
+                    <th colspan="8" class="tournamentResultsTitle">
+                        Saturday, March 16, 2019
+                    </th>
+                </tr>
+                <tr class='schedule_header_row date_20190316'>
+                    <th>
+                        Game
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        <span id="Schedule1_ui_Game_Repeater_ctl00_ui_Team1Label_Label">Team</span>
+                    </th>
+                    <th colspan="2" style="text-align: center;">
+                        Score
+                    </th>
+                    <th>
+                        <span id="Schedule1_ui_Game_Repeater_ctl00_ui_Team2Label_Label">Team</span>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                </thead>
+            
+            <tr class='schedule_row date_20190316 team_h20190308142058912bda8361aca504a team_h201903081420589017c85970df9f847'>
+                <td>
+                    P1
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    8:45 AM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 1
+                    
+                </td>
+                <td class=''>
+                    LILC 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h20190308142819958262e774f0cb64e_1' class=''>
+                    1
+                </td>
+                <td style="text-align: center;" id='h20190308142819958262e774f0cb64e_2' class='tournamentGameWinner'>
+                    5
+                </td>
+                <td class='tournamentGameWinner'>
+                    Fieldhouse Elite 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h20190308142058912bda8361aca504a team_h201903081420589017c85970df9f847'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h20190308142058912bda8361aca504a team_h201903081420589017c85970df9f847'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h20190308142058923eef6c685132d45'>
+                <td>
+                    P2
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    8:45 AM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 2
+                    
+                </td>
+                <td class=''>
+                    Sachem 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h20190308142819962f03c59cced7e47_1' class=''>
+                    2
+                </td>
+                <td style="text-align: center;" id='h20190308142819962f03c59cced7e47_2' class='tournamentGameWinner'>
+                    4
+                </td>
+                <td class='tournamentGameWinner'>
+                    Hammerheads
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h20190308142058923eef6c685132d45'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h20190308142058923eef6c685132d45'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h201903081420588904f0f591836604a team_h20190308142058912bda8361aca504a'>
+                <td>
+                    P3
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    10:15 AM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 1
+                    
+                </td>
+                <td class='tournamentGameWinner'>
+                    Warriors
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h2019030814281996631d36e8cd81f48_1' class='tournamentGameWinner'>
+                    9
+                </td>
+                <td style="text-align: center;" id='h2019030814281996631d36e8cd81f48_2' class=''>
+                    3
+                </td>
+                <td class=''>
+                    LILC 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588904f0f591836604a team_h20190308142058912bda8361aca504a'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588904f0f591836604a team_h20190308142058912bda8361aca504a'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h201903081420589017c85970df9f847 team_h20190308142058923eef6c685132d45'>
+                <td>
+                    P4
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    10:15 AM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 2
+                    
+                </td>
+                <td class=''>
+                    Fieldhouse Elite 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h201903081428199698bc57827be534d_1' class=''>
+                    3
+                </td>
+                <td style="text-align: center;" id='h201903081428199698bc57827be534d_2' class='tournamentGameWinner'>
+                    7
+                </td>
+                <td class='tournamentGameWinner'>
+                    Hammerheads
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420589017c85970df9f847 team_h20190308142058923eef6c685132d45'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420589017c85970df9f847 team_h20190308142058923eef6c685132d45'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h201903081420588904f0f591836604a'>
+                <td>
+                    P5
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    11:45 AM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 1
+                    
+                </td>
+                <td class='tournamentGameWinner'>
+                    Sachem 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h20190308142819973930ea9edb7994a_1' class='tournamentGameWinner'>
+                    8
+                </td>
+                <td style="text-align: center;" id='h20190308142819973930ea9edb7994a_2' class=''>
+                    2
+                </td>
+                <td class=''>
+                    Warriors
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h201903081420588904f0f591836604a'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h201903081420588904f0f591836604a'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h20190308142058923eef6c685132d45 team_h20190308142058912bda8361aca504a'>
+                <td>
+                    P6
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    11:45 AM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 2
+                    
+                </td>
+                <td class='tournamentGameWinner'>
+                    Hammerheads
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h20190308142819976a0fa1b8d9b9f40_1' class='tournamentGameWinner'>
+                    8
+                </td>
+                <td style="text-align: center;" id='h20190308142819976a0fa1b8d9b9f40_2' class=''>
+                    5
+                </td>
+                <td class=''>
+                    LILC 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h20190308142058923eef6c685132d45 team_h20190308142058912bda8361aca504a'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h20190308142058923eef6c685132d45 team_h20190308142058912bda8361aca504a'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h201903081420589017c85970df9f847'>
+                <td>
+                    P7
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    1:15 PM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 1
+                    
+                </td>
+                <td class=''>
+                    Sachem 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h201903081428199790f1ed7e8d3d946_1' class=''>
+                    2
+                </td>
+                <td style="text-align: center;" id='h201903081428199790f1ed7e8d3d946_2' class='tournamentGameWinner'>
+                    5
+                </td>
+                <td class='tournamentGameWinner'>
+                    Fieldhouse Elite 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h201903081420589017c85970df9f847'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588798aba2982ff034f team_h201903081420589017c85970df9f847'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h201903081420588904f0f591836604a team_h20190308142058923eef6c685132d45'>
+                <td>
+                    P8
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    1:15 PM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 6
+                    
+                </td>
+                <td class=''>
+                    Warriors
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h201903081429268258a5468f0cb5449_1' class=''>
+                    0
+                </td>
+                <td style="text-align: center;" id='h201903081429268258a5468f0cb5449_2' class='tournamentGameWinner'>
+                    11
+                </td>
+                <td class='tournamentGameWinner'>
+                    Hammerheads*
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588904f0f591836604a team_h20190308142058923eef6c685132d45'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h201903081420588904f0f591836604a team_h20190308142058923eef6c685132d45'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+            
+            <tr class='schedule_row date_20190316 team_h20190308142058923eef6c685132d45 team_h201903081420589017c85970df9f847'>
+                <td>
+                    B1
+                </td>
+                <td>
+                    <div class="schedule_row_date" style="display: none;">
+                        Sat 03/16/19
+                    </div>
+                    2:45 PM
+                </td>
+                <td>
+                    Sachem Sports Complex - Field 1
+                    
+                </td>
+                <td class='tournamentGameWinner'>
+                    [1] Hammerheads
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td style="text-align: center;" id='h20190308142202056d0beecf36b0b47_1' class='tournamentGameWinner'>
+                    4
+                </td>
+                <td style="text-align: center;" id='h20190308142202056d0beecf36b0b47_2' class=''>
+                    3
+                </td>
+                <td class=''>
+                    [2] Fieldhouse Elite 2028
+                    <br/>
+                    <span style="font-size: 9pt; font-weight: normal;">
+                        
+                    </span>
+                </td>
+                <td class="tournamentResultsButtons" style="width: 75px;">
+                    
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h20190308142058923eef6c685132d45 team_h201903081420589017c85970df9f847'>
+            </tr>
+            <tr class='schedule_row date_20190316 team_h20190308142058923eef6c685132d45 team_h201903081420589017c85970df9f847'>
+                <td colspan="8" class="tournamenGameDetails">
+                    <div class="tournamentResultsGameNote">
+                        <div class="alert alert-info">
+                            <button type="button" class="close tournamentResultsGameNoteClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentResultsContactInfo">
+                        <div>
+                            <button type="button" class="close tournamentResultsContactInfoClose" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tournamentStatsContainer">
+                        
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+        
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+
+        <div class="row">
+            <div class="col-xs-12 tournamentResultsDivider">
+                <p>
+                    Bracket
+                </p>
+            </div>
+        </div>
+        
+<div class="row" style='height: 135px; overflow-x: auto;'>
+    <div class="col-xs-12">
+        <p>
+        
+            
+            
+                    
+    <div id='' class="final selectable" style='width: 175px; font-size: 10pt;
+        height: 60px; display: block; position: absolute; left: 195px; top: 25px;'>                
+
+        <div id="team-cell" style="border-bottom: solid 1px black; vertical-align: bottom;
+            height: 25px; text-align: left; position: absolute; top: 0px; left: 0px; width: 100%;">
+            
+            
+           
+           
+        
+            <div style="text-align: center; position: absolute; bottom: 0; width: 100%; font-size: 8pt;">
+                [1] Hammerheads
+            </div>
+        
+
+        </div>
+
+        <div id="note-cell" style="vertical-align: top; height: 25px; text-align: left; position: absolute; top: 30px; left: 0px; width: 100%; text-align: center;">
+        
+        
+        
+            <div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; font-size: 8pt; font-weight: bold;">
+                Champion
+            </div>
+        
+
+        </div>
+
+
+    </div>
+                
+            
+                    
+<div id='' class="game selectable" style='width: 174px; font-size: 10pt; height: 80px; display: block; position: absolute; left: 20px; top: 0px;'>
+    <div id="team1-cell" style="border-bottom: solid 1px black; vertical-align: bottom; height: 25px; text-align: left; position: absolute; top: 0px; left: 0px; width: 100%;">
+
+        
+
+        
+            <div style="text-align: left; padding-left: 4px; position: absolute; bottom: 0; width: 100%; font-size: 8pt; line-height: 8pt;">
+                [1] Hammerheads - <b>4</b>
+            </div>
+        
+    </div>
+    <div id="spacer" style="overflow: hidden; border-right: solid 1px black; margin-right: -1px; border-left: ; margin-left: ; vertical-align: middle; text-align: right; position: absolute; top: 25px; bottom: 25px; left: 0px; width: 100%;">
+        <div style="position: absolute; height: 25px; top: 50%; margin-top: -12px; left: 0px; width: 100%;">
+            
+            
+                <div style="text-align: left; padding-left: 4px; vertical-align: middle; position: absolute; bottom: 0; left: 0; width: 100%; font-size: 8pt; line-height: 7pt;">
+                    <span style="white-space: nowrap" title='B1 - Sat 3/16 2:45PM Sachem Sports Complex - Field 1 '>
+                        B1 - Sat 3/16 2:45PM
+                    </span>
+                    <span style="white-space: normal" title='B1 - Sat 3/16 2:45PM Sachem Sports Complex - Field 1 '>
+                        Sachem Sports Complex - Field 1
+                    </span>
+                    <br/>
+                    
+                </div>
+            
+        </div>
+    </div>
+    <div id="team2-cell" style="border-bottom: solid 1px black; border-right: solid 1px black; margin-right: -1px; border-left: ; margin-left: ; vertical-align: bottom; text-align: left; height: 25px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
+
+        
+
+        
+            <div style="text-align: left; padding-left: 4px; position: absolute; bottom: 0; width: 100%; font-size: 8pt; line-height: 8pt;">
+                [2] Fieldhouse Elite 2028 - <b>3</b>
+            </div>
+        
+    </div>
+</div>
+                
+        </p>
+    </div>
+</div>
+
+
+
+
+
+</div>
+
+    <div class="ad-spot hidden-print">
+        <div class="container">
+            <div class="row">
+                <div id="footerAd"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="footerWrapper">
+	<div class="container">
+		
+	    
+
+<footer class="container">
+    <div class="row">
+	    <div class="col-xs-12 text-center">
+            <i class="gear gear-tourney_manager"></i>
+            <p class="copy">&copy;<script>document.write(new Date().getFullYear());</script> Tourney Machine</p>
+		    <p class="feature-list">
+                <a href="../../features.aspx">Features</a>
+                 • 
+                <a href="#pricingModal" data-toggle="modal">Pricing</a>
+                 • 
+                <a href="https://tourneymachine.zendesk.com/hc/en-us">Support</a>
+                 • 
+                <a href="../../company.aspx">Company</a>
+                 • 
+                <a href="../../TermsOfService.aspx">Terms of Service</a>
+                 • 
+                <a href="../../PrivacyPolicy.aspx">*NEW* - Privacy Policy</a>
+		    </p>
+            <ul class="list-inline social">
+                <li>
+		            <a href="https://twitter.com/tourneymachine"><img src="../../img/global/footer/twitter.png" alt="twitter" width="25" height="25" /></a>
+                </li>
+                <li>
+		            <a href="https://www.facebook.com/tourneymachine"><img src="../../img/global/footer/facebook.png" alt="twitter" width="25" height="25" /></a>
+                </li>
+            </ul>
+	    </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="//wfpscripts.webspectator.com/bootstrap/ws-FB7234A3.js">
+
+</script>
+
+
+		
+	</div>
+</div>
+
+
+<!-- JavaScript plugins (requires jQuery) -->
+<script src="//code.jquery.com/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="../../js/vendor/jquery-2.0.0.min.js"><\/script>')</script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../js/vendor/bootstrap.min.js"></script>
+
+<!-- Optionally enable responsive features in IE8 -->
+<script src="../../js/vendor/respond.min.js"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvKsquju9xBZ_4xi2R4mMldZUKZrkzSwg&sensor=false"></script>
+<script type="text/javascript">
+
+    var markerGroups = {
+        complex: [],
+        dining: [],
+        lodging: [],
+        attraction: []
+    };
+
+    $(document).on("shown.bs.modal", "#tournamentComplexesModal", function () {
+        loadLocations();
+    });
+
+    $(document).on("click", "#place-filters button", function (e) {
+        e.preventDefault();
+
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+        }
+        else {
+            $(this).addClass("active");
+        }
+
+        togglePlaceFilters();
+    });
+
+    $(document).on("click", ".js-list-group-item-place", function (e) {
+        if (!$(e.target).hasClass("btn-toggle") && !$(e.target).hasClass("fa")) {
+
+            var $dropdown = $(this).next(".list-group-item-dropdown");
+            if ($dropdown.hasClass("hidden")) {
+                $dropdown.removeClass("hidden");
+            }
+            else {
+                $dropdown.addClass("hidden");
+            }
+        }
+    });
+
+    $(document).on("click", ".js-list-group-item-place .btn-toggle", function (e) {
+        e.preventDefault();
+
+        var $parentListGroupItemComplex = $(this).parent(".js-list-group-item-place");
+        var icon = $parentListGroupItemComplex.data("icon");
+        var highlightIcon = $parentListGroupItemComplex.data("highlightIcon");
+        var marker = $parentListGroupItemComplex.data("marker");
+
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            marker.setIcon(icon);
+        }
+        else {
+            $(this).addClass("active");
+            marker.setIcon(highlightIcon);
+        }
+    });
+
+    function loadLocations() {
+
+        var markerLocations = [];
+        var complex0 = {};
+complex0.ID = 'h2019022014380007898b5d0b6104849';
+complex0.name = 'Sachem Sports Complex';
+complex0.type = 'complex';
+complex0.lat = '40.823467136830';
+complex0.long = '-73.046017047885';
+complex0.icon = 'https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_blue.png';
+complex0.highlightIcon = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+markerLocations.push(complex0);
+
+
+        var map = new google.maps.Map(document.getElementById("map-canvas-complexes"), {
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        //create empty LatLngBounds object
+        var bounds = new google.maps.LatLngBounds();
+        var infowindow = new google.maps.InfoWindow();
+
+        for (i = 0; i < markerLocations.length; i++) {
+            var markerLocation = markerLocations[i];
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(markerLocation.lat, markerLocation.long),
+                icon: markerLocation.icon,
+                map: map
+            });
+
+            bounds.extend(marker.position);
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    var markerLocation = markerLocations[i];
+                    infowindow.setContent(markerLocation.name);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+
+            $panelListItem = $(".panel-places .js-list-group-item-place[data-id='" + markerLocation.ID + "']");
+            $panelListItem.data("icon", markerLocation.icon);
+            $panelListItem.data("highlightIcon", markerLocation.highlightIcon);
+            $panelListItem.data("marker", marker);
+
+            markerGroups[markerLocation.type].push(marker);
+        }
+
+        if (markerLocations.length <= 1) {
+            map.setCenter(bounds.getCenter());
+            map.setZoom(14);
+        }
+        else {
+            map.fitBounds(bounds);
+        }
+
+        var currentCenter = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(currentCenter);
+    }
+
+    function togglePlaceFilters() {
+        var activeFilters = $("#place-filters button.active").length;
+        var typeArray = ["complex", "dining", "lodging", "attraction"];
+
+        // Hide all
+        for (var i = 0; i < typeArray.length; i++) {
+            var type = typeArray[i];
+            for (var j = 0; j < markerGroups[type].length; j++) {
+                var marker = markerGroups[type][j];
+                marker.setVisible(false);
+            }
+        }
+
+        $(".panel-places").hide();
+
+        // Show active
+        $("#place-filters button.active").each(function () {
+            var type = $(this).attr("data-type");
+            for (var i = 0; i < markerGroups[type].length; i++) {
+                var marker = markerGroups[type][i];
+                marker.setVisible(true);
+            }
+
+            $(".panel-places[data-type='" + type + "']").show();
+        });
+
+        // Show all if none active
+        if (activeFilters == 0) {
+            for (var i = 0; i < typeArray.length; i++) {
+                var type = typeArray[i];
+                for (var j = 0; j < markerGroups[type].length; j++) {
+                    var marker = markerGroups[type][j];
+                    marker.setVisible(true);
+                }
+            }
+
+            $(".panel-places").show();
+        }
+    }
+</script>
+
+
+<script src="min/main.min.js"></script>
+
+<script src="results.js"></script>
+
+
+</form>
+
+
+</body>
+</html>
