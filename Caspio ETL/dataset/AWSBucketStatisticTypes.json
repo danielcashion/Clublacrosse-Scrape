@@ -29,7 +29,7 @@
 			},
 			{
 				"name": "Active_YN",
-				"type": "Byte"
+				"type": "String"
 			},
 			{
 				"name": "Created_by",
