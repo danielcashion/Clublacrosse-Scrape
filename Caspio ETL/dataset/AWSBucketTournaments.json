@@ -1,5 +1,5 @@
 {
-	"name": "AWSBucketLaxTournaments",
+	"name": "AWSBucketTournaments",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ClubLacrosse S3",
