@@ -20,7 +20,7 @@
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "TRUNCATE TABLE [casp].[lax_game_player_records]"
+						"preCopyScript": "--TRUNCATE TABLE [casp].[lax_game_player_records]"
 					},
 					"enableStaging": false,
 					"translator": {
