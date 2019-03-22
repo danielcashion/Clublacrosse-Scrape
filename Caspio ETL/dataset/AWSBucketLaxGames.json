@@ -25,7 +25,7 @@
 			},
 			{
 				"name": "\"Sport_ID\"",
-				"type": "String"
+				"type": "Int16"
 			},
 			{
 				"name": "\"Sport_Gender\"",
@@ -33,7 +33,7 @@
 			},
 			{
 				"name": "\"Game_Date\"",
-				"type": "String"
+				"type": "DateTime"
 			},
 			{
 				"name": "\"Home_Team_ID\"",
@@ -45,19 +45,19 @@
 			},
 			{
 				"name": "\"Home_Team_Score\"",
-				"type": "String"
+				"type": "Int16"
 			},
 			{
 				"name": "\"Away_Team_Score\"",
-				"type": "String"
+				"type": "Int16"
 			},
 			{
 				"name": "\"Home_Score_Confirms\"",
-				"type": "String"
+				"type": "Int16"
 			},
 			{
 				"name": "\"Away_Score_Confirms\"",
-				"type": "String"
+				"type": "Int16"
 			},
 			{
 				"name": "\"Narrative\"",
@@ -65,19 +65,19 @@
 			},
 			{
 				"name": "\"Is_Active\"",
-				"type": "String"
+				"type": "Byte"
 			},
 			{
 				"name": "\"Create_Date\"",
-				"type": "String"
+				"type": "DateTime"
 			},
 			{
 				"name": "\"Last_Activity\"",
-				"type": "String"
+				"type": "DateTime"
 			},
 			{
 				"name": "\"Sequence\"",
-				"type": "String"
+				"type": "Int16"
 			},
 			{
 				"name": "\"Add_User_ID\"",
@@ -93,7 +93,7 @@
 			},
 			{
 				"name": "\"Add_DateTime\"",
-				"type": "String"
+				"type": "DateTime"
 			},
 			{
 				"name": "\"Add_Browser\"",
@@ -105,7 +105,7 @@
 			},
 			{
 				"name": "\"Upd_DateTime\"",
-				"type": "String"
+				"type": "DateTime"
 			},
 			{
 				"name": "\"Upd_User_Name\"",
