@@ -21,7 +21,7 @@
 			},
 			{
 				"name": "is_active",
-				"type": "Byte"
+				"type": "String"
 			},
 			{
 				"name": "created_by",
