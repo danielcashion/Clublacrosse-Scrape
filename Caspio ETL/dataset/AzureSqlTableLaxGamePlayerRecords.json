@@ -6,6 +6,112 @@
 			"type": "LinkedServiceReference"
 		},
 		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Primary_Key",
+				"type": "String"
+			},
+			{
+				"name": "Sport_ID",
+				"type": "Int32"
+			},
+			{
+				"name": "Player_ID",
+				"type": "String"
+			},
+			{
+				"name": "Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Club_Organization_ID",
+				"type": "String"
+			},
+			{
+				"name": "Club_Organization_Team_ID",
+				"type": "String"
+			},
+			{
+				"name": "Game_ID",
+				"type": "String"
+			},
+			{
+				"name": "Statistic_ID",
+				"type": "Int32"
+			},
+			{
+				"name": "Statistic_Values",
+				"type": "Double"
+			},
+			{
+				"name": "Created_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Created_DateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "Active_YN",
+				"type": "Boolean"
+			},
+			{
+				"name": "Sequence",
+				"type": "Int32"
+			},
+			{
+				"name": "Created_Date",
+				"type": "DateTime"
+			},
+			{
+				"name": "Last_Activity",
+				"type": "DateTime"
+			},
+			{
+				"name": "Add_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Add_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Add_DateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "Add_IP",
+				"type": "String"
+			},
+			{
+				"name": "Add_Browser",
+				"type": "String"
+			},
+			{
+				"name": "Upd_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Upd_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Upd_DateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "Upd_IP",
+				"type": "String"
+			},
+			{
+				"name": "Upd_Browser",
+				"type": "String"
+			}
+		],
 		"typeProperties": {
 			"tableName": "[casp].[lax_game_player_records]"
 		}
