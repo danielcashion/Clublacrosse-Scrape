@@ -1,5 +1,5 @@
 {
-	"name": "AWSBucketLaxGames",
+	"name": "AWSBucketGames",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ClubLacrosse S3",
