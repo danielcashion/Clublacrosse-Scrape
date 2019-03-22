@@ -65,7 +65,7 @@
 			},
 			{
 				"name": "\"Is_Active\"",
-				"type": "Byte"
+				"type": "String"
 			},
 			{
 				"name": "\"Create_Date\"",
