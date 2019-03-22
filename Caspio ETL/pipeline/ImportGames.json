@@ -1,0 +1,76 @@
+{
+	"name": "ImportGames",
+	"properties": {
+		"activities": [
+			{
+				"name": "ImportGames",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "FileSystemSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE [casp].[lax_games]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"\"Primary_Key\"": "Primary_Key",
+							"\"Sport_ID\"": "Sport_ID",
+							"\"Player_ID\"": "Player_ID",
+							"\"Application_ID\"": "Application_ID",
+							"\"Channel_ID\"": "Channel_ID",
+							"\"Club_Organization_ID\"": "Club_Organization_ID",
+							"\"Club_Organization_Team_ID\"": "Club_Organization_Team_ID",
+							"\"Game_ID\"": "Game_ID",
+							"\"Statistic_ID\"": "Statistic_ID",
+							"\"Statistic_Values\"": "Statistic_Values",
+							"\"Created_User_Name\"": "Created_User_Name",
+							"\"Created_DateTime\"": "Created_DateTime",
+							"\"Active_YN\"": "Active_YN",
+							"\"Sequence\"": "Sequence",
+							"\"Created_Date\"": "Created_Date",
+							"\"Last_Activity\"": "Last_Activity",
+							"\"Add_User_ID\"": "Add_User_ID",
+							"\"Add_User_Name\"": "Add_User_Name",
+							"\"Add_DateTime\"": "Add_DateTime",
+							"\"Add_IP\"": "Add_IP",
+							"\"Add_Browser\"": "Add_Browser",
+							"\"Upd_User_ID\"": "Upd_User_ID",
+							"\"Upd_User_Name\"": "Upd_User_Name",
+							"\"Upd_DateTime\"": "Upd_DateTime",
+							"\"Upd_IP\"": "Upd_IP",
+							"\"Upd_Browser\"": "Upd_Browser"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AWSBucketGames",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureTableLaxGames",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Import Caspio Data"
+		}
+	}
+}
