@@ -1,5 +1,5 @@
 {
-	"name": "AmazonS3Bucket",
+	"name": "AmazonS3BucketGamePlayerRecrod",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ClubLacrosse S3",
