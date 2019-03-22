@@ -25,12 +25,10 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"columnMappings": {
-							"statistic_id": "statistic_id",
-							"sport_id": "sport_id",
-							"statistic_name": "statistic_name",
-							"is_active": "is_active",
-							"created_by": "created_by",
-							"created_datetime": "created_datetime"
+							"Team_Year_ID": "Team_Year_ID",
+							"Team_Year_Application_ID_": "Team_Year_Application_ID_",
+							"Team_Year_Channel_ID": "Team_Year_Channel_ID",
+							"Team_Year_Description": "Team_Year_Description"
 						}
 					}
 				},
@@ -42,7 +40,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureTableLUStatisticNames",
+						"referenceName": "AzureTableLUTeamYears",
 						"type": "DatasetReference"
 					}
 				]
