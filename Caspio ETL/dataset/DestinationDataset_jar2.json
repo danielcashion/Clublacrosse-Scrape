@@ -1,0 +1,13 @@
+{
+	"name": "DestinationDataset_jar2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "[meta].[statistic_types]"
+		}
+	}
+}
