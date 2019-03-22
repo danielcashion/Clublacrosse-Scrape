@@ -1,0 +1,43 @@
+{
+	"name": "AWSBucketTeamLevels",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ClubLacrosse S3",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AmazonS3Object",
+		"structure": [
+			{
+				"name": "Team_Level_ID",
+				"type": "String"
+			},
+			{
+				"name": "Team_Level_Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Team_Level_Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Team_Level_Description",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"key": "data_from_caspio/LAX_Team_Levels.csv",
+			"bucketName": "club-lacrosse-data"
+		}
+	}
+}
