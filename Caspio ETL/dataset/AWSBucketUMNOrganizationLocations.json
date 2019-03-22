@@ -1,0 +1,175 @@
+{
+	"name": "AWSBucketUMNOrganizationLocations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ClubLacrosse S3",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AmazonS3Object",
+		"structure": [
+			{
+				"name": "Org_Location_ID",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Type",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Organization_ID",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Name",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Sport_Type",
+				"type": "Int16"
+			},
+			{
+				"name": "Org_Location_Sport_Gender",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Team_Level",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Team_Year",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Picture",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Narrative",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Address_1",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Address_2",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Country",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Region",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_City",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_ZipPost_Code",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Phone",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Contact_Email_Addr",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Contact_SMS_Phone",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Latitude",
+				"type": "Double"
+			},
+			{
+				"name": "Org_Location_Longitude",
+				"type": "Double"
+			},
+			{
+				"name": "Org_Location_Active_YN",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Last_Activity",
+				"type": "DateTime"
+			},
+			{
+				"name": "Org_Location_Created_Date",
+				"type": "DateTime"
+			},
+			{
+				"name": "Org_Location_Sequence",
+				"type": "Int16"
+			},
+			{
+				"name": "Org_Location_Add_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Add_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Add_DateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "Org_Location_Add_IP",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Add_Browser",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Upd_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Upd_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Upd_DateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "Org_Location_Upd_IP",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Upd_Browser",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"key": "data_from_caspio/UMN_Organizations_Locations.csv",
+			"bucketName": "club-lacrosse-data"
+		}
+	}
+}
