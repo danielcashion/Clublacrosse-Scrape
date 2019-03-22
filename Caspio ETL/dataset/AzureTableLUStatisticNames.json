@@ -21,7 +21,7 @@
 			},
 			{
 				"name": "is_active",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "created_by",
