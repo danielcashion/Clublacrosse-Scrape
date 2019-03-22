@@ -1,0 +1,13 @@
+{
+	"name": "AzureTableLaxGames",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "[casp].[lax_games]"
+		}
+	}
+}
