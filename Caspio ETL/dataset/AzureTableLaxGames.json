@@ -6,6 +6,176 @@
 			"type": "LinkedServiceReference"
 		},
 		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Game_ID",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Application_ID",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Channel_ID",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Description",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Sport_ID",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "Sport_Gender",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Game_Date",
+				"type": "Date",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Home_Team_ID",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Away_Team_ID",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Home_Team_Score",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "Away_Team_Score",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "Home_Score_Confirms",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "Away_Score_Confirms",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "Narrative",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Is_Active",
+				"type": "Boolean",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Create_Date",
+				"type": "DateTime",
+				"precision": 255,
+				"scale": 7
+			},
+			{
+				"name": "Last_Activity",
+				"type": "DateTime",
+				"precision": 255,
+				"scale": 7
+			},
+			{
+				"name": "Sequence",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "Add_User_ID",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Add_User_Name",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Add_IP",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Add_DateTime",
+				"type": "DateTime",
+				"precision": 255,
+				"scale": 7
+			},
+			{
+				"name": "Add_Browser",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Upd_User_ID",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Upd_DateTime",
+				"type": "DateTime",
+				"precision": 255,
+				"scale": 7
+			},
+			{
+				"name": "Upd_User_Name",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Upd_IP",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Upd_Browser",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			}
+		],
 		"typeProperties": {
 			"tableName": "[casp].[lax_games]"
 		}
