@@ -25,7 +25,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AmazonS3BucketGamePlayerRecrod",
+						"referenceName": "AWSBucketGamePlayerRecord",
 						"type": "DatasetReference"
 					}
 				],
@@ -36,6 +36,9 @@
 					}
 				]
 			}
-		]
+		],
+		"folder": {
+			"name": "Import Caspio Data"
+		}
 	}
 }
