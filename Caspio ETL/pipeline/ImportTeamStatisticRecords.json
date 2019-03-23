@@ -1,0 +1,71 @@
+{
+	"name": "ImportTeamStatisticRecords",
+	"properties": {
+		"activities": [
+			{
+				"name": "Insert Data",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "FileSystemSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Primary_Key": "Primary_Key",
+							"Application_ID": "Application_ID",
+							"Channel_ID": "Channel_ID",
+							"Club_Organization_Team_ID": "Club_Organization_Team_ID",
+							"Statistic_ID": "Statistic_ID",
+							"Knowledge_Date": "Knowledge_Date",
+							"Measure_Value": "Measure_Value",
+							"Status_ID": "Status_ID",
+							"Created_DateTime": "Created_DateTime",
+							"Last_Activity": "Last_Activity",
+							"Active_YN": "Active_YN",
+							"Sequence": "Sequence",
+							"Add_User_ID": "Add_User_ID",
+							"Add_User_Name": "Add_User_Name",
+							"Add_DateTime": "Add_DateTime",
+							"Add_IP": "Add_IP",
+							"Add_Browser": "Add_Browser",
+							"Upd_User_ID": "Upd_User_ID",
+							"Upd_User_Name": "Upd_User_Name",
+							"Upd_DateTime": "Upd_DateTime",
+							"Upd_IP": "Upd_IP",
+							"Upd_Browser": "Upd_Browser"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AWSBucketTeamStatisticRecords",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureTableTeamStatisticRecords",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Import Caspio Data"
+		}
+	}
+}
