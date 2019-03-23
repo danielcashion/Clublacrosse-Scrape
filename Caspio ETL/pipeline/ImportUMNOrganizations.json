@@ -1,0 +1,93 @@
+{
+	"name": "ImportUMNOrganizations",
+	"properties": {
+		"activities": [
+			{
+				"name": "Insert Data",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "FileSystemSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Organization_ID": "Organization_ID",
+							"Organization_Application_ID": "Organization_Application_ID",
+							"Organization_Channel_ID": "Organization_Channel_ID",
+							"Organization_Parent_ID": "Organization_Parent_ID",
+							"Organization_Name": "Organization_Name",
+							"Organization_Nickname": "Organization_Nickname",
+							"Organization_Current_YN": "Organization_Current_YN",
+							"Organization_Main_Contact_Person": "Organization_Main_Contact_Person",
+							"Organization_Type": "Organization_Type",
+							"Organization_Logo": "Organization_Logo",
+							"Organization_Sport_ID": "Organization_Sport_ID",
+							"Organization_Sport_Gender": "Organization_Sport_Gender",
+							"Organization_Prime_Sport_Level": "Organization_Prime_Sport_Level",
+							"Organization_Prime_Sport_Year": "Organization_Prime_Sport_Year",
+							"Organization_Narrative": "Organization_Narrative",
+							"Organization_Address_1": "Organization_Address_1",
+							"Organization_Address_2": "Organization_Address_2",
+							"Organization_Country": "Organization_Country",
+							"Organization_Region": "Organization_Region",
+							"Organization_City": "Organization_City",
+							"Organization_ZipPost_Code": "Organization_ZipPost_Code",
+							"Organization_Website_URL": "Organization_Website_URL",
+							"Organization_Phone_Number": "Organization_Phone_Number",
+							"Organization_Contact_Email_Addr": "Organization_Contact_Email_Addr",
+							"Organization_Contact_SMS_Phone": "Organization_Contact_SMS_Phone",
+							"Organization_Time_Zone": "Organization_Time_Zone",
+							"Organization_Facebook": "Organization_Facebook",
+							"Organization_Instagram": "Organization_Instagram",
+							"Organization_Snapchat": "Organization_Snapchat",
+							"Organization_Sponsors_Tourny_YN": "Organization_Sponsors_Tourny_YN",
+							"Organization_Date_Created": "Organization_Date_Created",
+							"Organization_Last_Activity": "Organization_Last_Activity",
+							"Organization_Active_YN": "Organization_Active_YN",
+							"Organization_Sequence": "Organization_Sequence",
+							"Organization_Add_User_ID": "Organization_Add_User_ID",
+							"Organization_Add_User_Name": "Organization_Add_User_Name",
+							"Organization_Add_DateTime": "Organization_Add_DateTime",
+							"Organization_Add_IP": "Organization_Add_IP",
+							"Organization_Add_Browser": "Organization_Add_Browser",
+							"Organization_Upd_User_ID": "Organization_Upd_User_ID",
+							"Organization_Upd_User_Name": "Organization_Upd_User_Name",
+							"Organization_Upd_DateTime": "Organization_Upd_DateTime",
+							"Organization_Upd_IP": "Organization_Upd_IP",
+							"Organization_Upd_Browser": "Organization_Upd_Browser"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AWSBucketUMNOrganizations",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureTableUMNOrganizations",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Import Caspio Data"
+		}
+	}
+}
