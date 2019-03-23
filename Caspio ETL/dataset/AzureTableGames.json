@@ -1,5 +1,5 @@
 {
-	"name": "AzureTableLaxGames",
+	"name": "AzureTableGames",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase",
