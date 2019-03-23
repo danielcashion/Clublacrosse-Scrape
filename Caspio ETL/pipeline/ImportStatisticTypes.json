@@ -1,0 +1,57 @@
+{
+	"name": "ImportStatisticTypes",
+	"properties": {
+		"activities": [
+			{
+				"name": "Insert Data",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "FileSystemSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Statistic_ID": "Statistic_ID",
+							"Application_ID": "Application_ID",
+							"Channel_ID": "Channel_ID",
+							"Sport_ID": "Sport_ID",
+							"Statistic_Name": "Statistic_Name",
+							"Active_YN": "Active_YN",
+							"Created_by": "Created_by",
+							"Created_datetime": "Created_datetime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AWSBucketStatisticTypes",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureTableStatisticTypes",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Import Caspio Data"
+		}
+	}
+}
