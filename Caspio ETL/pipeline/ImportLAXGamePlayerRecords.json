@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ImportLaxPlayerRecords",
+				"name": "ImportLaxGamePlayerRecords",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -62,7 +62,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureTableLaxGamePlayerRecords",
+						"referenceName": "AzureTableGamePlayerRecords",
 						"type": "DatasetReference"
 					}
 				]
