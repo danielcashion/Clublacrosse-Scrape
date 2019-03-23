@@ -19,7 +19,8 @@
 					},
 					"sink": {
 						"type": "SqlSink",
-						"writeBatchSize": 10000
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE [casp].[LAX_game_player_results]"
 					},
 					"enableStaging": false,
 					"translator": {
