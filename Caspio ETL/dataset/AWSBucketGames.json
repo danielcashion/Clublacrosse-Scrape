@@ -8,115 +8,115 @@
 		"type": "AmazonS3Object",
 		"structure": [
 			{
-				"name": "\"Game_ID\"",
+				"name": "Game_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Application_ID\"",
+				"name": "Application_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Channel_ID\"",
+				"name": "Channel_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Description\"",
+				"name": "Description",
 				"type": "String"
 			},
 			{
-				"name": "\"Sport_ID\"",
+				"name": "Sport_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Sport_Gender\"",
+				"name": "Sport_Gender",
 				"type": "String"
 			},
 			{
-				"name": "\"Game_Date\"",
+				"name": "Game_Date",
 				"type": "String"
 			},
 			{
-				"name": "\"Home_Team_ID\"",
+				"name": "Home_Team_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Away_Team_ID\"",
+				"name": "Away_Team_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Home_Team_Score\"",
+				"name": "Home_Team_Score",
 				"type": "String"
 			},
 			{
-				"name": "\"Away_Team_Score\"",
+				"name": "Away_Team_Score",
 				"type": "String"
 			},
 			{
-				"name": "\"Home_Score_Confirms\"",
+				"name": "Home_Score_Confirms",
 				"type": "String"
 			},
 			{
-				"name": "\"Away_Score_Confirms\"",
+				"name": "Away_Score_Confirms",
 				"type": "String"
 			},
 			{
-				"name": "\"Narrative\"",
+				"name": "Narrative",
 				"type": "String"
 			},
 			{
-				"name": "\"Is_Active\"",
+				"name": "Is_Active",
 				"type": "String"
 			},
 			{
-				"name": "\"Create_Date\"",
+				"name": "Create_Date",
 				"type": "String"
 			},
 			{
-				"name": "\"Last_Activity\"",
+				"name": "Last_Activity",
 				"type": "String"
 			},
 			{
-				"name": "\"Sequence\"",
+				"name": "Sequence",
 				"type": "String"
 			},
 			{
-				"name": "\"Add_User_ID\"",
+				"name": "Add_User_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Add_User_Name\"",
+				"name": "Add_User_Name",
 				"type": "String"
 			},
 			{
-				"name": "\"Add_IP\"",
+				"name": "Add_IP",
 				"type": "String"
 			},
 			{
-				"name": "\"Add_DateTime\"",
+				"name": "Add_DateTime",
 				"type": "String"
 			},
 			{
-				"name": "\"Add_Browser\"",
+				"name": "Add_Browser",
 				"type": "String"
 			},
 			{
-				"name": "\"Upd_User_ID\"",
+				"name": "Upd_User_ID",
 				"type": "String"
 			},
 			{
-				"name": "\"Upd_DateTime\"",
+				"name": "Upd_DateTime",
 				"type": "String"
 			},
 			{
-				"name": "\"Upd_User_Name\"",
+				"name": "Upd_User_Name",
 				"type": "String"
 			},
 			{
-				"name": "\"Upd_IP\"",
+				"name": "Upd_IP",
 				"type": "String"
 			},
 			{
-				"name": "\"Upd_Browser\"",
+				"name": "Upd_Browser",
 				"type": "String"
 			}
 		],
