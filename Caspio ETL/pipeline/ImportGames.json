@@ -71,7 +71,7 @@
 				]
 			},
 			{
-				"name": "InsertNewDatatoProd",
+				"name": "InsNewDatatoProd",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
