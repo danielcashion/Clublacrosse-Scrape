@@ -77,7 +77,7 @@
 			},
 			{
 				"name": "Sequence",
-				"type": "String"
+				"type": "Int32"
 			},
 			{
 				"name": "Add_User_ID",
