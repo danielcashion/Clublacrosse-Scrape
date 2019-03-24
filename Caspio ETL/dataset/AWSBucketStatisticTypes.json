@@ -9,7 +9,7 @@
 		"structure": [
 			{
 				"name": "Statistic_ID",
-				"type": "Int16"
+				"type": "String"
 			},
 			{
 				"name": "Application_ID",
@@ -21,7 +21,7 @@
 			},
 			{
 				"name": "Sport_ID",
-				"type": "Int16"
+				"type": "String"
 			},
 			{
 				"name": "Statistic_Name",
@@ -37,7 +37,7 @@
 			},
 			{
 				"name": "Created_datetime",
-				"type": "DateTime"
+				"type": "String"
 			}
 		],
 		"typeProperties": {
