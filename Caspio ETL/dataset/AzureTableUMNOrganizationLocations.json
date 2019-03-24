@@ -33,7 +33,7 @@
 			},
 			{
 				"name": "Org_Location_Sport_Type",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Org_Location_Sport_Gender",
@@ -101,19 +101,19 @@
 			},
 			{
 				"name": "Org_Location_Active_YN",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "Org_Location_Last_Activity",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Org_Location_Created_Date",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Org_Location_Sequence",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Org_Location_Add_User_ID",
@@ -125,7 +125,7 @@
 			},
 			{
 				"name": "Org_Location_Add_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Org_Location_Add_IP",
@@ -145,7 +145,7 @@
 			},
 			{
 				"name": "Org_Location_Upd_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Org_Location_Upd_IP",
