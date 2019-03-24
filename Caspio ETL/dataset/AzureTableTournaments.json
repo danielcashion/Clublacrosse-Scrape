@@ -69,7 +69,7 @@
 			},
 			{
 				"name": "Tournament_Sequence",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Add_User_ID",
