@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy Data",
+				"name": "StageLaxGamesData",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -75,7 +75,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy Data",
+						"activity": "StageLaxGamesData",
 						"dependencyConditions": [
 							"Succeeded"
 						]
