@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy Data1",
+				"name": "Copy Data",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -19,7 +19,8 @@
 					},
 					"sink": {
 						"type": "SqlSink",
-						"writeBatchSize": 10000
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE [casp].[lax_games]"
 					},
 					"enableStaging": false,
 					"translator": {
