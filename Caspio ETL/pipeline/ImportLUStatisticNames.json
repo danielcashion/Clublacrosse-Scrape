@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Insert Data",
+				"name": "StageStatisticNames",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
