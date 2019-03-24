@@ -45,19 +45,19 @@
 			},
 			{
 				"name": "Home_Team_Score",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Away_Team_Score",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Home_Score_Confirms",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Away_Score_Confirms",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Narrative",
@@ -77,7 +77,7 @@
 			},
 			{
 				"name": "Sequence",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Add_User_ID",
