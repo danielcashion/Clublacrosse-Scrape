@@ -57,7 +57,7 @@
 			},
 			{
 				"name": "Tournament_Active_YN",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Create_Date",
