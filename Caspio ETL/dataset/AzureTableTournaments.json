@@ -25,15 +25,15 @@
 			},
 			{
 				"name": "Tournament_Sport_ID",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Start_Date",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_End_Date",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Region",
@@ -61,11 +61,11 @@
 			},
 			{
 				"name": "Tournament_Create_Date",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Last_Activity",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Sequence",
@@ -81,7 +81,7 @@
 			},
 			{
 				"name": "Tournament_Add_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Add_IP",
@@ -101,7 +101,7 @@
 			},
 			{
 				"name": "Tournament_Upd_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Tournament_Upd_IP",
