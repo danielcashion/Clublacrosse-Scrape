@@ -33,7 +33,7 @@
 			},
 			{
 				"name": "Game_Date",
-				"type": "Date"
+				"type": "String"
 			},
 			{
 				"name": "Home_Team_ID",
@@ -65,19 +65,19 @@
 			},
 			{
 				"name": "Is_Active",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "Create_Date",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Last_Activity",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Sequence",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Add_User_ID",
@@ -93,7 +93,7 @@
 			},
 			{
 				"name": "Add_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Add_Browser",
@@ -105,7 +105,7 @@
 			},
 			{
 				"name": "Upd_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Upd_User_Name",
