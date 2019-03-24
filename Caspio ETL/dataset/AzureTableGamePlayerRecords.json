@@ -13,7 +13,7 @@
 			},
 			{
 				"name": "Sport_ID",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Player_ID",
@@ -41,11 +41,11 @@
 			},
 			{
 				"name": "Statistic_ID",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Statistic_Values",
-				"type": "Double"
+				"type": "String"
 			},
 			{
 				"name": "Created_User_Name",
@@ -53,23 +53,23 @@
 			},
 			{
 				"name": "Created_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Active_YN",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "Sequence",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Created_Date",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Last_Activity",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Add_User_ID",
@@ -81,7 +81,7 @@
 			},
 			{
 				"name": "Add_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Add_IP",
@@ -101,7 +101,7 @@
 			},
 			{
 				"name": "Upd_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Upd_IP",
