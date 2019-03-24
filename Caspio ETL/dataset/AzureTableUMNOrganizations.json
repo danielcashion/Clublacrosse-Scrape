@@ -33,7 +33,7 @@
 			},
 			{
 				"name": "Organization_Current_YN",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Main_Contact_Person",
@@ -49,7 +49,7 @@
 			},
 			{
 				"name": "Organization_Sport_ID",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Sport_Gender",
@@ -125,23 +125,23 @@
 			},
 			{
 				"name": "Organization_Sponsors_Tourny_YN",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Date_Created",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Last_Activity",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Active_YN",
-				"type": "Boolean"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Sequence",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Add_User_ID",
@@ -153,7 +153,7 @@
 			},
 			{
 				"name": "Organization_Add_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Add_IP",
@@ -173,7 +173,7 @@
 			},
 			{
 				"name": "Organization_Upd_DateTime",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "Organization_Upd_IP",
