@@ -1,0 +1,138 @@
+{
+	"name": "AWSBucketGames",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ClubLacrosse S3",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AmazonS3Object",
+		"structure": [
+			{
+				"name": "Game_ID",
+				"type": "String"
+			},
+			{
+				"name": "Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "Sport_ID",
+				"type": "String"
+			},
+			{
+				"name": "Sport_Gender",
+				"type": "String"
+			},
+			{
+				"name": "Game_Date",
+				"type": "String"
+			},
+			{
+				"name": "Home_Team_ID",
+				"type": "String"
+			},
+			{
+				"name": "Away_Team_ID",
+				"type": "String"
+			},
+			{
+				"name": "Home_Team_Score",
+				"type": "String"
+			},
+			{
+				"name": "Away_Team_Score",
+				"type": "String"
+			},
+			{
+				"name": "Home_Score_Confirms",
+				"type": "String"
+			},
+			{
+				"name": "Away_Score_Confirms",
+				"type": "String"
+			},
+			{
+				"name": "Narrative",
+				"type": "String"
+			},
+			{
+				"name": "Is_Active",
+				"type": "String"
+			},
+			{
+				"name": "Create_Date",
+				"type": "String"
+			},
+			{
+				"name": "Last_Activity",
+				"type": "String"
+			},
+			{
+				"name": "Sequence",
+				"type": "String"
+			},
+			{
+				"name": "Add_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Add_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Add_IP",
+				"type": "String"
+			},
+			{
+				"name": "Add_DateTime",
+				"type": "String"
+			},
+			{
+				"name": "Add_Browser",
+				"type": "String"
+			},
+			{
+				"name": "Upd_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Upd_DateTime",
+				"type": "String"
+			},
+			{
+				"name": "Upd_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Upd_IP",
+				"type": "String"
+			},
+			{
+				"name": "Upd_Browser",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"key": "data_from_caspio/LAX_Games.csv",
+			"bucketName": "club-lacrosse-data"
+		}
+	}
+}

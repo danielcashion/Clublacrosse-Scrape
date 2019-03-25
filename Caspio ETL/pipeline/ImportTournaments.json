@@ -1,0 +1,76 @@
+{
+	"name": "ImportTournaments",
+	"properties": {
+		"activities": [
+			{
+				"name": "Insert Data",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "FileSystemSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE [casp].[lax_tournaments]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Tournament_ID": "Tournament_ID",
+							"Tournament_Application_ID": "Tournament_Application_ID",
+							"Tournament_Channel_ID": "Tournament_Channel_ID",
+							"Tournament_Name": "Tournament_Name",
+							"Tournament_Sport_ID": "Tournament_Sport_ID",
+							"Tournament_Start_Date": "Tournament_Start_Date",
+							"Tournament_End_Date": "Tournament_End_Date",
+							"Tournament_Region": "Tournament_Region",
+							"Tournament_Location": "Tournament_Location",
+							"Tournament_Organization_ID": "Tournament_Organization_ID",
+							"Tournament_Source": "Tournament_Source",
+							"Tournament_Narrative": "Tournament_Narrative",
+							"Tournament_Active_YN": "Tournament_Active_YN",
+							"Tournament_Create_Date": "Tournament_Create_Date",
+							"Tournament_Last_Activity": "Tournament_Last_Activity",
+							"Tournament_Sequence": "Tournament_Sequence",
+							"Tournament_Add_User_ID": "Tournament_Add_User_ID",
+							"Tournament_Add_User_Name": "Tournament_Add_User_Name",
+							"Tournament_Add_DateTime": "Tournament_Add_DateTime",
+							"Tournament_Add_IP": "Tournament_Add_IP",
+							"Tournament_Add_Browser": "Tournament_Add_Browser",
+							"Tournament_Upd_User_ID": "Tournament_Upd_User_ID",
+							"Tournament_Upd_User_Name": "Tournament_Upd_User_Name",
+							"Tournament_Upd_DateTime": "Tournament_Upd_DateTime",
+							"Tournament_Upd_IP": "Tournament_Upd_IP",
+							"Tournament_Upd_Browser": "Tournament_Upd_Browser"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AWSBucketTournaments",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureTableTournaments",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Import Caspio Data"
+		}
+	}
+}

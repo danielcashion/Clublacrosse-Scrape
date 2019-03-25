@@ -1,0 +1,119 @@
+{
+	"name": "AzureTableTournaments",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Tournament_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Name",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Sport_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Start_Date",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_End_Date",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Region",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Location",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Organization_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Source",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Narrative",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Active_YN",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Create_Date",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Last_Activity",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Sequence",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Add_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Add_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Add_DateTime",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Add_IP",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Add_Browser",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Upd_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Upd_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Upd_DateTime",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Upd_IP",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Upd_Browser",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[casp].[lax_tournaments]"
+		}
+	}
+}

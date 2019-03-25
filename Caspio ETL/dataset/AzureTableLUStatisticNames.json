@@ -1,0 +1,39 @@
+{
+	"name": "AzureTableLUStatisticNames",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "statistic_id",
+				"type": "Int32"
+			},
+			{
+				"name": "sport_id",
+				"type": "Int32"
+			},
+			{
+				"name": "statistic_name",
+				"type": "String"
+			},
+			{
+				"name": "is_active",
+				"type": "String"
+			},
+			{
+				"name": "created_by",
+				"type": "String"
+			},
+			{
+				"name": "created_datetime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[casp].[lax_lu_statistic_names]"
+		}
+	}
+}

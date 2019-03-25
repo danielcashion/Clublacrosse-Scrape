@@ -1,0 +1,203 @@
+{
+	"name": "AWSBucketUMNOrganizations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ClubLacrosse S3",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AmazonS3Object",
+		"structure": [
+			{
+				"name": "Organization_ID",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Parent_ID",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Name",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Nickname",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Current_YN",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Main_Contact_Person",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Type",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Logo",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Sport_ID",
+				"type": "Int16"
+			},
+			{
+				"name": "Organization_Sport_Gender",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Prime_Sport_Level",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Prime_Sport_Year",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Narrative",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Address_1",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Address_2",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Country",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Region",
+				"type": "String"
+			},
+			{
+				"name": "Organization_City",
+				"type": "String"
+			},
+			{
+				"name": "Organization_ZipPost_Code",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Website_URL",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Phone_Number",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Contact_Email_Addr",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Contact_SMS_Phone",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Time_Zone",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Facebook",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Instagram",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Snapchat",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Sponsors_Tourny_YN",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Date_Created",
+				"type": "DateTime"
+			},
+			{
+				"name": "Organization_Last_Activity",
+				"type": "DateTime"
+			},
+			{
+				"name": "Organization_Active_YN",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Sequence",
+				"type": "Int16"
+			},
+			{
+				"name": "Organization_Add_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Add_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Add_DateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "Organization_Add_IP",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Add_Browser",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Upd_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Upd_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Upd_DateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "Organization_Upd_IP",
+				"type": "String"
+			},
+			{
+				"name": "Organization_Upd_Browser",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"key": "data_from_caspio/UMN_Organizations.csv",
+			"bucketName": "club-lacrosse-data"
+		}
+	}
+}

@@ -1,0 +1,115 @@
+{
+	"name": "AWSBucketTeamStatisticRecords",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ClubLacrosse S3",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AmazonS3Object",
+		"structure": [
+			{
+				"name": "Primary_Key",
+				"type": "String"
+			},
+			{
+				"name": "Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Club_Organization_Team_ID",
+				"type": "String"
+			},
+			{
+				"name": "Statistic_ID",
+				"type": "String"
+			},
+			{
+				"name": "Knowledge_Date",
+				"type": "String"
+			},
+			{
+				"name": "Measure_Value",
+				"type": "String"
+			},
+			{
+				"name": "Status_ID",
+				"type": "String"
+			},
+			{
+				"name": "Created_DateTime",
+				"type": "String"
+			},
+			{
+				"name": "Last_Activity",
+				"type": "String"
+			},
+			{
+				"name": "Active_YN",
+				"type": "String"
+			},
+			{
+				"name": "Sequence",
+				"type": "String"
+			},
+			{
+				"name": "Add_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Add_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Add_DateTime",
+				"type": "String"
+			},
+			{
+				"name": "Add_IP",
+				"type": "String"
+			},
+			{
+				"name": "Add_Browser",
+				"type": "String"
+			},
+			{
+				"name": "Upd_User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Upd_User_Name",
+				"type": "String"
+			},
+			{
+				"name": "Upd_DateTime",
+				"type": "String"
+			},
+			{
+				"name": "Upd_IP",
+				"type": "String"
+			},
+			{
+				"name": "Upd_Browser",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"key": "data_from_caspio/LAX_Team_Statistic_Records.csv",
+			"bucketName": "club-lacrosse-data"
+		}
+	}
+}

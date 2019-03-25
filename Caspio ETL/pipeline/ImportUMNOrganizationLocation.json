@@ -1,0 +1,87 @@
+{
+	"name": "ImportUMNOrganizationLocation",
+	"properties": {
+		"activities": [
+			{
+				"name": "Insert Data",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "FileSystemSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE [casp].[umn_organization_locations]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Org_Location_ID": "Org_Location_ID",
+							"Org_Location_Application_ID": "Org_Location_Application_ID",
+							"Org_Location_Channel_ID": "Org_Location_Channel_ID",
+							"Org_Location_Type": "Org_Location_Type",
+							"Org_Location_Organization_ID": "Org_Location_Organization_ID",
+							"Org_Location_Name": "Org_Location_Name",
+							"Org_Location_Sport_Type": "Org_Location_Sport_Type",
+							"Org_Location_Sport_Gender": "Org_Location_Sport_Gender",
+							"Org_Location_Team_Level": "Org_Location_Team_Level",
+							"Org_Location_Team_Year": "Org_Location_Team_Year",
+							"Org_Location_Picture": "Org_Location_Picture",
+							"Org_Location_Narrative": "Org_Location_Narrative",
+							"Org_Location_Address_1": "Org_Location_Address_1",
+							"Org_Location_Address_2": "Org_Location_Address_2",
+							"Org_Location_Country": "Org_Location_Country",
+							"Org_Location_Region": "Org_Location_Region",
+							"Org_Location_City": "Org_Location_City",
+							"Org_Location_ZipPost_Code": "Org_Location_ZipPost_Code",
+							"Org_Location_Phone": "Org_Location_Phone",
+							"Org_Location_Contact_Email_Addr": "Org_Location_Contact_Email_Addr",
+							"Org_Location_Contact_SMS_Phone": "Org_Location_Contact_SMS_Phone",
+							"Org_Location_Latitude": "Org_Location_Latitude",
+							"Org_Location_Longitude": "Org_Location_Longitude",
+							"Org_Location_Active_YN": "Org_Location_Active_YN",
+							"Org_Location_Last_Activity": "Org_Location_Last_Activity",
+							"Org_Location_Created_Date": "Org_Location_Created_Date",
+							"Org_Location_Sequence": "Org_Location_Sequence",
+							"Org_Location_Add_User_ID": "Org_Location_Add_User_ID",
+							"Org_Location_Add_User_Name": "Org_Location_Add_User_Name",
+							"Org_Location_Add_DateTime": "Org_Location_Add_DateTime",
+							"Org_Location_Add_IP": "Org_Location_Add_IP",
+							"Org_Location_Add_Browser": "Org_Location_Add_Browser",
+							"Org_Location_Upd_User_ID": "Org_Location_Upd_User_ID",
+							"Org_Location_Upd_User_Name": "Org_Location_Upd_User_Name",
+							"Org_Location_Upd_DateTime": "Org_Location_Upd_DateTime",
+							"Org_Location_Upd_IP": "Org_Location_Upd_IP",
+							"Org_Location_Upd_Browser": "Org_Location_Upd_Browser"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AWSBucketUMNOrganizationLocations",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureTableUMNOrganizationLocations",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Import Caspio Data"
+		}
+	}
+}

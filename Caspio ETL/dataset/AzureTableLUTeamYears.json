@@ -1,0 +1,31 @@
+{
+	"name": "AzureTableLUTeamYears",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Team_Year_ID",
+				"type": "Int32"
+			},
+			{
+				"name": "Team_Year_Application_ID_",
+				"type": "String"
+			},
+			{
+				"name": "Team_Year_Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Team_Year_Description",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[casp].[lax_lu_team_years]"
+		}
+	}
+}
