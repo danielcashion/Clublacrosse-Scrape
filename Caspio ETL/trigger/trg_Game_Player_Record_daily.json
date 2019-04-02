@@ -1,0 +1,32 @@
+{
+	"name": "trg_Game_Player_Record_daily",
+	"properties": {
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ImportGamePlayerRecords",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2019-04-02T01:54:00.000Z",
+				"endTime": "2019-12-31T01:54:00.000Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						15
+					],
+					"hours": [
+						7
+					]
+				}
+			}
+		}
+	}
+}
