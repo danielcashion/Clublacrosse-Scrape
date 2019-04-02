@@ -1,0 +1,16 @@
+{
+	"name": "From_Caspio",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ClubLacrosse",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Incoming Data"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "[data].[club_organizations]"
+		}
+	}
+}
