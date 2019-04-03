@@ -2,7 +2,7 @@
 	"name": "AWSBucketGames",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ClubLacrosse S3",
+			"referenceName": "AWSBucketFromCaspio",
 			"type": "LinkedServiceReference"
 		},
 		"type": "AmazonS3Object",
