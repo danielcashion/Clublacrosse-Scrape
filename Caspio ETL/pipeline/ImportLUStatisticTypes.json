@@ -1,5 +1,5 @@
 {
-	"name": "ImportLUStatisticNames",
+	"name": "ImportLUStatisticTypes",
 	"properties": {
 		"activities": [
 			{
@@ -37,13 +37,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AWSBucketLUStatisticNames",
+						"referenceName": "AWSBucketLUStatisticTypes",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureTableLUStatisticNames",
+						"referenceName": "AzureTableLUStatisticTypes",
 						"type": "DatasetReference"
 					}
 				]
