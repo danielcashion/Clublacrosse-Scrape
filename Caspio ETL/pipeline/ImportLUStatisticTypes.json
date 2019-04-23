@@ -20,7 +20,7 @@
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "TRUNCATE TABLE [casp].[lax_lu_statistic_names]"
+						"preCopyScript": "TRUNCATE TABLE [casp].[lax_lu_statistic_types]"
 					},
 					"enableStaging": false,
 					"translator": {
