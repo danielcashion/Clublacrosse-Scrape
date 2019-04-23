@@ -44,7 +44,7 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": true
 			},
-			"key": "data_from_caspio/LAX_LU_Statistic_Names.csv",
+			"key": "data_from_caspio/LAX_LU_Statistic_Types.csv",
 			"bucketName": "club-lacrosse-data"
 		}
 	}
