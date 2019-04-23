@@ -1,5 +1,5 @@
 {
-	"name": "AzureTableLUStatisticNames",
+	"name": "AzureTableLUStatisticTypes",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase",
