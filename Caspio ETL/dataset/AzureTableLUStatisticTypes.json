@@ -8,27 +8,35 @@
 		"type": "AzureSqlTable",
 		"structure": [
 			{
-				"name": "statistic_id",
+				"name": "Statistic_ID",
 				"type": "Int32"
 			},
 			{
-				"name": "sport_id",
-				"type": "Int32"
-			},
-			{
-				"name": "statistic_name",
+				"name": "Application_ID",
 				"type": "String"
 			},
 			{
-				"name": "is_active",
+				"name": "Channel_ID",
 				"type": "String"
 			},
 			{
-				"name": "created_by",
+				"name": "Sport_ID",
 				"type": "String"
 			},
 			{
-				"name": "created_datetime",
+				"name": "Statistic_Name",
+				"type": "String"
+			},
+			{
+				"name": "Active_YN",
+				"type": "String"
+			},
+			{
+				"name": "Created_by",
+				"type": "String"
+			},
+			{
+				"name": "Created_datetime",
 				"type": "DateTime"
 			}
 		],
