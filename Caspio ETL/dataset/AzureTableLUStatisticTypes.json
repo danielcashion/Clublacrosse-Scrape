@@ -33,7 +33,7 @@
 			}
 		],
 		"typeProperties": {
-			"tableName": "[casp].[lax_lu_statistic_names]"
+			"tableName": "[casp].[lax_lu_statistic_types]"
 		}
 	}
 }
