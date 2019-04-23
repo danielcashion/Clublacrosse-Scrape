@@ -26,12 +26,14 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"columnMappings": {
-							"Statistic_ID": "statistic_id",
-							"Application_ID": "sport_id",
-							"Channel_ID": "statistic_name",
-							"Sport_ID": "is_active",
-							"Statistic_Name": "created_by",
-							"Active_YN": "created_datetime"
+							"Statistic_ID": "Statistic_ID",
+							"Application_ID": "Application_ID",
+							"Channel_ID": "Channel_ID",
+							"Sport_ID": "Sport_ID",
+							"Statistic_Name": "Statistic_Name",
+							"Active_YN": "Active_YN",
+							"Created_by": "Created_by",
+							"Created_datetime": "Created_datetime"
 						}
 					}
 				},
