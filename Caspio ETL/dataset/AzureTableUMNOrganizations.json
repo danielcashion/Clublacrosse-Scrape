@@ -32,10 +32,6 @@
 				"type": "String"
 			},
 			{
-				"name": "Organization_Current_YN",
-				"type": "String"
-			},
-			{
 				"name": "Organization_Main_Contact_Person",
 				"type": "String"
 			},
@@ -53,14 +49,6 @@
 			},
 			{
 				"name": "Organization_Sport_Gender",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Prime_Sport_Level",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Prime_Sport_Year",
 				"type": "String"
 			},
 			{
