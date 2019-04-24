@@ -5,7 +5,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "ImportLUStatisticTypes",
+					"referenceName": "ImportStatisticTypes",
 					"type": "PipelineReference"
 				}
 			}
