@@ -154,6 +154,14 @@
 			{
 				"name": "Org_Location_Upd_Browser",
 				"type": "String"
+			},
+			{
+				"name": "Org_Location_Created_Date_1",
+				"type": "String"
+			},
+			{
+				"name": "Org_Location_Created_Date_2",
+				"type": "String"
 			}
 		],
 		"typeProperties": {
