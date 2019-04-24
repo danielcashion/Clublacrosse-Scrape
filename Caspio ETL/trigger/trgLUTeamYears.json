@@ -1,0 +1,28 @@
+{
+	"name": "trgLUTeamYears",
+	"properties": {
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ImporttLUTeamYears",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2019-04-24T01:47:00.000Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"hours": [
+						2
+					]
+				}
+			}
+		}
+	}
+}
