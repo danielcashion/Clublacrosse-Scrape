@@ -31,6 +31,7 @@
 							"Channel_ID": "Channel_ID",
 							"Sport_ID": "Sport_ID",
 							"Statistic_Name": "Statistic_Name",
+							"Sort_ID": "sort_id",
 							"Active_YN": "Active_YN",
 							"Created_by": "Created_by",
 							"Created_datetime": "Created_datetime"
@@ -39,7 +40,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AWSBucketLUStatisticTypes",
+						"referenceName": "AWSBucketStatisticTypes",
 						"type": "DatasetReference"
 					}
 				],
