@@ -32,10 +32,6 @@
 				"type": "String"
 			},
 			{
-				"name": "Organization_Current_YN",
-				"type": "String"
-			},
-			{
 				"name": "Organization_Main_Contact_Person",
 				"type": "String"
 			},
@@ -53,18 +49,6 @@
 			},
 			{
 				"name": "Organization_Sport_Gender",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Prime_Sport_Level",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Prime_Sport_Year",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Team_Years",
 				"type": "String"
 			},
 			{
@@ -185,38 +169,6 @@
 			},
 			{
 				"name": "Organization_Upd_Browser",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Team_Years_1",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Date_Created_1",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Team_Years_2",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Date_Created_2",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Team_Years_3",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Date_Created_3",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Team_Years_4",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Date_Created_4",
 				"type": "String"
 			}
 		],
