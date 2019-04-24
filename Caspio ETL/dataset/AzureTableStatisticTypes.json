@@ -6,6 +6,40 @@
 			"type": "LinkedServiceReference"
 		},
 		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Statistic_ID",
+				"type": "String"
+			},
+			{
+				"name": "Application_ID",
+				"type": "String"
+			},
+			{
+				"name": "Channel_ID",
+				"type": "String"
+			},
+			{
+				"name": "Sport_ID",
+				"type": "String"
+			},
+			{
+				"name": "Statistic_Name",
+				"type": "String"
+			},
+			{
+				"name": "Active_YN",
+				"type": "String"
+			},
+			{
+				"name": "Created_by",
+				"type": "String"
+			},
+			{
+				"name": "Created_datetime",
+				"type": "DateTime"
+			}
+		],
 		"typeProperties": {
 			"tableName": "[casp].[lax_lu_statistic_types]"
 		}
