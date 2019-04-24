@@ -9,7 +9,7 @@
 		"structure": [
 			{
 				"name": "Team_Year_ID",
-				"type": "Int32"
+				"type": "String"
 			},
 			{
 				"name": "Team_Year_Application_ID_",
