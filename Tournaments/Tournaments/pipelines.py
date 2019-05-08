@@ -18,36 +18,36 @@ class TournamentsPipeline(object):
     table = dbc.table
     i = 1
 
-    def __init__(self):
-        try:
-            self.cnxn = pyodbc.connect(
-                'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
-            # self.cursor = self.cnxn.cursor()
-            # self.cursor.execute('CREATE DATABASE '+self.database)
-        except Exception as e:
-            print(str(e))
+#    def __init__(self):
+#        try:
+#            self.cnxn = pyodbc.connect(
+#                'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
+#            # self.cursor = self.cnxn.cursor()
+#            # self.cursor.execute('CREATE DATABASE '+self.database)
+#        except Exception as e:
+#            print(str(e))
 
-        try:
+#        try:
+#
+#            self.cnxn = pyodbc.connect('DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
+#            self.cursor = self.cnxn.cursor()
 
-            self.cnxn = pyodbc.connect('DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
-            self.cursor = self.cnxn.cursor()
+#            qry1 = "CREATE TABLE "+self.table+""" ([Id] INT NOT NULL IDENTITY,
+#                                                        [Keyword] [text] NOT NULL,
+#                                                        [Title] [text] NOT NULL,
+#                                                        [Date] [text] NOT NULL,
+#                                                        [Location] [text] NULL,
+#                                                        [Icon] [text] NULL,
+#                                                        [Link] [varchar](250) NULL UNIQUE,
+#                                                        PRIMARY KEY([Id])
+#                                                    )"""
 
-            qry1 = "CREATE TABLE "+self.table+""" ([Id] INT NOT NULL IDENTITY,
-                                                        [Keyword] [text] NOT NULL,
-                                                        [Title] [text] NOT NULL,
-                                                        [Date] [text] NOT NULL,
-                                                        [Location] [text] NULL,
-                                                        [Icon] [text] NULL,
-                                                        [Link] [varchar](250) NULL UNIQUE,
-                                                        PRIMARY KEY([Id])
-                                                    )"""
+#            self.cursor.execute(qry1)
+#            self.cnxn.commit()
+#            print('Table Created')
 
-            self.cursor.execute(qry1)
-            self.cnxn.commit()
-            print('Table Created')
-
-        except Exception as e:
-            print(str(e))
+#        except Exception as e:
+#            print(str(e))
     def process_item(self, item, spider):
         if isinstance(item, TournamentsItem):
             try:

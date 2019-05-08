@@ -29,7 +29,7 @@ def Export_CSV():
         # File_1 = csv_folder + "temp.csv"
         File_2 = csv_Path
 
-        sql = "SELECT [Id],[Keyword],[Title],[Date],[Location],[Icon],[Link] FROM "+dbc.table
+        sql = "SELECT [Keyword],[Title],[Date],[Location],[Icon],[Link] FROM "+dbc.table
 
         df = pd.read_sql(sql,cnxn)
         # df.drop_duplicates(subset=None, inplace=True)
