@@ -1,5 +1,5 @@
 {
-	"name": "trg_Game_Player_Record_daily",
+	"name": "trgImportGamePlayerRecordDaily",
 	"properties": {
 		"runtimeState": "Started",
 		"pipelines": [

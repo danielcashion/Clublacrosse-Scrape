@@ -1,5 +1,5 @@
 {
-	"name": "AzureTableStatisticTypes",
+	"name": "AzureTableLUStatisticTypes",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase",
@@ -26,6 +26,10 @@
 			{
 				"name": "Statistic_Name",
 				"type": "String"
+			},
+			{
+				"name": "sort_id",
+				"type": "Int32"
 			},
 			{
 				"name": "Active_YN",

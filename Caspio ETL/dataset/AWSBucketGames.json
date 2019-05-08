@@ -36,6 +36,10 @@
 				"type": "String"
 			},
 			{
+				"name": "Tournament_ID",
+				"type": "String"
+			},
+			{
 				"name": "Home_Team_ID",
 				"type": "String"
 			},

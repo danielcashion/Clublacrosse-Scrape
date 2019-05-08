@@ -1,5 +1,5 @@
 {
-	"name": "AWSBucketLUStatisticNames",
+	"name": "AWSBucketLUStatisticTypes",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AWSBucketFromCaspio",
@@ -8,27 +8,35 @@
 		"type": "AmazonS3Object",
 		"structure": [
 			{
-				"name": "statistic_id",
+				"name": "Statistic_ID",
 				"type": "String"
 			},
 			{
-				"name": "sport_id",
+				"name": "Application_ID",
 				"type": "String"
 			},
 			{
-				"name": "statistic_name",
+				"name": "Channel_ID",
 				"type": "String"
 			},
 			{
-				"name": "is_active",
+				"name": "Sport_ID",
 				"type": "String"
 			},
 			{
-				"name": "created_by",
+				"name": "Statistic_Name",
 				"type": "String"
 			},
 			{
-				"name": "created_datetime",
+				"name": "Active_YN",
+				"type": "String"
+			},
+			{
+				"name": "Created_by",
+				"type": "String"
+			},
+			{
+				"name": "Created_datetime",
 				"type": "String"
 			}
 		],
@@ -44,7 +52,7 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": true
 			},
-			"key": "data_from_caspio/LAX_LU_Statistic_Names.csv",
+			"key": "data_from_caspio/LAX_LU_Statistic_Types.csv",
 			"bucketName": "club-lacrosse-data"
 		}
 	}

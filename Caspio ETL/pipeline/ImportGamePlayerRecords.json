@@ -26,7 +26,7 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"columnMappings": {
-							"Primary_Key": "Primary_Key",
+							"game_player_record_id": "game_player_record_id",
 							"Sport_ID": "Sport_ID",
 							"Player_ID": "Player_ID",
 							"Application_ID": "Application_ID",

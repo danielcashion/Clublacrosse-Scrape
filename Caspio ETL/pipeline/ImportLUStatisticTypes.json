@@ -1,9 +1,9 @@
 {
-	"name": "ImportLUStatisticNames",
+	"name": "ImportLUStatisticTypes",
 	"properties": {
 		"activities": [
 			{
-				"name": "StageStatisticNames",
+				"name": "StageStatisticTypes",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -20,30 +20,33 @@
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "TRUNCATE TABLE [casp].[lax_lu_statistic_names]"
+						"preCopyScript": "TRUNCATE TABLE [casp].[lax_lu_statistic_types]"
 					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
 						"columnMappings": {
-							"statistic_id": "statistic_id",
-							"sport_id": "sport_id",
-							"statistic_name": "statistic_name",
-							"is_active": "is_active",
-							"created_by": "created_by",
-							"created_datetime": "created_datetime"
+							"Statistic_ID": "Statistic_ID",
+							"Application_ID": "Application_ID",
+							"Channel_ID": "Channel_ID",
+							"Sport_ID": "Sport_ID",
+							"Statistic_Name": "Statistic_Name",
+							"Sort_ID": "sort_id",
+							"Active_YN": "Active_YN",
+							"Created_by": "Created_by",
+							"Created_datetime": "Created_datetime"
 						}
 					}
 				},
 				"inputs": [
 					{
-						"referenceName": "AWSBucketLUStatisticNames",
+						"referenceName": "AWSBucketStatisticTypes",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureTableLUStatisticNames",
+						"referenceName": "AzureTableLUStatisticTypes",
 						"type": "DatasetReference"
 					}
 				]

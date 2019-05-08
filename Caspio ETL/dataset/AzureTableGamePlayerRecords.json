@@ -8,7 +8,7 @@
 		"type": "AzureSqlTable",
 		"structure": [
 			{
-				"name": "Primary_Key",
+				"name": "game_player_record_id",
 				"type": "String"
 			},
 			{

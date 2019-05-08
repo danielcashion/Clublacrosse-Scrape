@@ -28,6 +28,10 @@
 				"type": "String"
 			},
 			{
+				"name": "Sort_ID",
+				"type": "String"
+			},
+			{
 				"name": "Active_YN",
 				"type": "String"
 			},

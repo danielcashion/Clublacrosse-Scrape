@@ -33,6 +33,7 @@
 							"Sport_ID": "Sport_ID",
 							"Sport_Gender": "Sport_Gender",
 							"Game_Date": "Game_Date",
+							"Tournament_ID": "Tournament_ID",
 							"Home_Team_ID": "Home_Team_ID",
 							"Away_Team_ID": "Away_Team_ID",
 							"Home_Team_Score": "Home_Team_Score",

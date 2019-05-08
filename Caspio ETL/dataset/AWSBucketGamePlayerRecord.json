@@ -8,7 +8,11 @@
 		"type": "AmazonS3Object",
 		"structure": [
 			{
-				"name": "Primary_Key",
+				"name": "game_player_record_id",
+				"type": "String"
+			},
+			{
+				"name": "Sequence",
 				"type": "String"
 			},
 			{
@@ -57,10 +61,6 @@
 			},
 			{
 				"name": "Active_YN",
-				"type": "String"
-			},
-			{
-				"name": "Sequence",
 				"type": "String"
 			},
 			{
