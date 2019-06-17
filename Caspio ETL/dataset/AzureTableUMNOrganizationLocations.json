@@ -60,10 +60,6 @@
 				"type": "String"
 			},
 			{
-				"name": "Org_Location_Sequence",
-				"type": "String"
-			},
-			{
 				"name": "Org_Location_Add_User_ID",
 				"type": "String"
 			},
