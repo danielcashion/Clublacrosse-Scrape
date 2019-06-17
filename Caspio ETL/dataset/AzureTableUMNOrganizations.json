@@ -116,6 +116,10 @@
 				"type": "String"
 			},
 			{
+				"name": "Tourney_Production_Only",
+				"type": "String"
+			},
+			{
 				"name": "Organization_Date_Created",
 				"type": "String"
 			},

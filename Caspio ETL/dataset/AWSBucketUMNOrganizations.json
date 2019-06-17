@@ -48,10 +48,6 @@
 				"type": "String"
 			},
 			{
-				"name": "Organization_Sport_Gender",
-				"type": "String"
-			},
-			{
 				"name": "Organization_Narrative",
 				"type": "String"
 			},
@@ -116,6 +112,10 @@
 				"type": "String"
 			},
 			{
+				"name": "Tourney_Production_Only",
+				"type": "String"
+			},
+			{
 				"name": "Organization_Date_Created",
 				"type": "String"
 			},
@@ -125,10 +125,6 @@
 			},
 			{
 				"name": "Organization_Active_YN",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Sequence",
 				"type": "String"
 			},
 			{
