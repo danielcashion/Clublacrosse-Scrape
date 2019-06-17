@@ -48,58 +48,6 @@
 				"type": "String"
 			},
 			{
-				"name": "Org_Location_Picture",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Narrative",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Address_1",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Address_2",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Country",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Region",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_City",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_ZipPost_Code",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Phone",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Contact_Email_Addr",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Contact_SMS_Phone",
-				"type": "String"
-			},
-			{
-				"name": "Org_Location_Latitude",
-				"type": "Double"
-			},
-			{
-				"name": "Org_Location_Longitude",
-				"type": "Double"
-			},
-			{
 				"name": "Org_Location_Active_YN",
 				"type": "String"
 			},
