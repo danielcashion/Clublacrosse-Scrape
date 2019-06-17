@@ -48,10 +48,6 @@
 				"type": "String"
 			},
 			{
-				"name": "location_name_and_year",
-				"type": "String"
-			},
-			{
 				"name": "Org_Location_Active_YN",
 				"type": "String"
 			},
