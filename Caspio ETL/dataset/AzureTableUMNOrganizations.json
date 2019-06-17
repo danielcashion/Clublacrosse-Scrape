@@ -48,10 +48,6 @@
 				"type": "String"
 			},
 			{
-				"name": "Organization_Sport_Gender",
-				"type": "String"
-			},
-			{
 				"name": "Organization_Narrative",
 				"type": "String"
 			},
@@ -129,10 +125,6 @@
 			},
 			{
 				"name": "Organization_Active_YN",
-				"type": "String"
-			},
-			{
-				"name": "Organization_Sequence",
 				"type": "String"
 			},
 			{
