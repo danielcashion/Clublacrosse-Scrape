@@ -40,6 +40,10 @@
 				"type": "String"
 			},
 			{
+				"name": "bracket_year",
+				"type": "Int32"
+			},
+			{
 				"name": "Home_Team_ID",
 				"type": "String"
 			},
@@ -49,27 +53,35 @@
 			},
 			{
 				"name": "Home_Team_Score",
-				"type": "String"
+				"type": "Int32"
 			},
 			{
 				"name": "Away_Team_Score",
-				"type": "String"
+				"type": "Int32"
 			},
 			{
 				"name": "Home_Score_Confirms",
-				"type": "String"
+				"type": "Int32"
 			},
 			{
 				"name": "Away_Score_Confirms",
-				"type": "String"
+				"type": "Int32"
 			},
 			{
 				"name": "Narrative",
 				"type": "String"
 			},
 			{
+				"name": "confirmed_final",
+				"type": "Int16"
+			},
+			{
+				"name": "Counts_in_Ratings_YN",
+				"type": "Int16"
+			},
+			{
 				"name": "Is_Active",
-				"type": "String"
+				"type": "Int16"
 			},
 			{
 				"name": "Create_Date",
@@ -77,10 +89,6 @@
 			},
 			{
 				"name": "Last_Activity",
-				"type": "String"
-			},
-			{
-				"name": "Sequence",
 				"type": "String"
 			},
 			{
