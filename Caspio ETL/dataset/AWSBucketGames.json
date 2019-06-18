@@ -40,6 +40,10 @@
 				"type": "String"
 			},
 			{
+				"name": "bracket_year",
+				"type": "String"
+			},
+			{
 				"name": "Home_Team_ID",
 				"type": "String"
 			},
@@ -68,7 +72,15 @@
 				"type": "String"
 			},
 			{
+				"name": "confirmed_final",
+				"type": "String"
+			},
+			{
 				"name": "Is_Active",
+				"type": "String"
+			},
+			{
+				"name": "Counts_In_Ratings_YN",
 				"type": "String"
 			},
 			{
@@ -77,10 +89,6 @@
 			},
 			{
 				"name": "Last_Activity",
-				"type": "String"
-			},
-			{
-				"name": "Sequence",
 				"type": "String"
 			},
 			{
