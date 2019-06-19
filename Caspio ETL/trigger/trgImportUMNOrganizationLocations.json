@@ -1,7 +1,15 @@
 {
 	"name": "trgImportUMNOrganizationLocations",
 	"properties": {
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ImportUMNOrganizationLocation",
+					"type": "PipelineReference"
+				}
+			}
+		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
