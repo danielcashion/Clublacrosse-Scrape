@@ -1,0 +1,28 @@
+{
+	"name": "trgImportUMNOrganizations",
+	"properties": {
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ImportUMNOrganizations",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2019-06-19T13:44:00.000Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}
