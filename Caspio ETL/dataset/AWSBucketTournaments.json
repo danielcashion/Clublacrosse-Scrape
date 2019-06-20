@@ -8,119 +8,115 @@
 		"type": "AmazonS3Object",
 		"structure": [
 			{
-				"name": "Tournament_ID",
+				"name": "LAX_Tournaments_Tournament_ID",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Application_ID",
+				"name": "LAX_Tournaments_Tournament_Application_ID",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Channel_ID",
+				"name": "LAX_Tournaments_Tournament_Channel_ID",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Name",
+				"name": "LAX_Tournaments_Tournament_Name",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Sport_ID",
+				"name": "LAX_Tournaments_Tournament_Sport_ID",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Start_Date",
+				"name": "LAX_Tournaments_Tournament_Start_Date",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_End_Date",
+				"name": "LAX_Tournaments_Tournament_End_Date",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Organization_ID",
+				"name": "LAX_Tournaments_Tournament_Organization_ID",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Country",
+				"name": "LAX_Tournaments_Tournament_Country",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Region",
+				"name": "LAX_Tournaments_Tournament_Region",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_City",
+				"name": "LAX_Tournaments_Tournament_City",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Location",
+				"name": "LAX_Tournaments_Tournament_Location",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Website_URL",
+				"name": "LAX_Tournaments_Tournament_Website_URL",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Source",
+				"name": "LAX_Tournaments_Tournament_Source",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Narrative",
+				"name": "LAX_Tournaments_Tournament_Narrative",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Active_YN",
+				"name": "LAX_Tournaments_Tournament_Active_YN",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Create_Date",
+				"name": "LAX_Tournaments_Tournament_Create_Date",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Last_Activity",
+				"name": "LAX_Tournaments_Tournament_Last_Activity",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Sequence",
+				"name": "LAX_Tournaments_Tournament_Add_User_ID",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Add_User_ID",
+				"name": "LAX_Tournaments_Tournament_Add_User_Name",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Add_User_Name",
+				"name": "LAX_Tournaments_Tournament_Add_DateTime",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Add_DateTime",
+				"name": "LAX_Tournaments_Tournament_Add_IP",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Add_IP",
+				"name": "LAX_Tournaments_Tournament_Add_Browser",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Add_Browser",
+				"name": "LAX_Tournaments_Tournament_Upd_User_ID",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Upd_User_ID",
+				"name": "LAX_Tournaments_Tournament_Upd_User_Name",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Upd_User_Name",
+				"name": "LAX_Tournaments_Tournament_Upd_DateTime",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Upd_DateTime",
+				"name": "LAX_Tournaments_Tournament_Upd_IP",
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Upd_IP",
-				"type": "String"
-			},
-			{
-				"name": "Tournament_Upd_Browser",
+				"name": "LAX_Tournaments_Tournament_Upd_Browser",
 				"type": "String"
 			}
 		],
