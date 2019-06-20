@@ -56,18 +56,6 @@
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Sport_Gender",
-				"type": "String"
-			},
-			{
-				"name": "Tournament_Team_Years",
-				"type": "String"
-			},
-			{
-				"name": "Tournament_Team_Levels",
-				"type": "String"
-			},
-			{
 				"name": "Tournament_Website_URL",
 				"type": "String"
 			},
