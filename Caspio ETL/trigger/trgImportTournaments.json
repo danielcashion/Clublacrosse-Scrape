@@ -1,0 +1,28 @@
+{
+	"name": "trgImportTournaments",
+	"properties": {
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ImportTournaments",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2019-06-20T23:05:00.000Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}
