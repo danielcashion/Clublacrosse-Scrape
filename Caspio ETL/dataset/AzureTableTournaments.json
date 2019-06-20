@@ -36,7 +36,19 @@
 				"type": "String"
 			},
 			{
+				"name": "Tournament_Organization_ID",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_Country",
+				"type": "String"
+			},
+			{
 				"name": "Tournament_Region",
+				"type": "String"
+			},
+			{
+				"name": "Tournament_City",
 				"type": "String"
 			},
 			{
@@ -44,7 +56,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Tournament_Organization_ID",
+				"name": "Tournament_Website_URL",
 				"type": "String"
 			},
 			{
@@ -65,10 +77,6 @@
 			},
 			{
 				"name": "Tournament_Last_Activity",
-				"type": "String"
-			},
-			{
-				"name": "Tournament_Sequence",
 				"type": "String"
 			},
 			{
