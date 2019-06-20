@@ -1,0 +1,836 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "ClubSports"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportGames')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "StageLaxGamesData",
+						"type": "Copy",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_games]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Game_ID": "Game_ID",
+									"Application_ID": "Application_ID",
+									"Channel_ID": "Channel_ID",
+									"Description": "Description",
+									"Sport_ID": "Sport_ID",
+									"Sport_Gender": "Sport_Gender",
+									"Game_Date": "Game_Date",
+									"Tournament_ID": "Tournament_ID",
+									"bracket_year": "bracket_year",
+									"Home_Team_ID": "Home_Team_ID",
+									"Away_Team_ID": "Away_Team_ID",
+									"Home_Team_Score": "Home_Team_Score",
+									"Away_Team_Score": "Away_Team_Score",
+									"Home_Score_Confirms": "Home_Score_Confirms",
+									"Away_Score_Confirms": "Away_Score_Confirms",
+									"Narrative": "Narrative",
+									"confirmed_final": "confirmed_final",
+									"Counts_In_Ratings_YN": "Counts_in_Ratings_YN",
+									"Is_Active": "Is_Active",
+									"Create_Date": "Create_Date",
+									"Last_Activity": "Last_Activity",
+									"Add_User_ID": "Add_User_ID",
+									"Add_User_Name": "Add_User_Name",
+									"Add_IP": "Add_IP",
+									"Add_DateTime": "Add_DateTime",
+									"Add_Browser": "Add_Browser",
+									"Upd_User_ID": "Upd_User_ID",
+									"Upd_DateTime": "Upd_DateTime",
+									"Upd_User_Name": "Upd_User_Name",
+									"Upd_IP": "Upd_IP",
+									"Upd_Browser": "Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketGames",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableGames",
+								"type": "DatasetReference"
+							}
+						]
+					},
+					{
+						"name": "InsNewDatatoProd",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "StageLaxGamesData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[usp_casp_ins_games]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AWSBucketGames')]",
+				"[concat(variables('factoryId'), '/datasets/AzureTableGames')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportTournaments')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_tournaments]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"LAX_Tournaments_Tournament_ID": "Tournament_ID",
+									"LAX_Tournaments_Tournament_Application_ID": "Tournament_Application_ID",
+									"LAX_Tournaments_Tournament_Channel_ID": "Tournament_Channel_ID",
+									"LAX_Tournaments_Tournament_Name": "Tournament_Name",
+									"LAX_Tournaments_Tournament_Sport_ID": "Tournament_Sport_ID",
+									"LAX_Tournaments_Tournament_Start_Date": "Tournament_Start_Date",
+									"LAX_Tournaments_Tournament_End_Date": "Tournament_End_Date",
+									"LAX_Tournaments_Tournament_Organization_ID": "Tournament_Organization_ID",
+									"LAX_Tournaments_Tournament_Country": "Tournament_Country",
+									"LAX_Tournaments_Tournament_Region": "Tournament_Region",
+									"LAX_Tournaments_Tournament_City": "Tournament_City",
+									"LAX_Tournaments_Tournament_Location": "Tournament_Location",
+									"LAX_Tournaments_Tournament_Website_URL": "Tournament_Website_URL",
+									"LAX_Tournaments_Tournament_Source": "Tournament_Source",
+									"LAX_Tournaments_Tournament_Narrative": "Tournament_Narrative",
+									"LAX_Tournaments_Tournament_Active_YN": "Tournament_Active_YN",
+									"LAX_Tournaments_Tournament_Create_Date": "Tournament_Create_Date",
+									"LAX_Tournaments_Tournament_Last_Activity": "Tournament_Last_Activity",
+									"LAX_Tournaments_Tournament_Add_User_ID": "Tournament_Add_User_ID",
+									"LAX_Tournaments_Tournament_Add_User_Name": "Tournament_Add_User_Name",
+									"LAX_Tournaments_Tournament_Add_DateTime": "Tournament_Add_DateTime",
+									"LAX_Tournaments_Tournament_Add_IP": "Tournament_Add_IP",
+									"LAX_Tournaments_Tournament_Add_Browser": "Tournament_Add_Browser",
+									"LAX_Tournaments_Tournament_Upd_User_ID": "Tournament_Upd_User_ID",
+									"LAX_Tournaments_Tournament_Upd_User_Name": "Tournament_Upd_User_Name",
+									"LAX_Tournaments_Tournament_Upd_DateTime": "Tournament_Upd_DateTime",
+									"LAX_Tournaments_Tournament_Upd_IP": "Tournament_Upd_IP",
+									"LAX_Tournaments_Tournament_Upd_Browser": "Tournament_Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketTournaments",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableTournaments",
+								"type": "DatasetReference"
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AWSBucketTournaments')]",
+				"[concat(variables('factoryId'), '/datasets/AzureTableTournaments')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketGames')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Game_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_Gender",
+						"type": "String"
+					},
+					{
+						"name": "Game_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "bracket_year",
+						"type": "String"
+					},
+					{
+						"name": "Home_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Away_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Home_Team_Score",
+						"type": "String"
+					},
+					{
+						"name": "Away_Team_Score",
+						"type": "String"
+					},
+					{
+						"name": "Home_Score_Confirms",
+						"type": "String"
+					},
+					{
+						"name": "Away_Score_Confirms",
+						"type": "String"
+					},
+					{
+						"name": "Narrative",
+						"type": "String"
+					},
+					{
+						"name": "confirmed_final",
+						"type": "String"
+					},
+					{
+						"name": "Is_Active",
+						"type": "String"
+					},
+					{
+						"name": "Counts_In_Ratings_YN",
+						"type": "String"
+					},
+					{
+						"name": "Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Games.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketTournaments')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "LAX_Tournaments_Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Name",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Start_Date",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_End_Date",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Country",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Region",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_City",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Location",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Website_URL",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Source",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Narrative",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Tournaments.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableGames')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Game_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_Gender",
+						"type": "String"
+					},
+					{
+						"name": "Game_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "bracket_year",
+						"type": "Int32"
+					},
+					{
+						"name": "Home_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Away_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Home_Team_Score",
+						"type": "Int32"
+					},
+					{
+						"name": "Away_Team_Score",
+						"type": "Int32"
+					},
+					{
+						"name": "Home_Score_Confirms",
+						"type": "Int32"
+					},
+					{
+						"name": "Away_Score_Confirms",
+						"type": "Int32"
+					},
+					{
+						"name": "Narrative",
+						"type": "String"
+					},
+					{
+						"name": "confirmed_final",
+						"type": "Int16"
+					},
+					{
+						"name": "Counts_in_Ratings_YN",
+						"type": "Int16"
+					},
+					{
+						"name": "Is_Active",
+						"type": "Int16"
+					},
+					{
+						"name": "Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_games]"
+				}
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableTournaments')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Name",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Start_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_End_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Country",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Region",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_City",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Location",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Website_URL",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Source",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Narrative",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_tournaments]"
+				}
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportUMNOrganizationLocations')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportUMNOrganizationLocation",
+							"type": "PipelineReference"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-06-19T13:42:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"hours": [
+								8
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportUMNOrganizations')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportUMNOrganizations",
+							"type": "PipelineReference"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-06-19T13:44:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"hours": [
+								8
+							]
+						}
+					}
+				}
+			}
+		}
+	]
+}

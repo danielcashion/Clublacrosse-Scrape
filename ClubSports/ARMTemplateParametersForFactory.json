@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ClubSports"
+		},
+		"AWSBucketFromCaspio_secretAccessKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase_connectionString": {
+			"value": ""
+		},
+		"ClubLacrosse_connectionString": {
+			"value": ""
+		},
+		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
+			"value": "AKIAJVD6W2VEY6IIP2KA"
+		}
+	}
+}

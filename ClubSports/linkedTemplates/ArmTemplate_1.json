@@ -1,0 +1,1432 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "ClubSports"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableTournaments')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Name",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Start_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_End_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Country",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Region",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_City",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Location",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Website_URL",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Source",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Narrative",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_tournaments]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableUMNOrganizationLocations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Org_Location_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Type",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Name",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Sport_Type",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Sport_Gender",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Team_Level",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Team_Year",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Created_Date",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[UMN_organization_locations]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableUMNOrganizations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Parent_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Name",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Nickname",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Main_Contact_Person",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Type",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Logo",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Narrative",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Address_1",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Address_2",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Country",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Region",
+						"type": "String"
+					},
+					{
+						"name": "Organization_City",
+						"type": "String"
+					},
+					{
+						"name": "Organization_ZipPost_Code",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Website_URL",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Phone_Number",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Contact_Email_Addr",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Contact_SMS_Phone",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Time_Zone",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Facebook",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Instagram",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Snapchat",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Sponsors_Tourny_YN",
+						"type": "String"
+					},
+					{
+						"name": "Tourney_Production_Only",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Date_Created",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[UMN_organizations]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/From_Caspio')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ClubLacrosse",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Incoming Data"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"typeProperties": {
+					"tableName": "[[data].[club_organizations]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportGamePlayerRecords')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "StageLaxGamePlayerRecords",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[LAX_game_player_records]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"game_player_record_id": "game_player_record_id",
+									"Sport_ID": "Sport_ID",
+									"Player_ID": "Player_ID",
+									"Application_ID": "Application_ID",
+									"Channel_ID": "Channel_ID",
+									"Club_Organization_ID": "Club_Organization_ID",
+									"Club_Organization_Team_ID": "Club_Organization_Team_ID",
+									"Game_ID": "Game_ID",
+									"Statistic_ID": "Statistic_ID",
+									"Statistic_Values": "Statistic_Values",
+									"Created_User_Name": "Created_User_Name",
+									"Created_DateTime": "Created_DateTime",
+									"Active_YN": "Active_YN",
+									"Sequence": "Sequence",
+									"Created_Date": "Created_Date",
+									"Last_Activity": "Last_Activity",
+									"Add_User_ID": "Add_User_ID",
+									"Add_User_Name": "Add_User_Name",
+									"Add_DateTime": "Add_DateTime",
+									"Add_IP": "Add_IP",
+									"Add_Browser": "Add_Browser",
+									"Upd_User_ID": "Upd_User_ID",
+									"Upd_User_Name": "Upd_User_Name",
+									"Upd_DateTime": "Upd_DateTime",
+									"Upd_IP": "Upd_IP",
+									"Upd_Browser": "Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketGamePlayerRecord",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableGamePlayerRecords",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "InsNewDataToProd",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "StageLaxGamePlayerRecords",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[usp_casp_ins_game_player_records]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportGames')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "StageLaxGamesData",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_games]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Game_ID": "Game_ID",
+									"Application_ID": "Application_ID",
+									"Channel_ID": "Channel_ID",
+									"Description": "Description",
+									"Sport_ID": "Sport_ID",
+									"Sport_Gender": "Sport_Gender",
+									"Game_Date": "Game_Date",
+									"Tournament_ID": "Tournament_ID",
+									"bracket_year": "bracket_year",
+									"Home_Team_ID": "Home_Team_ID",
+									"Away_Team_ID": "Away_Team_ID",
+									"Home_Team_Score": "Home_Team_Score",
+									"Away_Team_Score": "Away_Team_Score",
+									"Home_Score_Confirms": "Home_Score_Confirms",
+									"Away_Score_Confirms": "Away_Score_Confirms",
+									"Narrative": "Narrative",
+									"confirmed_final": "confirmed_final",
+									"Counts_In_Ratings_YN": "Counts_in_Ratings_YN",
+									"Is_Active": "Is_Active",
+									"Create_Date": "Create_Date",
+									"Last_Activity": "Last_Activity",
+									"Add_User_ID": "Add_User_ID",
+									"Add_User_Name": "Add_User_Name",
+									"Add_IP": "Add_IP",
+									"Add_DateTime": "Add_DateTime",
+									"Add_Browser": "Add_Browser",
+									"Upd_User_ID": "Upd_User_ID",
+									"Upd_DateTime": "Upd_DateTime",
+									"Upd_User_Name": "Upd_User_Name",
+									"Upd_IP": "Upd_IP",
+									"Upd_Browser": "Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketGames",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableGames",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "InsNewDatatoProd",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "StageLaxGamesData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[usp_casp_ins_games]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportLUStatisticTypes')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "StageStatisticTypes",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_lu_statistic_types]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Statistic_ID": "Statistic_ID",
+									"Application_ID": "Application_ID",
+									"Channel_ID": "Channel_ID",
+									"Sport_ID": "Sport_ID",
+									"Statistic_Name": "Statistic_Name",
+									"Sort_ID": "sort_id",
+									"Active_YN": "Active_YN",
+									"Created_by": "Created_by",
+									"Created_datetime": "Created_datetime"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketStatisticTypes",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableLUStatisticTypes",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportTeamLevels')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "StageData",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_team_levels]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Team_Level_ID": "Team_Level_ID",
+									"Team_Level_Application_ID": "Team_Level_Application_ID",
+									"Team_Level_Channel_ID": "Team_Level_Channel_ID",
+									"Team_Level_Description": "Team_Level_Description"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketTeamLevels",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableTeamLevels",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "InsDataTeamLevels",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "StageData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[usp_casp_ins_team_levels]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportTeamStatisticRecords')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_team_statistic_records]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Primary_Key": "Primary_Key",
+									"Application_ID": "Application_ID",
+									"Channel_ID": "Channel_ID",
+									"Club_Organization_Team_ID": "Club_Organization_Team_ID",
+									"Statistic_ID": "Statistic_ID",
+									"Knowledge_Date": "Knowledge_Date",
+									"Measure_Value": "Measure_Value",
+									"Status_ID": "Status_ID",
+									"Created_DateTime": "Created_DateTime",
+									"Last_Activity": "Last_Activity",
+									"Active_YN": "Active_YN",
+									"Sequence": "Sequence",
+									"Add_User_ID": "Add_User_ID",
+									"Add_User_Name": "Add_User_Name",
+									"Add_DateTime": "Add_DateTime",
+									"Add_IP": "Add_IP",
+									"Add_Browser": "Add_Browser",
+									"Upd_User_ID": "Upd_User_ID",
+									"Upd_User_Name": "Upd_User_Name",
+									"Upd_DateTime": "Upd_DateTime",
+									"Upd_IP": "Upd_IP",
+									"Upd_Browser": "Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketTeamStatisticRecords",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableTeamStatisticRecords",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportTournaments')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_tournaments]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"LAX_Tournaments_Tournament_ID": "Tournament_ID",
+									"LAX_Tournaments_Tournament_Application_ID": "Tournament_Application_ID",
+									"LAX_Tournaments_Tournament_Channel_ID": "Tournament_Channel_ID",
+									"LAX_Tournaments_Tournament_Name": "Tournament_Name",
+									"LAX_Tournaments_Tournament_Sport_ID": "Tournament_Sport_ID",
+									"LAX_Tournaments_Tournament_Start_Date": "Tournament_Start_Date",
+									"LAX_Tournaments_Tournament_End_Date": "Tournament_End_Date",
+									"LAX_Tournaments_Tournament_Organization_ID": "Tournament_Organization_ID",
+									"LAX_Tournaments_Tournament_Country": "Tournament_Country",
+									"LAX_Tournaments_Tournament_Region": "Tournament_Region",
+									"LAX_Tournaments_Tournament_City": "Tournament_City",
+									"LAX_Tournaments_Tournament_Location": "Tournament_Location",
+									"LAX_Tournaments_Tournament_Website_URL": "Tournament_Website_URL",
+									"LAX_Tournaments_Tournament_Source": "Tournament_Source",
+									"LAX_Tournaments_Tournament_Narrative": "Tournament_Narrative",
+									"LAX_Tournaments_Tournament_Active_YN": "Tournament_Active_YN",
+									"LAX_Tournaments_Tournament_Create_Date": "Tournament_Create_Date",
+									"LAX_Tournaments_Tournament_Last_Activity": "Tournament_Last_Activity",
+									"LAX_Tournaments_Tournament_Add_User_ID": "Tournament_Add_User_ID",
+									"LAX_Tournaments_Tournament_Add_User_Name": "Tournament_Add_User_Name",
+									"LAX_Tournaments_Tournament_Add_DateTime": "Tournament_Add_DateTime",
+									"LAX_Tournaments_Tournament_Add_IP": "Tournament_Add_IP",
+									"LAX_Tournaments_Tournament_Add_Browser": "Tournament_Add_Browser",
+									"LAX_Tournaments_Tournament_Upd_User_ID": "Tournament_Upd_User_ID",
+									"LAX_Tournaments_Tournament_Upd_User_Name": "Tournament_Upd_User_Name",
+									"LAX_Tournaments_Tournament_Upd_DateTime": "Tournament_Upd_DateTime",
+									"LAX_Tournaments_Tournament_Upd_IP": "Tournament_Upd_IP",
+									"LAX_Tournaments_Tournament_Upd_Browser": "Tournament_Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketTournaments",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableTournaments",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AzureTableTournaments')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportUMNOrganizationLocation')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[umn_organization_locations]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Org_Location_ID": "Org_Location_ID",
+									"Org_Location_Application_ID": "Org_Location_Application_ID",
+									"Org_Location_Channel_ID": "Org_Location_Channel_ID",
+									"Org_Location_Type": "Org_Location_Type",
+									"Org_Location_Organization_ID": "Org_Location_Organization_ID",
+									"Org_Location_Name": "Org_Location_Name",
+									"Org_Location_Sport_Type": "Org_Location_Sport_Type",
+									"Org_Location_Sport_Gender": "Org_Location_Sport_Gender",
+									"Org_Location_Team_Level": "Org_Location_Team_Level",
+									"Org_Location_Team_Year": "Org_Location_Team_Year",
+									"Org_Location_Active_YN": "Org_Location_Active_YN",
+									"Org_Location_Last_Activity": "Org_Location_Last_Activity",
+									"Org_Location_Created_Date": "Org_Location_Created_Date",
+									"Org_Location_Add_User_ID": "Org_Location_Add_User_ID",
+									"Org_Location_Add_User_Name": "Org_Location_Add_User_Name",
+									"Org_Location_Add_DateTime": "Org_Location_Add_DateTime",
+									"Org_Location_Add_IP": "Org_Location_Add_IP",
+									"Org_Location_Add_Browser": "Org_Location_Add_Browser",
+									"Org_Location_Upd_User_ID": "Org_Location_Upd_User_ID",
+									"Org_Location_Upd_User_Name": "Org_Location_Upd_User_Name",
+									"Org_Location_Upd_DateTime": "Org_Location_Upd_DateTime",
+									"Org_Location_Upd_IP": "Org_Location_Upd_IP",
+									"Org_Location_Upd_Browser": "Org_Location_Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketUMNOrganizationLocations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableUMNOrganizationLocations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AzureTableUMNOrganizationLocations')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportUMNOrganizations')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[umn_organizations]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Organization_ID": "Organization_ID",
+									"Organization_Application_ID": "Organization_Application_ID",
+									"Organization_Channel_ID": "Organization_Channel_ID",
+									"Organization_Parent_ID": "Organization_Parent_ID",
+									"Organization_Name": "Organization_Name",
+									"Organization_Nickname": "Organization_Nickname",
+									"Organization_Main_Contact_Person": "Organization_Main_Contact_Person",
+									"Organization_Type": "Organization_Type",
+									"Organization_Logo": "Organization_Logo",
+									"Organization_Sport_ID": "Organization_Sport_ID",
+									"Organization_Narrative": "Organization_Narrative",
+									"Organization_Address_1": "Organization_Address_1",
+									"Organization_Address_2": "Organization_Address_2",
+									"Organization_Country": "Organization_Country",
+									"Organization_Region": "Organization_Region",
+									"Organization_City": "Organization_City",
+									"Organization_ZipPost_Code": "Organization_ZipPost_Code",
+									"Organization_Website_URL": "Organization_Website_URL",
+									"Organization_Phone_Number": "Organization_Phone_Number",
+									"Organization_Contact_Email_Addr": "Organization_Contact_Email_Addr",
+									"Organization_Contact_SMS_Phone": "Organization_Contact_SMS_Phone",
+									"Organization_Time_Zone": "Organization_Time_Zone",
+									"Organization_Facebook": "Organization_Facebook",
+									"Organization_Instagram": "Organization_Instagram",
+									"Organization_Snapchat": "Organization_Snapchat",
+									"Organization_Sponsors_Tourny_YN": "Organization_Sponsors_Tourny_YN",
+									"Tourney_Production_Only": "Tourney_Production_Only",
+									"Organization_Date_Created": "Organization_Date_Created",
+									"Organization_Last_Activity": "Organization_Last_Activity",
+									"Organization_Active_YN": "Organization_Active_YN",
+									"Organization_Add_User_ID": "Organization_Add_User_ID",
+									"Organization_Add_User_Name": "Organization_Add_User_Name",
+									"Organization_Add_DateTime": "Organization_Add_DateTime",
+									"Organization_Add_IP": "Organization_Add_IP",
+									"Organization_Add_Browser": "Organization_Add_Browser",
+									"Organization_Upd_User_ID": "Organization_Upd_User_ID",
+									"Organization_Upd_User_Name": "Organization_Upd_User_Name",
+									"Organization_Upd_DateTime": "Organization_Upd_DateTime",
+									"Organization_Upd_IP": "Organization_Upd_IP",
+									"Organization_Upd_Browser": "Organization_Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketUMNOrganizations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableUMNOrganizations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AzureTableUMNOrganizations')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImporttLUTeamYears')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_lu_team_years]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Team_Year_ID": "Team_Year_ID",
+									"Team_Year_Application_ID_": "Team_Year_Application_ID_",
+									"Team_Year_Channel_ID": "Team_Year_Channel_ID",
+									"Team_Year_Description": "Team_Year_Description"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketLUTeamYears",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableLUTeamYears",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportGamePlayerRecordDaily')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportGamePlayerRecords",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-04-02T01:54:00.000Z",
+						"endTime": "2019-12-31T01:54:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								15
+							],
+							"hours": [
+								7
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ImportGamePlayerRecords')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportStatisticTypes')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportLUStatisticTypes",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-04-24T03:16:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"hours": [
+								7
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ImportLUStatisticTypes')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportTeamLevels')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportTeamLevels",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-04-24T03:17:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"hours": [
+								7
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ImportTeamLevels')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportUMNOrganizationLocations')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportUMNOrganizationLocation",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-06-19T13:42:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"hours": [
+								8
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ImportUMNOrganizationLocation')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportUMNOrganizations')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportUMNOrganizations",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-06-19T13:44:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"hours": [
+								8
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ImportUMNOrganizations')]"
+			]
+		}
+	]
+}

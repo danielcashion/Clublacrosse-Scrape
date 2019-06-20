@@ -1,0 +1,1748 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "ClubSports"
+		},
+		"AWSBucketFromCaspio_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'AWSBucketFromCaspio'"
+		},
+		"AzureSqlDatabase_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase'"
+		},
+		"ClubLacrosse_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ClubLacrosse'"
+		},
+		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "AKIAJVD6W2VEY6IIP2KA"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketFromCaspio')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AmazonS3",
+				"typeProperties": {
+					"serviceUrl": "",
+					"accessKeyId": "[parameters('AWSBucketFromCaspio_properties_typeProperties_accessKeyId')]",
+					"secretAccessKey": {
+						"type": "SecureString",
+						"value": "[parameters('AWSBucketFromCaspio_secretAccessKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ClubLacrosse')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('ClubLacrosse_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketGamePlayerRecord')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "game_player_record_id",
+						"type": "String"
+					},
+					{
+						"name": "Sequence",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Player_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Club_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Club_Organization_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Game_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_Values",
+						"type": "String"
+					},
+					{
+						"name": "Created_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Created_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Created_Date",
+						"type": "String"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Game_Player_Records.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketGames')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Game_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_Gender",
+						"type": "String"
+					},
+					{
+						"name": "Game_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "bracket_year",
+						"type": "String"
+					},
+					{
+						"name": "Home_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Away_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Home_Team_Score",
+						"type": "String"
+					},
+					{
+						"name": "Away_Team_Score",
+						"type": "String"
+					},
+					{
+						"name": "Home_Score_Confirms",
+						"type": "String"
+					},
+					{
+						"name": "Away_Score_Confirms",
+						"type": "String"
+					},
+					{
+						"name": "Narrative",
+						"type": "String"
+					},
+					{
+						"name": "confirmed_final",
+						"type": "String"
+					},
+					{
+						"name": "Is_Active",
+						"type": "String"
+					},
+					{
+						"name": "Counts_In_Ratings_YN",
+						"type": "String"
+					},
+					{
+						"name": "Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Games.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketLUStatisticTypes')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Statistic_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_Name",
+						"type": "String"
+					},
+					{
+						"name": "Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Created_by",
+						"type": "String"
+					},
+					{
+						"name": "Created_datetime",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_LU_Statistic_Types.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketLUTeamYears')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Team_Year_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Year_Application_ID_",
+						"type": "String"
+					},
+					{
+						"name": "Team_Year_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Year_Description",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_LU_Team_Years.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketStatisticTypes')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Statistic_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_Name",
+						"type": "String"
+					},
+					{
+						"name": "Sort_ID",
+						"type": "String"
+					},
+					{
+						"name": "Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Created_by",
+						"type": "String"
+					},
+					{
+						"name": "Created_datetime",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Statistic_Types.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketTeamLevels')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Team_Level_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Level_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Level_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Level_Description",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Team_Levels.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketTeamStatisticRecords')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Primary_Key",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Club_Organization_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_ID",
+						"type": "String"
+					},
+					{
+						"name": "Knowledge_Date",
+						"type": "String"
+					},
+					{
+						"name": "Measure_Value",
+						"type": "String"
+					},
+					{
+						"name": "Status_ID",
+						"type": "String"
+					},
+					{
+						"name": "Created_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Sequence",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Team_Statistic_Records.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketTournaments')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "LAX_Tournaments_Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Name",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Start_Date",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_End_Date",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Country",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Region",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_City",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Location",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Website_URL",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Source",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Narrative",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "LAX_Tournaments_Tournament_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/LAX_Tournaments.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketUMNOrganizationLocations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Org_Location_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Type",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Name",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Sport_Type",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Sport_Gender",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Team_Level",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Team_Year",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Created_Date",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Org_Location_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/UMN_Organizations_Locations.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AWSBucketUMNOrganizations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AWSBucketFromCaspio",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AmazonS3Object",
+				"structure": [
+					{
+						"name": "Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Parent_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Name",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Nickname",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Main_Contact_Person",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Type",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Logo",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Narrative",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Address_1",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Address_2",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Country",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Region",
+						"type": "String"
+					},
+					{
+						"name": "Organization_City",
+						"type": "String"
+					},
+					{
+						"name": "Organization_ZipPost_Code",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Website_URL",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Phone_Number",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Contact_Email_Addr",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Contact_SMS_Phone",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Time_Zone",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Facebook",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Instagram",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Snapchat",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Sponsors_Tourny_YN",
+						"type": "String"
+					},
+					{
+						"name": "Tourney_Production_Only",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Date_Created",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Organization_Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"quoteChar": "\"",
+						"nullValue": "\\N",
+						"encodingName": null,
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": true
+					},
+					"key": "data_from_caspio/UMN_Organizations.csv",
+					"bucketName": "club-lacrosse-data"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AWSBucketFromCaspio')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableGamePlayerRecords')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "game_player_record_id",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Player_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Club_Organization_ID",
+						"type": "String"
+					},
+					{
+						"name": "Club_Organization_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Game_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_Values",
+						"type": "String"
+					},
+					{
+						"name": "Created_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Created_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Sequence",
+						"type": "String"
+					},
+					{
+						"name": "Created_Date",
+						"type": "String"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_game_player_records]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableGames')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Game_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_Gender",
+						"type": "String"
+					},
+					{
+						"name": "Game_Date",
+						"type": "String"
+					},
+					{
+						"name": "Tournament_ID",
+						"type": "String"
+					},
+					{
+						"name": "bracket_year",
+						"type": "Int32"
+					},
+					{
+						"name": "Home_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Away_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Home_Team_Score",
+						"type": "Int32"
+					},
+					{
+						"name": "Away_Team_Score",
+						"type": "Int32"
+					},
+					{
+						"name": "Home_Score_Confirms",
+						"type": "Int32"
+					},
+					{
+						"name": "Away_Score_Confirms",
+						"type": "Int32"
+					},
+					{
+						"name": "Narrative",
+						"type": "String"
+					},
+					{
+						"name": "confirmed_final",
+						"type": "Int16"
+					},
+					{
+						"name": "Counts_in_Ratings_YN",
+						"type": "Int16"
+					},
+					{
+						"name": "Is_Active",
+						"type": "Int16"
+					},
+					{
+						"name": "Create_Date",
+						"type": "String"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_games]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableLUStatisticTypes')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Statistic_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_Name",
+						"type": "String"
+					},
+					{
+						"name": "sort_id",
+						"type": "Int32"
+					},
+					{
+						"name": "Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Created_by",
+						"type": "String"
+					},
+					{
+						"name": "Created_datetime",
+						"type": "DateTime"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_lu_statistic_types]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableLUTeamYears')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Team_Year_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Year_Application_ID_",
+						"type": "String"
+					},
+					{
+						"name": "Team_Year_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Year_Description",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_lu_team_years]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableStatisticTypes')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Statistic_ID",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Sport_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_Name",
+						"type": "String"
+					},
+					{
+						"name": "Active_YN",
+						"type": "String"
+					},
+					{
+						"name": "Created_by",
+						"type": "String"
+					},
+					{
+						"name": "Created_datetime",
+						"type": "DateTime"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_lu_statistic_types]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableTeamLevels')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Team_Level_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Level_Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Level_Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Team_Level_Description",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_team_levels]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureTableTeamStatisticRecords')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"structure": [
+					{
+						"name": "Primary_Key",
+						"type": "String"
+					},
+					{
+						"name": "Application_ID",
+						"type": "String"
+					},
+					{
+						"name": "Channel_ID",
+						"type": "String"
+					},
+					{
+						"name": "Club_Organization_Team_ID",
+						"type": "String"
+					},
+					{
+						"name": "Statistic_ID",
+						"type": "Int32"
+					},
+					{
+						"name": "Knowledge_Date",
+						"type": "DateTime"
+					},
+					{
+						"name": "Measure_Value",
+						"type": "Double"
+					},
+					{
+						"name": "Status_ID",
+						"type": "Int32"
+					},
+					{
+						"name": "Created_DateTime",
+						"type": "DateTime"
+					},
+					{
+						"name": "Last_Activity",
+						"type": "DateTime"
+					},
+					{
+						"name": "Active_YN",
+						"type": "Boolean"
+					},
+					{
+						"name": "Sequence",
+						"type": "Int32"
+					},
+					{
+						"name": "Add_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Add_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Add_DateTime",
+						"type": "DateTime"
+					},
+					{
+						"name": "Add_IP",
+						"type": "String"
+					},
+					{
+						"name": "Add_Browser",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_ID",
+						"type": "String"
+					},
+					{
+						"name": "Upd_User_Name",
+						"type": "String"
+					},
+					{
+						"name": "Upd_DateTime",
+						"type": "DateTime"
+					},
+					{
+						"name": "Upd_IP",
+						"type": "String"
+					},
+					{
+						"name": "Upd_Browser",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[casp].[lax_team_statistic_records]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		}
+	]
+}
