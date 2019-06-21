@@ -5,6 +5,9 @@
 			"referenceName": "AWSBucketFromCaspio",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "AWS S3 Data"
+		},
 		"type": "AmazonS3Object",
 		"structure": [
 			{

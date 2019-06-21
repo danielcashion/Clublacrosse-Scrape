@@ -1,0 +1,68 @@
+{
+	"name": "AzureLaxGamesNormalized",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Azure Data"
+		},
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "row_num",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "game_id",
+				"type": "varchar"
+			},
+			{
+				"name": "tournament_id",
+				"type": "varchar"
+			},
+			{
+				"name": "team_id",
+				"type": "varchar"
+			},
+			{
+				"name": "team_score",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "score_confirms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "is_active",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_by",
+				"type": "varchar"
+			},
+			{
+				"name": "created_datetime",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "updated_by",
+				"type": "varchar"
+			},
+			{
+				"name": "updated_datetime",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"tableName": "[data].[lax_games_normalized]"
+		}
+	}
+}
