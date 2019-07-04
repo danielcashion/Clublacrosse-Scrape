@@ -1,0 +1,89 @@
+{
+	"name": "ViewLaxGames",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Game_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Application_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Channel_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Description",
+				"type": "varchar"
+			},
+			{
+				"name": "Sport_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Sport_Gender",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Game_Date",
+				"type": "varchar"
+			},
+			{
+				"name": "Game_Time",
+				"type": "varchar"
+			},
+			{
+				"name": "Tournament_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "bracket_year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Home_Team_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Away_Team_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Home_Team_Score",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Away_Team_Score",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "confirmed_final",
+				"type": "varchar"
+			},
+			{
+				"name": "Is_Active",
+				"type": "varchar"
+			},
+			{
+				"name": "Counts_In_Ratings_YN",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[view].[v_lax_games_to_caspio]"
+		}
+	}
+}
