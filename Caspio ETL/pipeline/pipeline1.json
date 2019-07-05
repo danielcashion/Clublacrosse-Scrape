@@ -46,6 +46,9 @@
 				]
 			}
 		],
+		"folder": {
+			"name": "Export Azure Data"
+		},
 		"annotations": []
 	}
 }
