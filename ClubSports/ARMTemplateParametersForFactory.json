@@ -14,6 +14,9 @@
 		"ClubLacrosse_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorage_connectionString": {
+			"value": ""
+		},
 		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
 			"value": "AKIAJVD6W2VEY6IIP2KA"
 		}

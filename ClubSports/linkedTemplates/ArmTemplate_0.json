@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ClubLacrosse'"
 		},
+		"AzureBlobStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage'"
+		},
 		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAJVD6W2VEY6IIP2KA"
@@ -73,6 +77,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AWSBucketGamePlayerRecord')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -80,6 +97,9 @@
 				"linkedServiceName": {
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AWS S3 Data"
 				},
 				"annotations": [],
 				"type": "AmazonS3Object",
@@ -217,6 +237,9 @@
 				"linkedServiceName": {
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AWS S3 Data"
 				},
 				"annotations": [],
 				"type": "AmazonS3Object",
@@ -374,6 +397,9 @@
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "AWS S3 Data"
+				},
 				"annotations": [],
 				"type": "AmazonS3Object",
 				"structure": [
@@ -439,6 +465,9 @@
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "AWS S3 Data"
+				},
 				"annotations": [],
 				"type": "AmazonS3Object",
 				"structure": [
@@ -487,6 +516,9 @@
 				"linkedServiceName": {
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AWS S3 Data"
 				},
 				"annotations": [],
 				"type": "AmazonS3Object",
@@ -557,6 +589,9 @@
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "AWS S3 Data"
+				},
 				"annotations": [],
 				"type": "AmazonS3Object",
 				"structure": [
@@ -605,6 +640,9 @@
 				"linkedServiceName": {
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AWS S3 Data"
 				},
 				"annotations": [],
 				"type": "AmazonS3Object",
@@ -726,6 +764,9 @@
 				"linkedServiceName": {
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AWS S3 Data"
 				},
 				"annotations": [],
 				"type": "AmazonS3Object",
@@ -872,6 +913,9 @@
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "AWS S3 Data"
+				},
 				"annotations": [],
 				"type": "AmazonS3Object",
 				"structure": [
@@ -996,6 +1040,9 @@
 				"linkedServiceName": {
 					"referenceName": "AWSBucketFromCaspio",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AWS S3 Data"
 				},
 				"annotations": [],
 				"type": "AmazonS3Object",
@@ -1182,6 +1229,80 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureLaxGamesNormalized')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Azure Data"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "row_num",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "game_id",
+						"type": "varchar"
+					},
+					{
+						"name": "tournament_id",
+						"type": "varchar"
+					},
+					{
+						"name": "team_id",
+						"type": "varchar"
+					},
+					{
+						"name": "team_score",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "score_confirms",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "is_active",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "created_by",
+						"type": "varchar"
+					},
+					{
+						"name": "created_datetime",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "updated_by",
+						"type": "varchar"
+					},
+					{
+						"name": "updated_datetime",
+						"type": "datetime2",
+						"scale": 7
+					}
+				],
+				"typeProperties": {
+					"tableName": "[[data].[lax_games_normalized]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureTableGamePlayerRecords')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1189,6 +1310,9 @@
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Azure Data"
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
@@ -1314,6 +1438,9 @@
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Azure Data"
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
@@ -1460,6 +1587,9 @@
 					"referenceName": "AzureSqlDatabase",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "Azure Data"
+				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
@@ -1517,6 +1647,9 @@
 					"referenceName": "AzureSqlDatabase",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "Azure Data"
+				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
@@ -1553,6 +1686,9 @@
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Azure Data"
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
@@ -1592,152 +1728,6 @@
 				],
 				"typeProperties": {
 					"tableName": "[[casp].[lax_lu_statistic_types]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureTableTeamLevels')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"structure": [
-					{
-						"name": "Team_Level_ID",
-						"type": "String"
-					},
-					{
-						"name": "Team_Level_Application_ID",
-						"type": "String"
-					},
-					{
-						"name": "Team_Level_Channel_ID",
-						"type": "String"
-					},
-					{
-						"name": "Team_Level_Description",
-						"type": "String"
-					}
-				],
-				"typeProperties": {
-					"tableName": "[[casp].[lax_team_levels]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureTableTeamStatisticRecords')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"structure": [
-					{
-						"name": "Primary_Key",
-						"type": "String"
-					},
-					{
-						"name": "Application_ID",
-						"type": "String"
-					},
-					{
-						"name": "Channel_ID",
-						"type": "String"
-					},
-					{
-						"name": "Club_Organization_Team_ID",
-						"type": "String"
-					},
-					{
-						"name": "Statistic_ID",
-						"type": "Int32"
-					},
-					{
-						"name": "Knowledge_Date",
-						"type": "DateTime"
-					},
-					{
-						"name": "Measure_Value",
-						"type": "Double"
-					},
-					{
-						"name": "Status_ID",
-						"type": "Int32"
-					},
-					{
-						"name": "Created_DateTime",
-						"type": "DateTime"
-					},
-					{
-						"name": "Last_Activity",
-						"type": "DateTime"
-					},
-					{
-						"name": "Active_YN",
-						"type": "Boolean"
-					},
-					{
-						"name": "Sequence",
-						"type": "Int32"
-					},
-					{
-						"name": "Add_User_ID",
-						"type": "String"
-					},
-					{
-						"name": "Add_User_Name",
-						"type": "String"
-					},
-					{
-						"name": "Add_DateTime",
-						"type": "DateTime"
-					},
-					{
-						"name": "Add_IP",
-						"type": "String"
-					},
-					{
-						"name": "Add_Browser",
-						"type": "String"
-					},
-					{
-						"name": "Upd_User_ID",
-						"type": "String"
-					},
-					{
-						"name": "Upd_User_Name",
-						"type": "String"
-					},
-					{
-						"name": "Upd_DateTime",
-						"type": "DateTime"
-					},
-					{
-						"name": "Upd_IP",
-						"type": "String"
-					},
-					{
-						"name": "Upd_Browser",
-						"type": "String"
-					}
-				],
-				"typeProperties": {
-					"tableName": "[[casp].[lax_team_statistic_records]"
 				}
 			},
 			"dependsOn": [
