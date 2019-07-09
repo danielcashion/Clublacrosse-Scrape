@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'secretAccessKey' of 'AWSBucketFromCaspio'"
 		},
+		"AzureBlobStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage'"
+		},
 		"AzureSqlDatabase_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase'"
@@ -18,10 +22,6 @@
 		"ClubLacrosse_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ClubLacrosse'"
-		},
-		"AzureBlobStorage_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage'"
 		},
 		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
 			"type": "string",
@@ -57,14 +57,14 @@
 					"AWSBucketFromCaspio_secretAccessKey": {
 						"value": "[parameters('AWSBucketFromCaspio_secretAccessKey')]"
 					},
+					"AzureBlobStorage_connectionString": {
+						"value": "[parameters('AzureBlobStorage_connectionString')]"
+					},
 					"AzureSqlDatabase_connectionString": {
 						"value": "[parameters('AzureSqlDatabase_connectionString')]"
 					},
 					"ClubLacrosse_connectionString": {
 						"value": "[parameters('ClubLacrosse_connectionString')]"
-					},
-					"AzureBlobStorage_connectionString": {
-						"value": "[parameters('AzureBlobStorage_connectionString')]"
 					},
 					"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
 						"value": "[parameters('AWSBucketFromCaspio_properties_typeProperties_accessKeyId')]"

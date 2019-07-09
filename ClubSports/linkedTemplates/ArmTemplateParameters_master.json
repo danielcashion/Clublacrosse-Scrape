@@ -8,13 +8,13 @@
 		"AWSBucketFromCaspio_secretAccessKey": {
 			"value": ""
 		},
+		"AzureBlobStorage_connectionString": {
+			"value": ""
+		},
 		"AzureSqlDatabase_connectionString": {
 			"value": ""
 		},
 		"ClubLacrosse_connectionString": {
-			"value": ""
-		},
-		"AzureBlobStorage_connectionString": {
 			"value": ""
 		},
 		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
