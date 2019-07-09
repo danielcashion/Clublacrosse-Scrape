@@ -755,6 +755,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "HOQ Processes"
+				},
 				"annotations": []
 			},
 			"dependsOn": []
