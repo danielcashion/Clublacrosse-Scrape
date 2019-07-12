@@ -26,13 +26,13 @@ class TournamentextractorSpider(scrapy.Spider):
 
         city = ['New York City','Los Angeles','Chicago','Houston','Phoenix','Philadelphia','San Antonio','San Diego','Dallas','San Jose','Austin','Jacksonville','San Francisco','Columbus','Fort Worth','Indianapolis','Charlotte','Seattle','Denver','Washington','Boston','El Paso','Detroit','Nashville','Memphis','Portland','Oklahoma City','Las Vegas','Louisville','Baltimore','Milwaukee','Albuquerque','Tucson','Fresno','Sacramento','Mesa','Kansas City','Atlanta','Long Beach','Omaha','Raleigh','Colorado Springs','Miami','Virginia Beach','Oakland','Minneapolis','Tulsa','Arlington','New Orleans','Wichita','Cleveland','Tampa','Bakersfield','Aurora','Anaheim','Honolulu','Santa Ana','Riverside','Corpus Christi','Lexington','Stockton','St. Louis','Saint Paul','Henderson','Pittsburgh','Cincinnati','Anchorage','Greensboro','Plano','Newark','Lincoln','Orlando','Irvine','Toledo','Jersey City','Chula Vista','Durham','Fort Wayne','St. Petersburg','Laredo','Buffalo','Madison','Lubbock','Chandler','Scottsdale','Reno','Glendale','Norfolk','Winston–Salem','North Las Vegas','Gilbert','Chesapeake','Irving','Hialeah','Garland','Fremont','Richmond','Boise','Baton Rouge','Des Moines','Spokane','San Bernardino','Modesto','Tacoma','Fontana','Santa Clarita','Birmingham','Oxnard','Fayetteville','Rochester','Moreno Valley','Glendale','Yonkers','Huntington Beach','Aurora','Salt Lake City','Amarillo','Montgomery','Grand Rapids','Little Rock','Akron','Augusta','Huntsville','Columbus','Grand Prairie','Shreveport','Overland Park','Tallahassee','Mobile','Port St. Lucie','Knoxville','Worcester','Tempe','Cape Coral','Brownsville','McKinney','Providence','Fort Lauderdale','Newport News','Chattanooga','Rancho Cucamonga','Frisco','Sioux Falls','Oceanside','Ontario','Vancouver','Santa Rosa','Garden Grove','Elk Grove','Pembroke Pines','Salem','Eugene','Peoria','Corona','Springfield','Jackson','Cary','Fort Collins','Hayward','Lancaster','Alexandria','Salinas','Palmdale','Lakewood','Springfield','Sunnyvale','Hollywood','Pasadena','Clarksville','Pomona','Kansas City','Macon','Escondido','Paterson','Joliet','Naperville','Rockford','Torrance','Bridgeport','Savannah','Killeen','Bellevue','Mesquite','Syracuse','McAllen','Pasadena','Orange','Fullerton','Dayton','Miramar','Olathe','Thornton','Waco','Murfreesboro','Denton','West Valley City','Midland','Carrollton','Roseville','Warren','Charleston','Hampton','Surprise','Columbia','Coral Springs','Visalia','Sterling Heights','Gainesville','Cedar Rapids','New Haven','Stamford','Elizabeth','Concord','Thousand Oaks','Kent','Santa Clara','Simi Valley','Lafayette','Topeka','Athens','Round Rock','Hartford','Norman','Victorville','Fargo','Berkeley','Vallejo','Abilene','Columbia','Ann Arbor','Allentown','Pearland','Beaumont','Wilmington','Evansville','Arvada','Provo','Independence','Lansing','Odessa','Richardson','Fairfield','El Monte','Rochester','Clearwater','Carlsbad','Springfield','Temecula','West Jordan','Costa Mesa','Miami Gardens','Cambridge','College Station','Murrieta','Downey','Peoria','Westminster','Elgin','Antioch','Palm Bay','High Point','Lowell','Manchester','Pueblo','Gresham','North Charleston','Ventura','Inglewood','Pompano Beach','Centennial','West Palm Beach','Everett','Richmond','Clovis','Billings','Waterbury','Broken Arrow','Lakeland','West Covina','Boulder','Daly City','Santa Maria','Hillsboro','Sandy Springs','Norwalk','Jurupa Valley','Lewisville','Greeley','Davie','Green Bay','Tyler','League City','Burbank','San Mateo','Wichita Falls','El Cajon','Rialto','Lakewood','Edison','Davenport','South Bend','Woodbridge','Las Cruces','Vista','Renton','Sparks','Clinton','Allen','Tuscaloosa','San Angelo','Vacaville']
 
-        icons = ['baseball', 'basketball', 'beach volleyball', 'dodgeball', 'field hockey', 'football', 'futsal', 'hockey', 'kickball', 'lacrosse', 'other', 'rugby', 'soccer', 'softball', 'volleyball', 'water polo']
+      #  icons = ['baseball', 'basketball', 'beach volleyball', 'dodgeball', 'field hockey', 'football', 'futsal', 'hockey', 'kickball', 'lacrosse', 'other', 'rugby', 'soccer', 'softball', 'volleyball', 'water polo','']
 
         icons = ['lacrosse']
 
         for i in icons:
 
-            url = 'https://tourneymachine.com/Public/Service/json/TournamentSearch.aspx?sport='+i+'&start=2017-01-02'
+            url = 'https://tourneymachine.com/Public/Service/json/TournamentSearch.aspx?sport='+i+'&start=2019-07-01'
 
             yield scrapy.FormRequest(url, callback=self.getData, method='GET',meta={'com':i})
 
@@ -78,6 +78,21 @@ class TournamentextractorSpider(scrapy.Spider):
                         Icon = ''
 
                     try:
+                        Long = row_dict['Long']
+                    except KeyError:
+                        Long = ''
+
+                    try:
+                        Lat = row_dict['Lat']
+                    except KeyError:
+                        Lat = ''
+
+                    try:
+                        Status = row_dict['Status']
+                    except KeyError:
+                        Status = ''
+
+                    try:
                         Link = 'Public/Results/Tournament.aspx?IDTournament=' + row_dict['IDTournament']
                     except KeyError:
                         Link = ''
@@ -89,7 +104,9 @@ class TournamentextractorSpider(scrapy.Spider):
                     item['Location'] = Location
                     item['Icon'] = Icon
                     item['Link'] = Link
-                    # item['status'] = 'pending'
+                    item['Long'] = Long
+                    item['Lat'] = Lat
+                    item['Status'] = Status
                     yield item
 
         except Exception as e:

@@ -17,5 +17,7 @@ class TournamentsItem(scrapy.Item):
     Location = scrapy.Field()
     Icon = scrapy.Field()
     Link = scrapy.Field()
-    # status = scrapy.Field()
+    Long = scrapy.Field()
+    Lat = scrapy.Field()
+    Status = scrapy.Field()
 

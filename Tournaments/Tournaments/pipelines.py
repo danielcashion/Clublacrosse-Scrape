@@ -54,7 +54,8 @@ class TournamentsPipeline(object):
                 self.cnxn = pyodbc.connect(
                     'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
                 self.cursor = self.cnxn.cursor()
-                self.cursor.execute("INSERT INTO "+dbc.table+" ([Keyword],[Title],[Date],[Location],[Icon],[Link]) VALUES ('"+str(item['Keyword'])+"', '"+str(item['Title'])+"', '"+str(item['Date'])+"', '"+str(item['Location'])+"', '"+str(item['Icon'])+"', '"+str(item['Link'])+"')")
+               # self.cursor.execute("INSERT INTO "+dbc.table+" ([Keyword],[Title],[Date],[Location],[Icon],[Link]) VALUES ('"+str(item['Keyword'])+"', '"+str(item['Title'])+"', '"+str(item['Date'])+"', '"+str(item['Location'])+"', '"+str(item['Icon'])+"', '"+str(item['Link'])+"')")
+                self.cursor.execute("INSERT INTO "+dbc.table+" ([Keyword],[Title],[Date],[Location],[Icon],[Link],[Long],[Lat],[Status]) VALUES ('"+str(item['Keyword'])+"', '"+str(item['Title'])+"', '"+str(item['Date'])+"', '"+str(item['Location'])+"', '"+str(item['Icon'])+"', '"+str(item['Link'])+str(item['Long'])+str(item['Lat'])+str(item['Status'])+"')")
                 self.cnxn.commit()
                 print('\rData Inserted.'+str(self.i))
                 self.i += 1
