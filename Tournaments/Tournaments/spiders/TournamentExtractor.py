@@ -36,7 +36,6 @@ class TournamentextractorSpider(scrapy.Spider):
 
             yield scrapy.FormRequest(url, callback=self.getData, method='GET',meta={'com':i})
 
-
     def getData(self,response):
         try:
             com = response.meta['com']
@@ -58,7 +57,7 @@ class TournamentextractorSpider(scrapy.Spider):
                         Keyword = ''
 
                     try:
-                        Title = row_dict['Name']
+                        Title = row_dict['Name'][:100].strip("'")
                     except KeyError:
                         Title = ''
 
@@ -68,7 +67,7 @@ class TournamentextractorSpider(scrapy.Spider):
                         Date = ''
 
                     try:
-                        Location = row_dict['DisplayLocation']
+                        Location = row_dict['DisplayLocation'][:100].strip("'")
                     except KeyError:
                         Location = ''
 
@@ -78,13 +77,13 @@ class TournamentextractorSpider(scrapy.Spider):
                         Icon = ''
 
                     try:
-                        Long = row_dict['Long']
-                    except KeyError:
+                        Long = list(row_dict['ComplexDictionary'].values())[0]['Long']
+                    except:
                         Long = ''
 
                     try:
-                        Lat = row_dict['Lat']
-                    except KeyError:
+                        Lat = list(row_dict['ComplexDictionary'].values())[0]['Lat']
+                    except:
                         Lat = ''
 
                     try:
