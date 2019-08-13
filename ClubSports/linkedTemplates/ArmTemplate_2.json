@@ -13,6 +13,203 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/ImportUMNOrganizations')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[umn_organizations]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Organization_ID": "Organization_ID",
+									"Organization_Application_ID": "Organization_Application_ID",
+									"Organization_Channel_ID": "Organization_Channel_ID",
+									"Organization_Parent_ID": "Organization_Parent_ID",
+									"Organization_Name": "Organization_Name",
+									"Organization_Nickname": "Organization_Nickname",
+									"Organization_Main_Contact_Person": "Organization_Main_Contact_Person",
+									"Organization_Type": "Organization_Type",
+									"Organization_Logo": "Organization_Logo",
+									"Organization_Sport_ID": "Organization_Sport_ID",
+									"Organization_Narrative": "Organization_Narrative",
+									"Organization_Address_1": "Organization_Address_1",
+									"Organization_Address_2": "Organization_Address_2",
+									"Organization_Country": "Organization_Country",
+									"Organization_Region": "Organization_Region",
+									"Organization_City": "Organization_City",
+									"Organization_ZipPost_Code": "Organization_ZipPost_Code",
+									"Organization_Website_URL": "Organization_Website_URL",
+									"Organization_Phone_Number": "Organization_Phone_Number",
+									"Organization_Contact_Email_Addr": "Organization_Contact_Email_Addr",
+									"Organization_Contact_SMS_Phone": "Organization_Contact_SMS_Phone",
+									"Organization_Time_Zone": "Organization_Time_Zone",
+									"Organization_Facebook": "Organization_Facebook",
+									"Organization_Instagram": "Organization_Instagram",
+									"Organization_Snapchat": "Organization_Snapchat",
+									"Organization_Sponsors_Tourny_YN": "Organization_Sponsors_Tourny_YN",
+									"Tourney_Production_Only": "Tourney_Production_Only",
+									"Organization_Date_Created": "Organization_Date_Created",
+									"Organization_Last_Activity": "Organization_Last_Activity",
+									"Organization_Active_YN": "Organization_Active_YN",
+									"Organization_Add_User_ID": "Organization_Add_User_ID",
+									"Organization_Add_User_Name": "Organization_Add_User_Name",
+									"Organization_Add_DateTime": "Organization_Add_DateTime",
+									"Organization_Add_IP": "Organization_Add_IP",
+									"Organization_Add_Browser": "Organization_Add_Browser",
+									"Organization_Upd_User_ID": "Organization_Upd_User_ID",
+									"Organization_Upd_User_Name": "Organization_Upd_User_Name",
+									"Organization_Upd_DateTime": "Organization_Upd_DateTime",
+									"Organization_Upd_IP": "Organization_Upd_IP",
+									"Organization_Upd_Browser": "Organization_Upd_Browser"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketUMNOrganizations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableUMNOrganizations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImporttLUTeamYears')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Insert Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "TRUNCATE TABLE [casp].[lax_lu_team_years]"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"columnMappings": {
+									"Team_Year_ID": "Team_Year_ID",
+									"Team_Year_Application_ID_": "Team_Year_Application_ID_",
+									"Team_Year_Channel_ID": "Team_Year_Channel_ID",
+									"Team_Year_Description": "Team_Year_Description"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AWSBucketLUTeamYears",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureTableLUTeamYears",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Import Caspio Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trgImportGamePlayerRecordDaily')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ImportGamePlayerRecords",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-04-02T01:54:00.000Z",
+						"endTime": "2019-12-31T01:54:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								15
+							],
+							"hours": [
+								7
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/trgImportStatisticTypes')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -175,7 +372,9 @@
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ImportUMNOrganizations')]"
+			]
 		}
 	]
 }

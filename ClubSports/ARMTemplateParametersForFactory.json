@@ -19,6 +19,9 @@
 		},
 		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
 			"value": "AKIAJVD6W2VEY6IIP2KA"
+		},
+		"TMSearchFunction_properties_typeProperties_url": {
+			"value": "https://tourneymachine.com/Public/Service/json/TournamentSearch.aspx?sport=lacrosse&start=2019-05-01"
 		}
 	}
 }

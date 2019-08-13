@@ -26,6 +26,10 @@
 		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAJVD6W2VEY6IIP2KA"
+		},
+		"TMSearchFunction_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://tourneymachine.com/Public/Service/json/TournamentSearch.aspx?sport=lacrosse&start=2019-05-01"
 		}
 	},
 	"variables": {
@@ -88,6 +92,67 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/integrationRuntime1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TMSearchFunction')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('TMSearchFunction_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": false,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Nightly Update')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "UpdateTeamNameMapping",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[prc].[usp_team_name_mapper]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "HOQ Processes"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AWSBucketGamePlayerRecord')]",
@@ -1572,162 +1637,6 @@
 				],
 				"typeProperties": {
 					"tableName": "[[casp].[lax_games]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureTableLUStatisticTypes')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Azure Data"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"structure": [
-					{
-						"name": "Statistic_ID",
-						"type": "String"
-					},
-					{
-						"name": "Application_ID",
-						"type": "String"
-					},
-					{
-						"name": "Channel_ID",
-						"type": "String"
-					},
-					{
-						"name": "Sport_ID",
-						"type": "String"
-					},
-					{
-						"name": "Statistic_Name",
-						"type": "String"
-					},
-					{
-						"name": "sort_id",
-						"type": "Int32"
-					},
-					{
-						"name": "Active_YN",
-						"type": "String"
-					},
-					{
-						"name": "Created_by",
-						"type": "String"
-					},
-					{
-						"name": "Created_datetime",
-						"type": "DateTime"
-					}
-				],
-				"typeProperties": {
-					"tableName": "[[casp].[lax_lu_statistic_types]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureTableLUTeamYears')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Azure Data"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"structure": [
-					{
-						"name": "Team_Year_ID",
-						"type": "String"
-					},
-					{
-						"name": "Team_Year_Application_ID_",
-						"type": "String"
-					},
-					{
-						"name": "Team_Year_Channel_ID",
-						"type": "String"
-					},
-					{
-						"name": "Team_Year_Description",
-						"type": "String"
-					}
-				],
-				"typeProperties": {
-					"tableName": "[[casp].[lax_lu_team_years]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureTableStatisticTypes')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Azure Data"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"structure": [
-					{
-						"name": "Statistic_ID",
-						"type": "String"
-					},
-					{
-						"name": "Application_ID",
-						"type": "String"
-					},
-					{
-						"name": "Channel_ID",
-						"type": "String"
-					},
-					{
-						"name": "Sport_ID",
-						"type": "String"
-					},
-					{
-						"name": "Statistic_Name",
-						"type": "String"
-					},
-					{
-						"name": "Active_YN",
-						"type": "String"
-					},
-					{
-						"name": "Created_by",
-						"type": "String"
-					},
-					{
-						"name": "Created_datetime",
-						"type": "DateTime"
-					}
-				],
-				"typeProperties": {
-					"tableName": "[[casp].[lax_lu_statistic_types]"
 				}
 			},
 			"dependsOn": [

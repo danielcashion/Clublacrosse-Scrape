@@ -26,12 +26,78 @@
 		"AWSBucketFromCaspio_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAJVD6W2VEY6IIP2KA"
+		},
+		"TMSearchFunction_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://tourneymachine.com/Public/Service/json/TournamentSearch.aspx?sport=lacrosse&start=2019-05-01"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ExportLaxGames')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "ExportLaxGames",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT * FROM [view].[v_lax_games_to_caspio]"
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "ViewLaxGames",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Lax_Games",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Export Azure Data"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ViewLaxGames')]",
+				"[concat(variables('factoryId'), '/datasets/Lax_Games')]"
+			]
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/ImportGamePlayerRecords')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -853,14 +919,14 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"name": "[concat(parameters('factoryName'), '/Nightly Update')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "ExportLaxGames",
-						"type": "Copy",
+						"name": "UpdateTeamNameMapping",
+						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -871,47 +937,21 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT * FROM [view].[v_lax_games_to_caspio]"
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSetting"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSetting",
-									"quoteAllText": true,
-									"fileExtension": ".csv"
-								}
-							},
-							"enableStaging": false
+							"storedProcedureName": "[[prc].[usp_team_name_mapper]"
 						},
-						"inputs": [
-							{
-								"referenceName": "ViewLaxGames",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Lax_Games",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"folder": {
-					"name": "Export Azure Data"
+					"name": "HOQ Processes"
 				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ViewLaxGames')]",
-				"[concat(variables('factoryId'), '/datasets/Lax_Games')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
 			]
 		},
 		{
@@ -3563,40 +3603,52 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Nightly Update')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/integrationRuntime1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
-					{
-						"name": "UpdateTeamNameMapping",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[prc].[usp_team_name_mapper]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureSqlDatabase",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"folder": {
-					"name": "HOQ Processes"
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TMTourneys')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TMSearchFunction",
+					"type": "LinkedServiceReference"
 				},
-				"annotations": []
+				"annotations": [],
+				"type": "HttpFile",
+				"typeProperties": {
+					"format": {
+						"type": "JsonFormat",
+						"filePattern": "arrayOfObjects"
+					},
+					"requestMethod": "GET"
+				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+				"[concat(variables('factoryId'), '/linkedServices/TMSearchFunction')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TMSearchFunction')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('TMSearchFunction_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": false,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
