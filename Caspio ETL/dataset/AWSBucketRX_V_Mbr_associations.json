@@ -1,0 +1,63 @@
+{
+	"name": "AWSBucketRX_V_Mbr_associations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AWSBucketFromCaspio",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AWS S3 Data"
+		},
+		"annotations": [],
+		"type": "AmazonS3Object",
+		"structure": [
+			{
+				"name": "Member_ID",
+				"type": "String"
+			},
+			{
+				"name": "Initial_Name",
+				"type": "String"
+			},
+			{
+				"name": "Assoc_Type",
+				"type": "String"
+			},
+			{
+				"name": "Team_ID",
+				"type": "String"
+			},
+			{
+				"name": "Team_Name",
+				"type": "String"
+			},
+			{
+				"name": "Team_Year",
+				"type": "String"
+			},
+			{
+				"name": "Subject_Entity_Type",
+				"type": "String"
+			},
+			{
+				"name": "Object_Entity_Type",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"key": "data_from_caspio/RX_V_Mbr_associations.csv",
+			"bucketName": "club-lacrosse-data"
+		}
+	}
+}
