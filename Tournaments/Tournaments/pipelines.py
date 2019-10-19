@@ -4,12 +4,12 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-import pymysql as MySQLdb
 import pyodbc
-from Tournaments.items import TournamentsItem
+from Tournaments.items import TournamentsItem, TournamentsComplexItem
 from Tournaments.spiders import database_con as dbc
 
 class TournamentsPipeline(object):
+
     server = dbc.server
     database = dbc.database
     username = dbc.username
@@ -18,48 +18,60 @@ class TournamentsPipeline(object):
     table = dbc.table
     i = 1
 
-#    def __init__(self):
-#        try:
-#            self.cnxn = pyodbc.connect(
-#                'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
-#            # self.cursor = self.cnxn.cursor()
-#            # self.cursor.execute('CREATE DATABASE '+self.database)
-#        except Exception as e:
-#            print(str(e))
+    def __init__(self):
+        self.cnxn = pyodbc.connect(f'DRIVER={self.driver};SERVER={self.server};DATABASE={self.database};UID={self.username};PWD={self.password}')
+        self.cursor = self.cnxn.cursor()
 
-#        try:
-#
-#            self.cnxn = pyodbc.connect('DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
-#            self.cursor = self.cnxn.cursor()
-
-#            qry1 = "CREATE TABLE "+self.table+""" ([Id] INT NOT NULL IDENTITY,
-#                                                        [Keyword] [text] NOT NULL,
-#                                                        [Title] [text] NOT NULL,
-#                                                        [Date] [text] NOT NULL,
-#                                                        [Location] [text] NULL,
-#                                                        [Icon] [text] NULL,
-#                                                        [Link] [varchar](250) NULL UNIQUE,
-#                                                        PRIMARY KEY([Id])
-#                                                    )"""
-
-#            self.cursor.execute(qry1)
-#            self.cnxn.commit()
-#            print('Table Created')
-
-#        except Exception as e:
-#            print(str(e))
     def process_item(self, item, spider):
         if isinstance(item, TournamentsItem):
             try:
-                self.cnxn = pyodbc.connect(
-                    'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
-                self.cursor = self.cnxn.cursor()
-               # self.cursor.execute("INSERT INTO "+dbc.table+" ([Keyword],[Title],[Date],[Location],[Icon],[Link]) VALUES ('"+str(item['Keyword'])+"', '"+str(item['Title'])+"', '"+str(item['Date'])+"', '"+str(item['Location'])+"', '"+str(item['Icon'])+"', '"+str(item['Link'])+"')")
-                self.cursor.execute("INSERT INTO "+dbc.table+" ([Keyword],[Title],[Date],[Location],[Icon],[Link],[Long],[Lat],[Status]) VALUES ('"+str(item['Keyword'])+"', '"+str(item['Title'])+"', '"+str(item['Date'])+"', '"+str(item['Location'])+"', '"+str(item['Icon'])+"', '"+str(item['Link'])+"', '"+str(item['Long'])+"', '"+str(item['Lat'])+"', '"+str(item['Status'])+"')")
+
+                self.cursor.execute(
+                    f"INSERT INTO {dbc.table} (CustomerID ,TournamentID ,status ,name ,sport ,color ,logo ,StartDate ,EndDate ,DisplayDate ,DisplayLocation ,RegistrationOpen ,RegistrationDateRangeDisplay ,TourneyPass ,ComplexDictionary) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    (
+                        item['IDCustomer'],
+                        item['IDTournament'],
+                        item['Status'],
+                        item['Name'],
+                        item['Sport'],
+                        item['Color'],
+                        item['Logo'],
+                        item['StartDate'],
+                        item['EndDate'],
+                        item['DisplayDate'],
+                        item['DisplayLocation'],
+                        item['RegistrationOpen'],
+                        item['RegistrationDateRangeDisplay'],
+                        item['TourneyPass'],
+                        item['ComplexDictionary']
+                    )
+                )
+
                 self.cnxn.commit()
-                print('\rData Inserted.'+str(self.i))
+                print('\rData Inserted... '+str(self.i))
                 self.i += 1
             except Exception as e:
                 print(str(e))
-            return item
-        # return item
+
+        if isinstance(item, TournamentsComplexItem):
+            try:
+                self.cursor.execute(
+                    f"INSERT INTO {dbc.table2} (IDComplex, IDTournament, Name, Address, City, State, Zip, Long, Lat) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    (
+                        item['IDComplex'],
+                        item['IDTournament'],
+                        item['Name'],
+                        item['Address'],
+                        item['City'],
+                        item['State'],
+                        item['Zip'],
+                        item['Long'],
+                        item['Lat']
+                    )
+                )
+
+                self.cnxn.commit()
+            except Exception as e:
+                print(e)
+
+        return item

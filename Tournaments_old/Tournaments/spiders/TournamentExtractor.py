@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import json
 import re
+
 import scrapy
-from pprint import pprint
 from scrapy.cmdline import execute
+
 from Tournaments.Generate_CSV import Export_CSV
-from Tournaments.items import TournamentsItem, TournamentsComplexItem
+from Tournaments.items import TournamentsItem
 from Tournaments.spiders import paths
 
 
@@ -25,7 +26,7 @@ class TournamentextractorSpider(scrapy.Spider):
 
         city = ['New York City','Los Angeles','Chicago','Houston','Phoenix','Philadelphia','San Antonio','San Diego','Dallas','San Jose','Austin','Jacksonville','San Francisco','Columbus','Fort Worth','Indianapolis','Charlotte','Seattle','Denver','Washington','Boston','El Paso','Detroit','Nashville','Memphis','Portland','Oklahoma City','Las Vegas','Louisville','Baltimore','Milwaukee','Albuquerque','Tucson','Fresno','Sacramento','Mesa','Kansas City','Atlanta','Long Beach','Omaha','Raleigh','Colorado Springs','Miami','Virginia Beach','Oakland','Minneapolis','Tulsa','Arlington','New Orleans','Wichita','Cleveland','Tampa','Bakersfield','Aurora','Anaheim','Honolulu','Santa Ana','Riverside','Corpus Christi','Lexington','Stockton','St. Louis','Saint Paul','Henderson','Pittsburgh','Cincinnati','Anchorage','Greensboro','Plano','Newark','Lincoln','Orlando','Irvine','Toledo','Jersey City','Chula Vista','Durham','Fort Wayne','St. Petersburg','Laredo','Buffalo','Madison','Lubbock','Chandler','Scottsdale','Reno','Glendale','Norfolk','Winston–Salem','North Las Vegas','Gilbert','Chesapeake','Irving','Hialeah','Garland','Fremont','Richmond','Boise','Baton Rouge','Des Moines','Spokane','San Bernardino','Modesto','Tacoma','Fontana','Santa Clarita','Birmingham','Oxnard','Fayetteville','Rochester','Moreno Valley','Glendale','Yonkers','Huntington Beach','Aurora','Salt Lake City','Amarillo','Montgomery','Grand Rapids','Little Rock','Akron','Augusta','Huntsville','Columbus','Grand Prairie','Shreveport','Overland Park','Tallahassee','Mobile','Port St. Lucie','Knoxville','Worcester','Tempe','Cape Coral','Brownsville','McKinney','Providence','Fort Lauderdale','Newport News','Chattanooga','Rancho Cucamonga','Frisco','Sioux Falls','Oceanside','Ontario','Vancouver','Santa Rosa','Garden Grove','Elk Grove','Pembroke Pines','Salem','Eugene','Peoria','Corona','Springfield','Jackson','Cary','Fort Collins','Hayward','Lancaster','Alexandria','Salinas','Palmdale','Lakewood','Springfield','Sunnyvale','Hollywood','Pasadena','Clarksville','Pomona','Kansas City','Macon','Escondido','Paterson','Joliet','Naperville','Rockford','Torrance','Bridgeport','Savannah','Killeen','Bellevue','Mesquite','Syracuse','McAllen','Pasadena','Orange','Fullerton','Dayton','Miramar','Olathe','Thornton','Waco','Murfreesboro','Denton','West Valley City','Midland','Carrollton','Roseville','Warren','Charleston','Hampton','Surprise','Columbia','Coral Springs','Visalia','Sterling Heights','Gainesville','Cedar Rapids','New Haven','Stamford','Elizabeth','Concord','Thousand Oaks','Kent','Santa Clara','Simi Valley','Lafayette','Topeka','Athens','Round Rock','Hartford','Norman','Victorville','Fargo','Berkeley','Vallejo','Abilene','Columbia','Ann Arbor','Allentown','Pearland','Beaumont','Wilmington','Evansville','Arvada','Provo','Independence','Lansing','Odessa','Richardson','Fairfield','El Monte','Rochester','Clearwater','Carlsbad','Springfield','Temecula','West Jordan','Costa Mesa','Miami Gardens','Cambridge','College Station','Murrieta','Downey','Peoria','Westminster','Elgin','Antioch','Palm Bay','High Point','Lowell','Manchester','Pueblo','Gresham','North Charleston','Ventura','Inglewood','Pompano Beach','Centennial','West Palm Beach','Everett','Richmond','Clovis','Billings','Waterbury','Broken Arrow','Lakeland','West Covina','Boulder','Daly City','Santa Maria','Hillsboro','Sandy Springs','Norwalk','Jurupa Valley','Lewisville','Greeley','Davie','Green Bay','Tyler','League City','Burbank','San Mateo','Wichita Falls','El Cajon','Rialto','Lakewood','Edison','Davenport','South Bend','Woodbridge','Las Cruces','Vista','Renton','Sparks','Clinton','Allen','Tuscaloosa','San Angelo','Vacaville']
 
-        # icons = ['baseball', 'basketball', 'beach volleyball', 'dodgeball', 'field hockey', 'football', 'futsal', 'hockey', 'kickball', 'lacrosse', 'other', 'rugby', 'soccer', 'softball', 'volleyball', 'water polo','']
+      #  icons = ['baseball', 'basketball', 'beach volleyball', 'dodgeball', 'field hockey', 'football', 'futsal', 'hockey', 'kickball', 'lacrosse', 'other', 'rugby', 'soccer', 'softball', 'volleyball', 'water polo','']
 
         icons = ['lacrosse']
 
@@ -33,60 +34,85 @@ class TournamentextractorSpider(scrapy.Spider):
 
             url = 'https://tourneymachine.com/Public/Service/json/TournamentSearch.aspx?sport='+i+'&start=2019-07-01'
 
-            yield scrapy.FormRequest(url, callback=self.getData, method='GET',meta={'com': i})
+            yield scrapy.FormRequest(url, callback=self.getData, method='GET',meta={'com':i})
 
-    def getData(self, response):
+    def getData(self,response):
+        try:
+            com = response.meta['com']
+            file_path = paths.html_path + com +'.html'
+            f = open(file_path, 'wb')
+            f.write(response.body)
+            f.close()
 
-        com = response.meta['com']
-        file_path = paths.html_path + com + '.html'
-        f = open(file_path, 'wb')
-        f.write(response.body)
-        f.close()
+            json_data = json.loads(response.text)
 
-        item = TournamentsItem()
-        compxItem = TournamentsComplexItem()
+            if json_data != {}:
+                for i in list(json_data.keys()):
+                    # i = '{\"'+i+'\"}'
+                    # dct = json.loads(i)
+                    row_dict = json_data[i]
+                    try:
+                        Keyword = row_dict['keywords']
+                    except KeyError:
+                        Keyword = ''
 
-        json_data = json.loads(response.text)
-        if json_data != {}:
+                    try:
+                        Title = row_dict['Name'][:100].strip("'")
+                    except KeyError:
+                        Title = ''
 
-            for i in json_data:
-                item['IDCustomer'] = json_data[i]['IDCustomer']
-                item['IDTournament'] = json_data[i]['IDTournament']
-                item['Status'] = json_data[i]['Status']
-                item['Name'] = json_data[i]['Name']
-                item['Sport'] = json_data[i]['Sport']
-                item['Color'] = json_data[i]['Color']
-                item['Logo'] = json_data[i]['Logo']
+                    try:
+                        Date = row_dict['DisplayDate']
+                    except KeyError:
+                        Date = ''
 
-                if "https://" not in item['Logo']:
-                    item['Logo'] = "https:" + item['Logo']
+                    try:
+                        Location = row_dict['DisplayLocation'][:100].strip("'")
+                    except KeyError:
+                        Location = ''
 
-                item['StartDate'] = json_data[i]['StartDate']
-                item['EndDate'] = json_data[i]['EndDate']
-                item['DisplayDate'] = json_data[i]['DisplayDate']
-                item['DisplayLocation'] = json_data[i]['DisplayLocation']
-                item['RegistrationOpen'] = json_data[i]['RegistrationOpen']
-                item['RegistrationDateRangeDisplay'] = json_data[i]['RegistrationDateRangeDisplay']
-                item['TourneyPass'] = json_data[i]['TourneyPass']
-                item['ComplexDictionary'] = json_data[i]['IDTournament']
+                    try:
+                        Icon = row_dict['icon']
+                    except KeyError:
+                        Icon = ''
 
-                for compdata in json_data[i]['ComplexDictionary']:
-                    compxItem['IDComplex'] = json_data[i]['ComplexDictionary'][compdata]['IDComplex']
-                    compxItem['IDTournament'] = json_data[i]['ComplexDictionary'][compdata]['IDTournament']
-                    compxItem['Name'] = json_data[i]['ComplexDictionary'][compdata]['Name']
-                    compxItem['Address'] = json_data[i]['ComplexDictionary'][compdata]['Address']
-                    compxItem['City'] = json_data[i]['ComplexDictionary'][compdata]['City']
-                    compxItem['State'] = json_data[i]['ComplexDictionary'][compdata]['State']
-                    compxItem['Zip'] = json_data[i]['ComplexDictionary'][compdata]['Zip']
-                    compxItem['Long'] = json_data[i]['ComplexDictionary'][compdata]['Long']
-                    compxItem['Lat'] = json_data[i]['ComplexDictionary'][compdata]['Lat']
-                    compxItem['Notes'] = json_data[i]['ComplexDictionary'][compdata]['Notes']
-                    compxItem['IDFacilities'] = None
-                    yield compxItem
-                yield item
+                    try:
+                        Long = list(row_dict['ComplexDictionary'].values())[0]['Long']
+                    except:
+                        Long = ''
 
-    # def close(spider, reason):
-    #     Export_CSV()
+                    try:
+                        Lat = list(row_dict['ComplexDictionary'].values())[0]['Lat']
+                    except:
+                        Lat = ''
 
+                    try:
+                        Status = row_dict['Status']
+                    except KeyError:
+                        Status = ''
 
-# execute('scrapy crawl TournamentExtractor'.split())
+                    try:
+                        Link = 'Public/Results/Tournament.aspx?IDTournament=' + row_dict['IDTournament']
+                    except KeyError:
+                        Link = ''
+
+                    item = TournamentsItem()
+                    item['Keyword'] = Keyword
+                    item['Title'] = Title
+                    item['Date'] = Date
+                    item['Location'] = Location
+                    item['Icon'] = Icon
+                    item['Link'] = Link
+                    item['Long'] = Long
+                    item['Lat'] = Lat
+                    item['Status'] = Status
+                    yield item
+
+        except Exception as e:
+            print(str(e))
+        pass
+
+    def close(spider, reason):
+        Export_CSV()
+
+execute('scrapy crawl TournamentExtractor'.split())

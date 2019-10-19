@@ -20,7 +20,8 @@ def Export_CSV():
     driver = dbc.driver
     table = dbc.table
 
-    cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+    cnxn = pyodbc.connect(
+        'DRIVER=' + driver + ';SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
 
     csv_Path = paths.csv_path+'tourneymachine_mainpage_data.csv'
 
