@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
+import json
 import pymysql as MySQLdb
 import pyodbc
-
 import scrapy
 import re
 from TourneyMachine.spiders import database_con as dbc
 from scrapy.cmdline import execute
 from TourneyMachine.Generate_CSV import Export_CSV
-from TourneyMachine.items import TourneymachineItem
+from TourneyMachine.items import TourneymachineItem, TourneymachineTournamnetTitleItem
 from TourneyMachine.spiders import paths
-from scrapy.exceptions import CloseSpider
+
 
 class TmachineextractorSpider(scrapy.Spider):
     name = 'TMachineExtractor'
     allowed_domains = ['tourneymachine.com']
     start_urls = ['https://tourneymachine.com/Home.aspx/']
+
     server = dbc.server
     database = dbc.database
     username = dbc.username
@@ -24,52 +25,35 @@ class TmachineextractorSpider(scrapy.Spider):
     i = 1
 
     def parse(self, response):
-        # raise CloseSpider()
-        print(response.xpath('//title/text()').extract_first())
-        file_path = paths.html_path+'main_page.html'
-        f = open(file_path,'wb')
-        f.write(response.body)
-        f.close()
 
         try:
-            self.cnxn = pyodbc.connect(
-                'DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
+            self.cnxn = pyodbc.connect('DRIVER=' + self.driver + ';SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
             self.cursor = self.cnxn.cursor()
-            # connection = MySQLdb.connect(dbs.host, dbs.username, dbs.passwd, dbs.database, charset='utf8')
-            # cursor = connection.cursor()
-            self.cursor.execute(
-                "SELECT [link] FROM [data].[tm_mainpage_data] WHERE 1=1 AND end_date < GETDATE() AND is_active = 1 AND end_date < GETDATE() AND 'https://tourneymachine.com/' + link NOT IN (SELECT tournament_endpoint FROM [clubstats].[stg].[tourneymachine_data]) ORDER BY end_date")
+            self.cursor.execute("SELECT [TournamentID] FROM [stg].[tourneymachine_homepage_data]")
             Links = self.cursor.fetchall()
             self.cnxn.close()
             for link in Links:
                 id = link[0]
-                id = id.split('IDTournament=')[1]
+                id = "h20191011142817550ef4c63eca45042"
                 tournament_id = id
                 url = 'https://tourneymachine.com/Public/Results/Tournament.aspx?IDTournament=' + id
                 tournament_endpoint = url
-                yield scrapy.FormRequest(url, method='GET', callback=self.getTournament,
-                                         meta={'tournament_endpoint': tournament_endpoint,
-                                               'tournament_id': tournament_id})
+                yield scrapy.FormRequest(
+                    url,
+                    method='GET',
+                    callback=self.getTournament,
+                    meta={
+                        'tournament_endpoint': tournament_endpoint,
+                        'tournament_id': tournament_id
+                    }
+                )
+                break
 
         except Exception as e:
             print(str(e))
 
-        # try:
-        #     json_data = re.findall(r'var tournaments \= \[(.*?)\]\;\r',response.text)[0]
-        #
-        #     all_ids = re.findall(r'\?IDTournament\=(.*?)\"\}\,*',json_data)
-        #
-        #     for id in all_ids:
-        #         tournament_id = id
-        #         url = 'https://tourneymachine.com/Public/Results/Tournament.aspx?IDTournament='+id
-        #         tournament_endpoint = url
-        #         yield scrapy.FormRequest(url,method='GET',callback=self.getTournament,meta={'tournament_endpoint':tournament_endpoint,'tournament_id':tournament_id})
-        #
-        # except Exception as e:
-        #     print(str(e))
+    def getTournament(self, response):
 
-
-    def getTournament(self,response):
         tournament_endpoint = response.meta['tournament_endpoint']
         tournament_id = response.meta['tournament_id']
         try:
@@ -81,7 +65,7 @@ class TmachineextractorSpider(scrapy.Spider):
 
                     tournament_division_id = temp_url.split('IDDivision=')[-1]
 
-                    url = 'https://admin.tourneymachine.com/Public/Results/'+temp_url
+                    url = 'https://admin.tourneymachine.com/Public/Results/' + temp_url
 
                     try:
                         tournament_division_name = team.xpath('./a/div/text()').extract_first().strip()
@@ -90,29 +74,53 @@ class TmachineextractorSpider(scrapy.Spider):
 
                     try:
                         last_update = team.xpath('./a/p/span/text()').extract()
-                        last_update = ''.join(last_update).replace('Last Updated','').strip()
+                        last_update = ''.join(last_update).replace('Last Updated', '').strip()
                     except Exception as e:
                         last_update = ''
 
-                    yield scrapy.FormRequest(url, method='GET', callback=self.getTournamentDetails,meta={
-                        'tournament_endpoint':tournament_endpoint,
+                    yield scrapy.FormRequest(url, method='GET', callback=self.getTournamentDetails, meta={
+                        'tournament_endpoint': tournament_endpoint,
                         'tournament_division_id': tournament_division_id,
-                        'tournament_id':tournament_id,
-                        'tournament_division_name':tournament_division_name,
-                        'last_update':last_update
+                        'tournament_id': tournament_id,
+                        'tournament_division_name': tournament_division_name,
+                        'last_update': last_update
                     })
                 except Exception as e:
                     print(str(e))
+
         except Exception as e:
             print(str(e))
             print('could\'nt find teams')
 
+    def getTournamentDetails(self, response):
 
-    def getTournamentDetails(self,response):
+        # ------------------------------------------------------ Tournament Title Process ------------------------------------ #
+
+        title_item = TourneymachineTournamnetTitleItem()
+        title_item['tournament_id'] = response.meta['tournament_id']
+        title_item['tournament_division_id'] = response.meta['tournament_division_id']
+        title_item['tournament_division_name'] = response.meta['tournament_division_name']
+
+        for tournaments in response.xpath('//div[contains(@class, "col-sm-6")]//table[contains(@class,"tournamentResultsTable")]'):
+            title_item['tournament_title'] = tournaments.xpath('.//*[@class="tournamentResultsTitle"]//text()').get().strip()
+            table = list()
+            headers = list()
+            for th in tournaments.xpath(".//th[not (@colspan)]"):
+                headers.append("".join(th.xpath(".//text()").getall()).strip())
+
+            for tr in tournaments.xpath('//div[contains(@class, "col-sm-6")]//table[contains(@class,"tournamentResultsTable")]//tr[(.//td)]'):
+                tab = dict()
+                for id, td in enumerate(tr.xpath(".//td")):
+                    tab[headers[id]] = "".join(td.xpath(".//text()").getall()).strip()
+                table.append(tab)
+
+            title_item['tournament_details'] = json.dumps(table)
+            yield title_item
+
+        # --------------------------------------------------------------------------------------------------------------------- #
+
         game_ids = set()
-        f= open('1.html','w')
-        f.write(response.text)
-        f.close()
+
         tournament_endpoint = response.meta['tournament_endpoint']
         tournament_division_id = response.meta['tournament_division_id']
         tournament_id = response.meta['tournament_id']
@@ -138,135 +146,97 @@ class TmachineextractorSpider(scrapy.Spider):
             Location = ''
 
         try:
-            # t=len(response.xpath('//table[@class="table table-bordered table-striped tournamentResultsTable"]/tbody/thead'))
-            # for a in range(2,len(t)):
-            #     abc = '//table[@class="table table-bordered table-striped tournamentResultsTable"]/tbody/thead['+str(a)+']'
-            #     game_details = response.xpath(abc)
-            #
-            #     if game_details:
-            #         for index,i in enumerate(game_details):
-            #             # if index == 0:
-            #             #     continue
-            #             # else:
-            #             try:
-            #                 # t = './tr/th/text()'
-            #                 game_date = i.xpath('./tr[1]/th/text()').extract_first().strip()
-            #             except Exception as e:
-            #                 game_date = ''
+            try:
+                game = response.xpath('//tr[following-sibling::tr and preceding-sibling::thead and count(child::*)>2]')
+                if game:
+                    for j in game:
+                        item = TourneymachineItem()
 
-                    try:
-                        game = response.xpath('//tr[following-sibling::tr and preceding-sibling::thead and count(child::*)>2]')
-                        if game:
-                            for j in game:
-                                item = TourneymachineItem()
+                        try:
+                            game_date = j.xpath('normalize-space(./preceding-sibling::thead[1]/tr[1]/th/text())').extract_first()
+                        except Exception as e:
+                            game_date = ''
 
-                                try:
-                                    game_date = j.xpath('normalize-space(./preceding-sibling::thead[1]/tr[1]/th/text())').extract_first()
-                                except Exception as e:
-                                    game_date = ''
+                        game_id = ''
+                        try:
+                            game_id = j.xpath('./td[1]/text()').extract_first().strip()
+                            if game_id == '':
+                                continue
+                        except Exception as e:
+                            continue
 
-                                game_id = ''
-                                try:
-                                    game_id = j.xpath('./td[1]/text()').extract_first().strip()
-                                    if game_id == '':
-                                        continue
-                                except Exception as e:
-                                    continue
+                        try:
+                            game_time = j.xpath('./td[2]//text()').extract()[2].strip()
+                            if ':' not in game_time:
+                                game_time = j.xpath('./td[2]/b/text()').extract_first().strip()
+                        except Exception as e:
+                            game_time = ''
 
-                                try:
-                                    game_time = j.xpath('./td[2]//text()').extract()[2].strip()
-                                    if ':' not in game_time:
-                                        game_time = j.xpath('./td[2]/b/text()').extract_first().strip()
-                                except Exception as e:
-                                    game_time = ''
+                        try:
+                            location_name = j.xpath('normalize-space(./td[3]/text())').extract_first().strip().replace('\r', '')
+                        except Exception as e:
+                            location_name = ''
 
-                                try:
-                                    location_name = j.xpath('normalize-space(./td[3]/text())').extract_first().strip().replace('\r','')
-                                except Exception as e:
-                                    location_name = ''
+                        try:
+                            tmpt = j.xpath('./@class').extract_first().strip()
+                            tmp_away_team_id = re.findall(r'\steam_(\w+)', tmpt)
+                            try:
+                                home_team_id = tmp_away_team_id[0]
+                            except IndexError:
+                                home_team_id = ''
+                            try:
+                                away_team_id = tmp_away_team_id[1]
+                            except IndexError:
+                                away_team_id = ''
+                        except Exception as e:
+                            away_team_id = ''
+                            home_team_id = ''
 
-                                try:
-                                    tmpt = j.xpath('./@class').extract_first().strip()
-                                    tmp_away_team_id = re.findall(r'\steam_(\w+)',tmpt)
-                                    try:
-                                        home_team_id = tmp_away_team_id[0]
-                                    except IndexError:
-                                        home_team_id = ''
-                                    try:
-                                        away_team_id = tmp_away_team_id[1]
-                                    except IndexError:
-                                        away_team_id = ''
-                                except Exception as e:
-                                    away_team_id = ''
-                                    home_team_id = ''
+                        try:
+                            away_team = j.xpath('./td[4]/text()').extract_first().strip()
+                        except Exception as e:
+                            away_team = ''
 
-                                try:
-                                    away_team = j.xpath('./td[4]/text()').extract_first().strip()
-                                except Exception as e:
-                                    away_team = ''
+                        try:
+                            away_score = j.xpath('./td[5]/text()').extract_first().strip()
+                        except Exception as e:
+                            away_score = ''
 
-                                try:
-                                    away_score = j.xpath('./td[5]/text()').extract_first().strip()
-                                except Exception as e:
-                                    away_score = ''
+                        try:
+                            home_score = j.xpath('./td[6]/text()').extract_first().strip()
+                        except Exception as e:
+                            home_score = ''
 
-                                try:
-                                    home_score = j.xpath('./td[6]/text()').extract_first().strip()
-                                except Exception as e:
-                                    home_score = ''
+                        try:
+                            home_team = j.xpath('./td[7]/text()').extract_first().strip()
+                        except Exception as e:
+                            home_team = ''
 
-                                try:
-                                    home_team = j.xpath('./td[7]/text()').extract_first().strip()
-                                except Exception as e:
-                                    home_team = ''
-
-                                if game_id != '':
-                                    item['tournament_endpoint'] = tournament_endpoint
-                                    item['tournament_division_id'] = tournament_division_id
-                                    item['tournament_id'] = tournament_id
-                                    item['tournament_name'] = tournament_name
-                                    item['time_period'] = time_period
-                                    item['Location'] = Location
-                                    item['tournament_division_name'] = tournament_division_name
-                                    item['last_update'] = last_update
-                                    item['game_date'] = game_date
-                                    item['game_id'] = game_id
-                                    item['game_time'] = game_time
-                                    item['location_name'] = location_name
-                                    item['home_team_id'] = home_team_id
-                                    item['away_team_id'] = away_team_id
-                                    item['away_team'] = away_team
-                                    item['away_score'] = away_score
-                                    item['home_score'] = home_score
-                                    item['home_team'] = home_team
-                                    yield item
-                    except TypeError:
-                        game = ''
-                # else:
-                #     item = TourneymachineItem()
-                #     item['tournament_endpoint'] = tournament_endpoint
-                #     item['tournament_division_id'] = tournament_division_id
-                #     item['tournament_id'] = tournament_id
-                #     item['tournament_name'] = tournament_name
-                #     item['time_period'] = time_period
-                #     item['Location'] = Location
-                #     item['tournament_division_name'] = tournament_division_name
-                #     item['last_update'] = last_update
-                #     item['game_date'] = ''
-                #     item['game_id'] = ''
-                #     item['game_time'] = ''
-                #     item['location_name'] = ''
-                #     item['away_team_id'] = ''
-                #     item['home_team_id'] = ''
-                #     item['away_team'] = ''
-                #     item['away_score'] = ''
-                #     item['home_score'] = ''
-                #     item['home_team'] = ''
-                #     yield item
+                        if game_id != '':
+                            item['tournament_endpoint'] = tournament_endpoint
+                            item['tournament_division_id'] = tournament_division_id
+                            item['tournament_id'] = tournament_id
+                            item['tournament_name'] = tournament_name
+                            item['time_period'] = time_period
+                            item['Location'] = Location
+                            item['tournament_division_name'] = tournament_division_name
+                            item['last_update'] = last_update
+                            item['game_date'] = game_date
+                            item['game_id'] = game_id
+                            item['game_time'] = game_time
+                            item['location_name'] = location_name
+                            item['home_team_id'] = home_team_id
+                            item['away_team_id'] = away_team_id
+                            item['away_team'] = away_team
+                            item['away_score'] = away_score
+                            item['home_score'] = home_score
+                            item['home_team'] = home_team
+                            yield item
+            except TypeError:
+                game = ''
 
         except Exception as e:
             print(str(e))
 
-    def close(spider, reason):
-        Export_CSV()
+
 execute('scrapy crawl TMachineExtractor'.split())

@@ -31,4 +31,11 @@ class TourneymachineItem(scrapy.Item):
     home_score = scrapy.Field()
     home_team = scrapy.Field()
 
-    pass
+
+class TourneymachineTournamnetTitleItem(scrapy.Item):
+
+    tournament_id = scrapy.Field()
+    tournament_division_id = scrapy.Field()
+    tournament_division_name = scrapy.Field()
+    tournament_title = scrapy.Field()
+    tournament_details = scrapy.Field()
