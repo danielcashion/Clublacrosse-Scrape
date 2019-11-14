@@ -1,3 +1,4 @@
 *.csv
 *.pyc
 connectlax/scrapy.cfg
+.idea/

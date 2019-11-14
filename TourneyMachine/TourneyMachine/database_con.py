@@ -1,0 +1,6 @@
+host = "clubstats-instance-live.cdf3o8pmisha.us-west-2.rds.amazonaws.com"
+user = "data_mover"
+passwd = "ThisIsNotMyP@ssword~!2"
+database = "public_data"
+events_table = "tourneymachine_events"
+game_table = "tourneymachine_game_data"

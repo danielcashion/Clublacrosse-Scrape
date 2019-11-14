@@ -7,7 +7,8 @@
 import pymysql as MySQLdb
 
 from Tournaments.items import TournamentsItem
-from Tournaments.spiders import database_con as dbc
+from Tournaments import database_con as dbc
+
 
 class TournamentsPipeline(object):
     DB_IP = dbc.host

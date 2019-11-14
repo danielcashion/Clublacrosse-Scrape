@@ -1,8 +1,7 @@
-import pymysql as MySQLdb
 import os
 import pyodbc
 import pandas as pd
-from Tournaments.spiders import database_con as dbc
+from Tournaments import database_con as dbc
 from Tournaments.spiders import paths
 
 def Export_CSV():
