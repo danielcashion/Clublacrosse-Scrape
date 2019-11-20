@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import datetime
 import json
+from pprint import pprint
 import pymysql
 import scrapy
 import re
 from TourneyMachine import database_con as dbc
 from scrapy.cmdline import execute
-from TourneyMachine.items import TourneymachineItem
+from TourneyMachine.items import TourneymachineItem, TourneymachineTournamnetPoolItem
 
 
 class TmachineextractorSpider(scrapy.Spider):
@@ -23,18 +24,17 @@ class TmachineextractorSpider(scrapy.Spider):
             Links = self.cursor.fetchall()
             for link in Links:
                 id = link[0]
-                tournament_id = id
-                url = 'https://tourneymachine.com/Public/Results/Tournament.aspx?IDTournament=' + id
-                tournament_endpoint = url
+                tournament_endpoint = 'https://tourneymachine.com/Public/Results/Tournament.aspx?IDTournament=' + id
                 yield scrapy.FormRequest(
-                    url,
+                    tournament_endpoint,
                     method='GET',
                     callback=self.getTournament,
                     meta={
                         'tournament_endpoint': tournament_endpoint,
-                        'tournament_id': tournament_id
+                        'tournament_id': id
                     }
                 )
+                # break
 
         except Exception as e:
             print(str(e))
@@ -105,6 +105,11 @@ class TmachineextractorSpider(scrapy.Spider):
         except Exception as e:
             print('time_period not found ')
             Location = ''
+
+        try:
+            IDComplex = re.findall(r"complex0.ID = '(.*?)';", response.text)[0]
+        except:
+            IDComplex = ""
 
         try:
             try:
@@ -195,6 +200,7 @@ class TmachineextractorSpider(scrapy.Spider):
                             item['is_active'] = 0
                             item['created_by'] = "xbyte"
                             item['created_datetime'] = datetime.datetime.now()
+                            item['IDComplex'] = IDComplex
                             yield item
 
                 else:
@@ -204,28 +210,36 @@ class TmachineextractorSpider(scrapy.Spider):
         except Exception as e:
             print(str(e))
 
-        # ------------------------------------------------------ Tournament Title Process ---------------------------- #
-        #
-        # title_item = TourneymachineTournamnetTitleItem()
-        # title_item['tournament_id'] = response.meta['tournament_id']
-        # title_item['tournament_division_id'] = response.meta['tournament_division_id']
-        # title_item['tournament_division_name'] = response.meta['tournament_division_name']
-        #
-        # for tournaments in response.xpath('//div[contains(@class, "col-sm-6")]//table[contains(@class,"tournamentResultsTable")]'):
-        #     title_item['tournament_title'] = tournaments.xpath('.//*[@class="tournamentResultsTitle"]//text()').get().strip()
-        #     table = list()
-        #     headers = list()
-        #     for th in tournaments.xpath(".//th[not (@colspan)]"):
-        #         headers.append("".join(th.xpath(".//text()").getall()).strip())
-        #
-        #     for tr in tournaments.xpath('//div[contains(@class, "col-sm-6")]//table[contains(@class,"tournamentResultsTable")]//tr[(.//td)]'):
-        #         tab = dict()
-        #         for id, td in enumerate(tr.xpath(".//td")):
-        #             tab[headers[id]] = "".join(td.xpath(".//text()").getall()).strip()
-        #         table.append(tab)
-        #
-        #     title_item['tournament_details'] = json.dumps(table)
-        #     yield title_item
+        # --------------------------------------- Tournament pool Process ---------------------------- #
+
+        pool_item = TourneymachineTournamnetPoolItem()
+        pool_item['IDTournament'] = response.meta['tournament_id']
+        pool_item['IDDivision'] = response.meta['tournament_division_id']
+        pool_item['created_by'] = "xbyte"
+        pool_item['created_datetime'] = datetime.datetime.now()
+
+        for tournaments in response.xpath('//div[contains(@class, "col-sm-6")]//table[contains(@class,"tournamentResultsTable")]'):
+            pool_item['IDPool'] = tournaments.xpath('.//*[@class="tournamentResultsTitle"]//text()').get().strip()
+            print(pool_item['IDPool'])
+
+            # headers = list()
+            # for th in tournaments.xpath(".//th[not (@colspan)]"):
+            #     headers.append("".join(th.xpath(".//text()").getall()).strip())
+
+            for tr in tournaments.xpath('.//tr[(.//td)]'):
+
+                try:
+                    pool_item['IDTeam'] = tr.xpath(".//@href").get('').split('IDTeam=')[1]
+                except:
+                    pool_item['IDTeam'] = ""
+
+                # tab = dict()
+                # for id, td in enumerate(tr.xpath(".//td")):
+                #     tab[headers[id]] = "".join(td.xpath(".//text()").getall()).strip()
+                # pool_item['pool_description'] = json.dumps(tab)
+
+                pool_item['pool_description'] = pool_item['IDPool']
+                yield pool_item
 
 
 # execute('scrapy crawl TMachineExtractor'.split())

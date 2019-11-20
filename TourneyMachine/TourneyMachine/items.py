@@ -31,12 +31,15 @@ class TourneymachineItem(scrapy.Item):
     is_active = scrapy.Field()
     created_by = scrapy.Field()
     created_datetime = scrapy.Field()
+    IDComplex = scrapy.Field()
 
 
-# class TourneymachineTournamnetTitleItem(scrapy.Item):
-#
-#     tournament_id = scrapy.Field()
-#     tournament_division_id = scrapy.Field()
-#     tournament_division_name = scrapy.Field()
-#     tournament_title = scrapy.Field()
-#     tournament_details = scrapy.Field()
+class TourneymachineTournamnetPoolItem(scrapy.Item):
+
+    IDTournament = scrapy.Field()
+    IDDivision = scrapy.Field()
+    IDPool = scrapy.Field()
+    pool_description = scrapy.Field()
+    IDTeam = scrapy.Field()
+    created_by = scrapy.Field()
+    created_datetime = scrapy.Field()
