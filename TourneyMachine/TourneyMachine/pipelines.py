@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import pymysql
-from TourneyMachine.items import TourneymachineItem, TourneymachineTournamnetPoolItem
+from TourneyMachine.items import TourneymachineItem, TourneymachineTournamentPoolItem
 from TourneyMachine import database_con as dbc
 
 
@@ -52,7 +52,7 @@ class TourneymachinePipeline(object):
             except Exception as e:
                 print(str(e))
 
-        if isinstance(item, TourneymachineTournamnetPoolItem):
+        if isinstance(item, TourneymachineTournamentPoolItem):
             try:
                 self.cursor.execute(
                     f"INSERT INTO {dbc.pool_table} (`IDTournament`, `IDDivision`, `IDPool`, `pool_description`, `IDTeam`, `created_by`, `created_datetime`) VALUES (%s, %s, %s, %s, %s, %s, %s)",

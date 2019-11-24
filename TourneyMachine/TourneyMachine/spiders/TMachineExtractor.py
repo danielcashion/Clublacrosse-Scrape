@@ -7,7 +7,7 @@ import scrapy
 import re
 from TourneyMachine import database_con as dbc
 from scrapy.cmdline import execute
-from TourneyMachine.items import TourneymachineItem, TourneymachineTournamnetPoolItem
+from TourneyMachine.items import TourneymachineItem, TourneymachineTournamentPoolItem
 
 
 class TmachineextractorSpider(scrapy.Spider):
@@ -20,7 +20,7 @@ class TmachineextractorSpider(scrapy.Spider):
         try:
             self.cnxn = pymysql.connect(dbc.host, dbc.user, dbc.passwd, dbc.database)
             self.cursor = self.cnxn.cursor()
-            self.cursor.execute(f"SELECT IDTournament FROM {dbc.events_table}")
+            self.cursor.execute(f"SELECT IDTournament FROM {dbc.events_table} WHERE is_active_YN = 1")
             Links = self.cursor.fetchall()
             for link in Links:
                 id = link[0]
@@ -212,7 +212,7 @@ class TmachineextractorSpider(scrapy.Spider):
 
         # --------------------------------------- Tournament pool Process ---------------------------- #
 
-        pool_item = TourneymachineTournamnetPoolItem()
+        pool_item = TourneymachineTournamentPoolItem()
         pool_item['IDTournament'] = response.meta['tournament_id']
         pool_item['IDDivision'] = response.meta['tournament_division_id']
         pool_item['created_by'] = "xbyte"

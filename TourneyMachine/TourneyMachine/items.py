@@ -34,7 +34,7 @@ class TourneymachineItem(scrapy.Item):
     IDComplex = scrapy.Field()
 
 
-class TourneymachineTournamnetPoolItem(scrapy.Item):
+class TourneymachineTournamentPoolItem(scrapy.Item):
 
     IDTournament = scrapy.Field()
     IDDivision = scrapy.Field()
