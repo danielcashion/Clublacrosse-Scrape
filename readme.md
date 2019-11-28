@@ -29,6 +29,10 @@ What we would like to do is scrape the endpoints from ***Step Two*** on a calend
 
 We will also want to get the results from the games, which is more of an hourly scrape if the given event is that day.
 
-We would like to employ scrapingweb or crawlera so that we can log into a site and view status, change parameters, etc.
+## ScrapyingHub.com
+We would like to employ scrapingweb or crawlera so that we can log into a site and view status, change parameters, etc. 
+
+Our organization has an account on scrapinghub.com. This is where the spider needs to reside.
+
 
 
