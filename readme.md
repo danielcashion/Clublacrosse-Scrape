@@ -13,15 +13,21 @@ From there, we determine if we want to scrape this event's details via setting a
 ## "TMachineExtractor" - Step 2
 This scraper queries the table from the first query for the resulting endpoint and scrapes those pages. It inserts data into two separate tables, one for game details and the other for locations of those games.
 
-## Scheduling
-What we would like to do is scrape the endpoints from ***step one*** on a calendar 
+## Scheduling (All times Eastern Time (USA)
+This scraping give us our  ***events schedule***. 
+What we would like to do is scrape the endpoints from ***Step One*** on a calendar 
+1. Monday morning (10 AM)
+1. Thursday night (4 PM)
+
+This scraping give us our ***game schedules and results***. 
+What we would like to do is scrape the endpoints from ***Step Two*** on a calendar 
 1. Monday morning (11 AM)
 1. Thursday night (6 PM)
 1. Friday night (7 PM)
 1. Saturday morning (7 AM)
 1. Sunday morning (7 AM). 
 
-This scraping give us our initial ***schedule***. We will also want to get the results from the games, which is more of an hourly scrape if the given event is that day.
+We will also want to get the results from the games, which is more of an hourly scrape if the given event is that day.
 
 We would like to employ scrapingweb or crawlera so that we can log into a site and view status, change parameters, etc.
 
