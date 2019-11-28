@@ -8,15 +8,15 @@ Within this repo we have two folders that contain spiders, pipelines, items, etc
 
 <img style="float: right;" src="https://miscdatacash.s3.us-east-2.amazonaws.com/awsTMdatatables.png" alt="Data Tables" width="250" height="350">
 
-## Spider #1; "Tournaments" - Step 1
+### Spider #1; "Tournaments" - Step 1
 From within the spiders folder (Tournaments\Tournaments\Spiders), you will see TournamentExtractor.py. When at the parent folder (the first Tournaments), if once runs from an anaconda prompt (*logged in as an administrator) ***"scrapy crawl TournamentExtractor -a start=YYYYMMDD -a end=YYYYMMDD"***, we will scrape the events from our api endpoint and store them in our "public_events" database.
 
 From there, we determine if we want to scrape this event's details via setting a boolean flag "is_active" in the table to 1.
 
-## Spider #2; "TMachineExtractor" - Step 2
+### Spider #2; "TMachineExtractor" - Step 2
 This scraper queries the table from the first query for the resulting endpoint and scrapes those pages. It inserts data into two separate tables, one for game details and the other for locations of those games. From the TourneyMachine root folder, the python command id ***"scrapy crawl TMachineExtractor"***.
 
-## Scheduling (All times Eastern Time (USA)
+### Scheduling (All times Eastern Time (USA)
 This scraping give us our  ***events schedule***. 
 What we would like to do is scrape the endpoints from ***Step One*** on a calendar 
 1. Monday morning (10 AM)
