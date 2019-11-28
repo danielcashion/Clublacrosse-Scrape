@@ -3,7 +3,7 @@ What we have here are two folders that we use:
 1 - Tournaments and
 2 - Tourneymachine
 
-<img src="https://miscdatacash.s3.us-east-2.amazonaws.com/awsTMdatatables.png" alt="Data Tables" width="250" height="350">
+<img style="float: right:" src="https://miscdatacash.s3.us-east-2.amazonaws.com/awsTMdatatables.png" alt="Data Tables" width="250" height="350">
 
 ## "Tournaments" - Step 1
 From within the spiders folder (Tournaments\Tournaments\Spiders), you will see TournamentExtractor.py. When at the parent folder (the first Tournaments), if once runs from an anaconda prompt (*logged in as an administrator) "scrapy crawl TournamentExtractor -a start=YYYYMMDD -a end=YYYYMMDD", we will scrape the events from our api endpoint and store them in our "public_events" database.
