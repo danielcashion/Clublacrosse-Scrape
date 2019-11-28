@@ -1,4 +1,7 @@
 # Welcome to our data scraping folder!
+***Summary***; we have two spiders that scrape the web and insert data of interest to us into an AWS Aurora Database. 
+
+## Spiders
 What we have here are two folders that we use:
 1 - Tournaments and
 2 - Tourneymachine
