@@ -1,4 +1,4 @@
-# Welcome to our data scraping folder!
+# Welcome to our data scraping folder
 ***Summary***; we have two spiders that scrape the web and insert data of interest to us into an AWS Aurora Database. 
 
 ## Spiders
